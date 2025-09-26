@@ -49,7 +49,7 @@ După ce în săptămâna 4 am construit arbori filogenetici, acum aplicăm meto
 
 - Gene Co-expression Networks.
 - De la clustering clasic la module biologice și integrare multi-omics.
-- [Vezi Săptămâna 6 — Gene Co-expression Networks](./06_wgcna/README.md)
+- [Vezi Săptămâna 6 — Gene Co-expression Networks](./06_wgcna/README.md))
 
 ---
 

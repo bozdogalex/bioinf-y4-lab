@@ -124,5 +124,4 @@ Toate schimbările notabile sunt documentate aici.
 ### Complete lab 7
 ### Added
 -`labs/lab07_network_viz`
-### Modified
 -`ci.yml`
