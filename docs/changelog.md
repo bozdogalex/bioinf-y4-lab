@@ -108,4 +108,3 @@ Toate schimbările notabile sunt documentate aici.
 -`labs/lab04_phylogenetics`
 ### Modified
 -`ci.yml`
-
