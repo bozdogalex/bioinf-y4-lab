@@ -120,3 +120,9 @@ Toate schimbările notabile sunt documentate aici.
 -`labs/lab06_wgcna`
 ### Modified
 -`ci.yml`
+## [0.5.7] 2025-09-26
+### Complete lab 7
+### Added
+-`labs/lab07_network_viz`
+### Modified
+-`ci.yml`

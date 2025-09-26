@@ -32,6 +32,7 @@ jobs:
           python -m compileall -q "labs/04_phylogenetics"
           python -m compileall -q "labs/05_clustering"
           python -m compileall -q "labs/06_wgcna"
+          python -m compileall -q "labs/07_network_viz"
 
   smoke:
     name: smoke
