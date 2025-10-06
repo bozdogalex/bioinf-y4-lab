@@ -19,7 +19,7 @@ if not ids:
     raise SystemExit("Niciun rezultat pentru BRCA1.")
 
 acc = ids[0]
-gb = Entrez.efetch(db="nucleotide", id=acc, rettype="gb", retmode="text")
+gb = Entrez.efetch(db="nucleotide", id=acc, rettype="gbwithparts", retmode="text")
 out = Path("data/brca1.gb")
 out.write_text(gb.read(), encoding="utf-8")
 

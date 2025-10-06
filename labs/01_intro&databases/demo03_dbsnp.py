@@ -12,7 +12,8 @@ print(f"Am găsit {len(ids)} SNP IDs.")
 
 if ids:
     summ = Entrez.esummary(db="snp", id=",".join(ids), retmode="xml")
-    docsums = Entrez.read(summ)
+    records = Entrez.read(summ)
+    docsums = records["DocumentSummarySet"]["DocumentSummary"]
     for d in docsums:
         snp_id = d.get("SNP_ID")
         doc = d.get("DOCSUM")
