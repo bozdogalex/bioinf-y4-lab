@@ -1,5 +1,7 @@
 from pathlib import Path
+from io import StringIO
 from Bio import Entrez, SeqIO
+import os
 
 Entrez.email = "student@example.com"
 Path("data").mkdir(exist_ok=True)
@@ -12,6 +14,10 @@ search = Entrez.esearch(
 ids = Entrez.read(search)["IdList"]
 print(f"Găsite {len(ids)} rezultate.")
 
+# search
+with Entrez.esearch(db="nucleotide", term=QUERY, retmax=1) as h:
+    ids = Entrez.read(h)["IdList"]
+print(f"Găsite {len(ids)} rezultate.")
 if not ids:
     raise SystemExit("Niciun rezultat pentru BRCA1.")
 
@@ -31,7 +37,9 @@ if not gb_record.seq or len(gb_record.seq) == 0:
 
 gc = (gb_record.seq.count("G") + gb_record.seq.count("C")) / len(gb_record.seq)
 
-print("Accession:", gb_record.id)
-print("Length:", len(gb_record.seq))
+gc = gc_content(seq)
+print("ID:", acc)
+print("Titlu:", gb_record.description)
+print("Length:", len(seq), "bp")
 print("GC fraction:", round(gc, 3))
-print("First 50 nt:", gb_record.seq[:50])
+print("First 50 nt:", seq[:50])
