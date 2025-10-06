@@ -1,11 +1,11 @@
 # BIOINF-Y4 — Bioinformatica și Genomică Funcțională (Bachelor, Year 4) 
 
-[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/bozdogalex/bioinf-y4-lab?quickstart=1)
-![CI](https://github.com/bozdogalex/bioinf-y4-lab/actions/workflows/ci.yml/badge.svg?branch=main)
+[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/numipasaaa/bioinf-y4-lab?quickstart=1)
+![CI](https://github.com/numipasaaa/bioinf-y4-lab/actions/workflows/ci.yml/badge.svg?branch=main)
 
 
 > Laboratoare la nivel de licență (anul IV), combinând bioinformatica clasică cu metode moderne de învățare automată, rețele și GenAI.  
-> Mediul este CPU-only și identic între Codespaces și Docker prin imaginea preconstruită `ghcr.io/bozdogalex/bioinf-y4-lab:base`.
+> Mediul este CPU-only și identic între Codespaces și Docker prin imaginea preconstruită `ghcr.io/numipasaaa/bioinf-y4-lab:base`.
 
 
 ## Labs (index)
