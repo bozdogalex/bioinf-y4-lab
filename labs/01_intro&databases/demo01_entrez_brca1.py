@@ -1,15 +1,12 @@
 from pathlib import Path
 from Bio import Entrez, SeqIO
 
-# NCBI cere un email valid
 Entrez.email = "student@example.com"
-# opțional: Entrez.api_key = "NCBI_API_KEY"
-
 Path("data").mkdir(exist_ok=True)
 
 search = Entrez.esearch(
     db="nucleotide",
-    term="BRCA1[Gene] AND Homo sapiens[Organism]",
+    term="BRCA1[Gene] AND Homo sapiens[Organism] AND mRNA",
     retmax=1,
 )
 ids = Entrez.read(search)["IdList"]
@@ -19,12 +16,20 @@ if not ids:
     raise SystemExit("Niciun rezultat pentru BRCA1.")
 
 acc = ids[0]
-gb = Entrez.efetch(db="nucleotide", id=acc, rettype="gb", retmode="text")
-out = Path("data/brca1.gb")
-out.write_text(gb.read(), encoding="utf-8")
+print("Fetching GenBank record for:", acc)
+
+with Entrez.efetch(db="nucleotide", id=acc, rettype="gbwithparts", retmode="text") as handle:
+    gb_text = handle.read()
+
+out = Path("data/work/AlexTGoCreative/brca1.gb")
+out.write_text(gb_text, encoding="utf-8")
 
 gb_record = SeqIO.read(out, "genbank")
-gc = (gb_record.seq.count("G") + gb_record.seq.count("C")) / max(1, len(gb_record.seq))
+
+if not gb_record.seq or len(gb_record.seq) == 0:
+    raise ValueError("Recordul nu conține secvență ADN (probabil ai obținut un entry fără seq).")
+
+gc = (gb_record.seq.count("G") + gb_record.seq.count("C")) / len(gb_record.seq)
 
 print("Accession:", gb_record.id)
 print("Length:", len(gb_record.seq))
