@@ -78,17 +78,17 @@ def main():
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     # TODO: Apelați funcția download_fasta(...) și salvați rezultatele
-    # n = download_fasta(args.email, out_path, query=args.query,
-    #                    accession=args.accession, db=args.db,
-    #                    retmax=args.retmax, api_key=args.api_key)
-    # print(f"[ok] Am scris {n} înregistrări în: {out_path}")
+     n = download_fasta(args.email, out_path, query=args.query,
+                        accession=args.accession, db=args.db,
+                        retmax=args.retmax, api_key=args.api_key)
+     print(f"[ok] Am scris {n} înregistrări în: {out_path}")
 
     # TODO: Citiți fișierul FASTA cu SeqIO.parse
     # records = ...
 
     # TODO: Calculați GC pentru fiecare secvență și afișați rezultatele
-    # for rec in records:
-    #     print(f"{rec.id}\tGC={valoare:.3f}")
+     for rec in records:
+         print(f"{rec.id}\tGC={valoare:.3f}")
 
 
 if __name__ == "__main__":
