@@ -38,7 +38,7 @@ Pași:
 
 - fork repo → creează branch feat/roster-<handle>.
 - edit labs/01_intro&databases/roster/handles.csv → adaugă o singură linie.
-- git commit -m "Add <handle> to roster" → git push → creează Pull Request.
+- git commit -m "Add <handle> to roster" → git push .
 - Completează checklist-ul PR (șablonul week1_roster.md).
 
 ## Partea 2 - Demo / Exercitii
