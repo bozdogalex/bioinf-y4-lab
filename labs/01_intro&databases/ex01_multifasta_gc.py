@@ -27,13 +27,14 @@ Instrucțiuni:
     5) Citiți fișierul FASTA local și calculați GC pentru fiecare secvență.
     6) Afișați rezultatele pe ecran: <id>\tGC=<valoare cu 3 zecimale>.
 """
+
 import argparse
 from pathlib import Path
 import sys
-from Bio import SeqIO
-from Bio import Entrez
 
-Entrez email = "razvan.iorga@student.upt.ro"
+from Bio import SeqIO
+# from Bio import Entrez  # TODO: deblocați și folosiți pentru descărcare
+
 
 def gc_fraction(seq: str) -> float:
     """Fracție GC pentru o secvență; robust la litere mici/mari și non-ATGC."""
@@ -50,40 +51,15 @@ def download_fasta(email: str, out_path: Path, query: str = None,
                    accession: str = None, db: str = "nuccore",
                    retmax: int = 3, api_key: str = None) -> int:
     """
-    Descărcare FASTA de la NCBI:
+    TODO: Implementați descărcarea din NCBI.
+    Pași:
       - Configurați Entrez cu email (și api_key opțional).
-      - Dacă avem accession → efetch direct.
-      - Dacă avem query → esearch -> efetch pentru ID-uri.
-      - Scrie rezultatul în fișier.
-      - Returnează numărul de înregistrări FASTA.
+      - Dacă avem accession: descărcați acel record.
+      - Altfel, dacă avem query: faceți esearch -> lista de id-uri, apoi efetch.
+      - Scrieți rezultatele în out_path.
+      - Returnați numărul de înregistrări scrise.
     """
-    Entrez.email = email
-    if api_key:
-        Entrez.api_key = api_key
-
-    if not accession and not query:
-        raise ValueError("Trebuie să specificați fie --accession, fie --query")
-
-    # Descarcă datele corespunzătoare
-    if accession:
-        handle = Entrez.efetch(db=db, id=accession, rettype="fasta", retmode="text")
-    else:
-        search = Entrez.esearch(db=db, term=query, retmax=retmax)
-        search_result = Entrez.read(search)
-        ids = search_result.get("IdList", [])
-        if not ids:
-            print("[!] Niciun rezultat găsit pentru query.", file=sys.stderr)
-            return 0
-        handle = Entrez.efetch(db=db, id=",".join(ids), rettype="fasta", retmode="text")
-
-    fasta_data = handle.read()
-    handle.close()
-
-    with open(out_path, "w") as f:
-        f.write(fasta_data)
-
-    records = list(SeqIO.parse(str(out_path), "fasta"))
-    return len(records)
+    raise NotImplementedError("TODO: implementați descărcarea cu Entrez")
 
 
 def main():
@@ -100,16 +76,18 @@ def main():
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
-    n = download_fasta(args.email, out_path, query=args.query,
-                       accession=args.accession, db=args.db,
-                       retmax=args.retmax, api_key=args.api_key)
-    print(f"[ok] Am scris {n} înregistrări în: {out_path}")
+    # TODO: Apelați funcția download_fasta(...) și salvați rezultatele
+    # n = download_fasta(args.email, out_path, query=args.query,
+    #                    accession=args.accession, db=args.db,
+    #                    retmax=args.retmax, api_key=args.api_key)
+    # print(f"[ok] Am scris {n} înregistrări în: {out_path}")
 
-    records = list(SeqIO.parse(str(out_path), "fasta"))
+    # TODO: Citiți fișierul FASTA cu SeqIO.parse
+    # records = ...
 
-    for rec in records:
-        gc = gc_fraction(str(rec.seq))
-        print(f"{rec.id}\tGC={gc:.3f}")
+    # TODO: Calculați GC pentru fiecare secvență și afișați rezultatele
+    # for rec in records:
+    #     print(f"{rec.id}\tGC={valoare:.3f}")
 
 
 if __name__ == "__main__":
