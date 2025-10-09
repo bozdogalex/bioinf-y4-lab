@@ -31,6 +31,7 @@ Deschide http://localhost:8890/lab și rulează print("ok").
 python "labs/01_intro&databases/demo_entrez_brca1.py"
 
 ## Partea 1 — Task PR 
+Citeste [git-workflow.md](../../docs/git-workflow.md)
 Adaugă handle-ul tău GitHub în labs/01_intro&databases/roster/handles.csv (format: Nume Prenume,github_handle) prin Pull Request.
 
 Pași:
