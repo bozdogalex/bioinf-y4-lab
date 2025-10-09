@@ -33,8 +33,9 @@ from pathlib import Path
 import sys
 
 from Bio import SeqIO
-# from Bio import Entrez  # TODO: deblocați și folosiți pentru descărcare
+from Bio import Entrez  # TODO: deblocați și folosiți pentru descărcare
 
+Entrez email = "razvan.iorga@student.upt.ro"
 
 def gc_fraction(seq: str) -> float:
     """Fracție GC pentru o secvență; robust la litere mici/mari și non-ATGC."""
