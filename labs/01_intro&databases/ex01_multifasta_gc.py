@@ -33,6 +33,7 @@ import sys
 from Bio import SeqIO
 from Bio import Entrez
 
+Entrez email = "razvan.iorga@student.upt.ro"
 
 def gc_fraction(seq: str) -> float:
     """Fracție GC pentru o secvență; robust la litere mici/mari și non-ATGC."""
