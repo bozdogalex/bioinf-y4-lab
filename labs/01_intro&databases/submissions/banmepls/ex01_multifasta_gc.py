@@ -5,7 +5,7 @@ Exercițiu (Lab 1): Descărcare FASTA + calcul GC
 
 Scop:
   1) Descărcați un fișier FASTA de la NCBI (nucleotide sau proteină).
-  2) Salvați fișierul local în data/work/<handle>/lab01/ (NU îl urcați pe git).
+  2) Salvați fișierul local în data/work/banmepls/lab01/ (NU îl urcați pe git).
   3) Calculați fracția GC pentru fiecare înregistrare din fișier.
 
 Instrucțiuni:
@@ -13,11 +13,11 @@ Instrucțiuni:
       python ex01_multifasta_gc.py --email student@example.com \
         --query "TP53[Gene] AND Homo sapiens[Organism]" \
         --retmax 3 \
-        --out data/work/<handle>/lab01/my_tp53.fa
+        --out data/work/banmepls/lab01/my_tp53.fa
 
       python ex01_multifasta_gc.py --email student@example.com \
         --accession NM_000546 \
-        --out data/work/<handle>/lab01/nm000546.fa
+        --out data/work/banmepls/lab01/nm000546.fa
 
   - Pași de completat:
     1) Configurați Entrez cu email (și api_key opțional).
@@ -27,10 +27,13 @@ Instrucțiuni:
     5) Citiți fișierul FASTA local și calculați GC pentru fiecare secvență.
     6) Afișați rezultatele pe ecran: <id>\tGC=<valoare cu 3 zecimale>.
 """
+
 import argparse
 from pathlib import Path
 import sys
+
 from Bio import SeqIO
+# deblocați și folosiți pentru descărcare
 from Bio import Entrez
 
 
@@ -48,41 +51,36 @@ def gc_fraction(seq: str) -> float:
 def download_fasta(email: str, out_path: Path, query: str = None,
                    accession: str = None, db: str = "nuccore",
                    retmax: int = 3, api_key: str = None) -> int:
-    """
-    Descărcare FASTA de la NCBI:
-      - Configurați Entrez cu email (și api_key opțional).
-      - Dacă avem accession → efetch direct.
-      - Dacă avem query → esearch -> efetch pentru ID-uri.
-      - Scrie rezultatul în fișier.
-      - Returnează numărul de înregistrări FASTA.
-    """
+    # Configurați Entrez cu email (și api_key opțional).
     Entrez.email = email
     if api_key:
         Entrez.api_key = api_key
 
-    if not accession and not query:
-        raise ValueError("Trebuie să specificați fie --accession, fie --query")
+    handle = None
 
-    # Descarcă datele corespunzătoare
+    # Dacă avem accession: descărcați acel record.
     if accession:
         handle = Entrez.efetch(db=db, id=accession, rettype="fasta", retmode="text")
-    else:
+    # Altfel, dacă avem query: faceți esearch -> lista de id-uri, apoi efetch.
+    elif query:
         search = Entrez.esearch(db=db, term=query, retmax=retmax)
-        search_result = Entrez.read(search)
-        ids = search_result.get("IdList", [])
+        ids = Entrez.read(search)["IdList"]
+        print(f"Găsite {len(ids)} rezultate.")
         if not ids:
-            print("[!] Niciun rezultat găsit pentru query.", file=sys.stderr)
-            return 0
+            raise SystemExit("Niciun rezultat pentru query-ul dat.")
         handle = Entrez.efetch(db=db, id=",".join(ids), rettype="fasta", retmode="text")
+    else:
+        raise ValueError("Trebuie să specifici fie accession, fie query.")
 
-    fasta_data = handle.read()
-    handle.close()
+    # Scrieți rezultatele în out_path.
+    fasta_txt = handle.read()
+    out_path.write_text(fasta_txt, encoding="utf-8")
 
-    with open(out_path, "w") as f:
-        f.write(fasta_data)
-
-    records = list(SeqIO.parse(str(out_path), "fasta"))
+    # Returnați numărul de înregistrări scrise.
+    records = list(SeqIO.parse(out_path, "fasta"))
     return len(records)
+
+    raise NotImplementedError("TODO: implementați descărcarea cu Entrez")
 
 
 def main():
@@ -99,13 +97,16 @@ def main():
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
+    # Apelați funcția download_fasta(...) și salvați rezultatele
     n = download_fasta(args.email, out_path, query=args.query,
                        accession=args.accession, db=args.db,
                        retmax=args.retmax, api_key=args.api_key)
     print(f"[ok] Am scris {n} înregistrări în: {out_path}")
 
-    records = list(SeqIO.parse(str(out_path), "fasta"))
+    # Citiți fișierul FASTA cu SeqIO.parse
+    records = SeqIO.parse(out_path, "fasta")
 
+    # Calculați GC pentru fiecare secvență și afișați rezultatele
     for rec in records:
         gc = gc_fraction(str(rec.seq))
         print(f"{rec.id}\tGC={gc:.3f}")
