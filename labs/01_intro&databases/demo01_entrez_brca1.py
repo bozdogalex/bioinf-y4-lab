@@ -6,6 +6,7 @@ import os
 # setează email pentru NCBI (sau: export NCBI_EMAIL="emailul_tău")
 
 
+Entrez.email = "marius.jalba@student.upt.ro"
 DATA_DIR = Path("data")
 DATA_DIR.mkdir(exist_ok=True)
 
