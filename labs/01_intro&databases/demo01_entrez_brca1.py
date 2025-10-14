@@ -3,8 +3,7 @@ from io import StringIO
 from Bio import Entrez, SeqIO
 import os
 
-
-Entrez.email = os.environ["NCBI_EMAIL"]
+# setează email pentru NCBI (sau: export NCBI_EMAIL="emailul_tău")
 
 
 DATA_DIR = Path("data")

@@ -111,16 +111,16 @@ def main():
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
-    #Apelați funcția download_fasta(...) și salvați rezultatele
+    # Apelați funcția download_fasta(...) și salvați rezultatele
     n = download_fasta(args.email, out_path, query=args.query,
                        accession=args.accession, db=args.db,
                        retmax=args.retmax, api_key=args.api_key)
     print(f"[ok] Am scris {n} înregistrări în: {out_path}")
 
-    #Citiți fișierul FASTA cu SeqIO.parse
+    # Citiți fișierul FASTA cu SeqIO.parse
     records = list(SeqIO.parse(out_path, "fasta"))
 
-    #Calculați GC pentru fiecare secvență și afișați rezultatele
+    # Calculați GC pentru fiecare secvență și afișați rezultatele
     for rec in records:
         gc = gc_fraction(str(rec.seq))
         print(f"{rec.id}\tGC={gc:.3f}")
