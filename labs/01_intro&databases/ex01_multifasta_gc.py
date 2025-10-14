@@ -1,39 +1,38 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-Exercițiu (Lab 1): Descărcare FASTA + calcul GC
 
-Scop:
-  1) Descărcați un fișier FASTA de la NCBI (nucleotide sau proteină).
-  2) Salvați fișierul local în data/work/<handle>/lab01/ (NU îl urcați pe git).
-  3) Calculați fracția GC pentru fiecare înregistrare din fișier.
 
-Instrucțiuni:
-  - Rulați scriptul cu argumentele necesare (exemple):
-      python ex01_multifasta_gc.py --email student@example.com \
-        --query "TP53[Gene] AND Homo sapiens[Organism]" \
-        --retmax 3 \
-        --out data/work/<handle>/lab01/my_tp53.fa
+# Exercițiu (Lab 1): Descărcare FASTA + calcul GC
+# Scop:
+#   1) Descărcați un fișier FASTA de la NCBI (nucleotide sau proteină).
+#   2) Salvați fișierul local în data/work/AlinFanuNotFound/lab01/ (NU îl urcați pe git).
+#   3) Calculați fracția GC pentru fiecare înregistrare din fișier.
 
-      python ex01_multifasta_gc.py --email student@example.com \
-        --accession NM_000546 \
-        --out data/work/<handle>/lab01/nm000546.fa
+# Instrucțiuni:
+#   - Rulați scriptul cu argumentele necesare (exemple):
+#       python ex01_multifasta_gc.py --email student@example.com \
+#         --query "TP53[Gene] AND Homo sapiens[Organism]" \
+#         --retmax 3 \
+#         --out data/work/<handle>/lab01/my_tp53.fa
 
-  - Pași de completat:
-    1) Configurați Entrez cu email (și api_key opțional).
-    2) Dacă primiți accession → descărcați acel record cu efetch.
-    3) Dacă primiți query → faceți esearch pentru IdList, apoi efetch pentru acele ID-uri.
-    4) Scrieți rezultatele în fișierul dat prin --out.
-    5) Citiți fișierul FASTA local și calculați GC pentru fiecare secvență.
-    6) Afișați rezultatele pe ecran: <id>\tGC=<valoare cu 3 zecimale>.
-"""
+#       python ex01_multifasta_gc.py --email student@example.com \
+#         --accession NM_000546 \
+#         --out data/work/<handle>/lab01/nm000546.fa
+
+#   - Pași de completat:
+#     1) Configurați Entrez cu email (și api_key opțional).
+#     2) Dacă primiți accession → descărcați acel record cu efetch.
+#     3) Dacă primiți query → faceți esearch pentru IdList, apoi efetch pentru acele ID-uri.
+#     4) Scrieți rezultatele în fișierul dat prin --out.
+#     5) Citiți fișierul FASTA local și calculați GC pentru fiecare secvență.
+#     6) Afișați rezultatele pe ecran: <id>\tGC=<valoare cu 3 zecimale>.
 
 import argparse
 from pathlib import Path
 import sys
 
 from Bio import SeqIO
-# from Bio import Entrez  # TODO: deblocați și folosiți pentru descărcare
+from Bio import Entrez  
 
 
 def gc_fraction(seq: str) -> float:
@@ -50,16 +49,53 @@ def gc_fraction(seq: str) -> float:
 def download_fasta(email: str, out_path: Path, query: str = None,
                    accession: str = None, db: str = "nuccore",
                    retmax: int = 3, api_key: str = None) -> int:
-    """
-    TODO: Implementați descărcarea din NCBI.
-    Pași:
-      - Configurați Entrez cu email (și api_key opțional).
-      - Dacă avem accession: descărcați acel record.
-      - Altfel, dacă avem query: faceți esearch -> lista de id-uri, apoi efetch.
-      - Scrieți rezultatele în out_path.
-      - Returnați numărul de înregistrări scrise.
-    """
-    raise NotImplementedError("TODO: implementați descărcarea cu Entrez")
+  
+    # Implementați descărcarea din NCBI.
+    # Pași:
+    # 1. Configurați Entrez cu email (și api_key opțional).
+
+    Entrez.email = email
+    if api_key:
+        Entrez.api_key = api_key
+
+    fasta_data = None
+    n_records = 0
+
+    # 2. Dacă avem accession: descărcați acel record.
+    
+    if accession:
+        print(f"[info] Fetching accession {accession} from NCBI...")
+        with Entrez.efetch(db=db, id=accession, rettype="fasta", retmode="text") as h:
+            fasta_data = h.read()
+        n_records = 1
+    
+    # 3. Altfel, dacă avem query: faceți esearch -> lista de id-uri, apoi efetch.
+    
+    elif query:
+        print(f"[info] Searching NCBI ({db}) for: {query!r}")
+        with Entrez.esearch(db=db, term=query, retmax=retmax) as sh:
+            result = Entrez.read(sh)
+        ids = result.get("IdList", [])
+        if not ids:
+            print("[warn] Niciun rezultat găsit.")
+            return 0
+        print(f"[info] Găsite {len(ids)} ID-uri; descarc FASTA…")
+        with Entrez.efetch(db=db, id=",".join(ids), rettype="fasta", retmode="text") as fh:
+            fasta_data = fh.read()
+        n_records = len(ids)
+
+        else:
+            raise ValueError("Trebuie să specificați --query sau --accession")
+
+    # 4. Scrieți rezultatele în out_path.
+    
+    out_path.write_text(fasta_data, encoding="utf-8")
+    
+    # 5. Returnați numărul de înregistrări scrise.
+
+    return n_records
+    git add -A
+    # raise NotImplementedError("TODO: implementați descărcarea cu Entrez")
 
 
 def main():
