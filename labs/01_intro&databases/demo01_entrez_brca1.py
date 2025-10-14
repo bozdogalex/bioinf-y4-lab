@@ -3,6 +3,7 @@ from io import StringIO
 from Bio import Entrez, SeqIO
 import os
 
+
 Entrez.email = os.environ["NCBI_EMAIL"]
 
 
