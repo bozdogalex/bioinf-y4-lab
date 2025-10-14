@@ -4,13 +4,13 @@ from Bio import Entrez, SeqIO
 import os
 
 # setează email pentru NCBI (sau: export NCBI_EMAIL="emailul_tău")
-Entrez.email = os.getenv("NCBI_EMAIL", "indibotoc@gmail.com")
+Entrez.email = os.getenv("NCBI_EMAIL", "eduard.muller@student.upt.ro")
 
 DATA_DIR = Path("data")
 DATA_DIR.mkdir(exist_ok=True)
 
-QUERY = 'BRCA1[Gene] AND "Homo sapiens"[Organism]'
-OUT_GB = DATA_DIR / "brca1.gb"
+QUERY = 'ACE2[Gene] AND "Homo sapiens"[Organism]'
+OUT_GB = DATA_DIR / "ace2.gb"
 
 def gc_content(seq: str) -> float:
     s = seq.upper().replace("N", "")
