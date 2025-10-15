@@ -1,0 +1,4 @@
+demo1: GC fraction: 0.423
+demo2: Reverse complement: CTATCGGGCACCCTTTCAGCGGCCCATTACAATGGCCAT
+demo3: SNP_ID: 2552282559 | CHRPOS: 17:43127349 | Funcție: upstream_transcript_variant,2KB_upstream_variant,intron_variant
+ex1: NG_017013.2 GC=0.490, NC_060941.1 GC=0.453, NC_000017.11 GC=0.453
