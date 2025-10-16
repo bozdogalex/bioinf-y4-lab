@@ -12,7 +12,7 @@ TODO:
   - Calculul scorurilor celulelor (match, mismatch, gap).
 
 Exemplu rulare:
-  python labs/02_alignment/ex02_global_nw.py --fasta data/work/<handle>/lab01/my_tp53.fa --i1 0 --i2 1
+  python labs/02_alignment/submissions/banmepls/ex01_global_nw.py --fasta data/sample/tp53_dna_multi.fasta --i1 0 --i2 1
 """
 
 from pathlib import Path
@@ -31,7 +31,19 @@ def init_score_matrix_global(m: int, n: int, gap: int):
       - prima linie: [j * gap] pentru j=0..n
     Returnati matricea.
     """
-    raise NotImplementedError("TODO: implementați inițializarea matricei globale")
+
+    # creați o listă de liste plină cu 0 (dimensiune (m+1)x(n+1)).
+    score = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
+
+    # prima coloană: [i * gap] pentru i=0..m
+    for i in range(m + 1):
+        score[i][0] = i * gap
+
+    # prima linie: [j * gap] pentru j=0..n
+    for j in range(n + 1):
+        score[0][j] = j * gap
+
+    return score
 
 
 def score_cell_global(score, i: int, j: int, a: str, b: str, match: int, mismatch: int, gap: int):
@@ -43,7 +55,20 @@ def score_cell_global(score, i: int, j: int, a: str, b: str, match: int, mismatc
       - stânga   = score[i][j-1] + gap
     Returnati max(diagonal, sus, stânga).
     """
-    raise NotImplementedError("TODO: implementați scorarea pentru NW")
+
+    # diagonal = score[i-1][j-1] + (match dacă a == b altfel mismatch)
+    if a == b:
+        diagonal = score[i-1][j-1] + match
+    else:
+        diagonal = score[i-1][j-1] + mismatch
+
+    # sus      = score[i-1][j] + gap
+    up = score[i - 1][j] + gap
+
+    # stânga   = score[i][j-1] + gap
+    left = score[i][j - 1] + gap
+
+    return max(diagonal, up, left)
 
 
 def needleman_wunsch(seq1: str, seq2: str, match=1, mismatch=-1, gap=-2):

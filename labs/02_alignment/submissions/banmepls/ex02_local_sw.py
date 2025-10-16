@@ -12,7 +12,7 @@ TODO:
   - Scoring celulelor (match, mismatch, gap, cu max(0,...)).
 
 Exemplu Rulare:
-  python labs/02_alignment/ex03_local_sw.py --fasta data/work/<handle>/lab01/my_tp53.fa --i1 0 --i2 1
+  python labs/02_alignment/submissions/banmepls/ex02_local_sw.py --fasta data/sample/tp53_dna_multi.fasta --i1 0 --i2 1
 """
 
 from pathlib import Path
@@ -27,7 +27,9 @@ def init_score_matrix_local(m: int, n: int):
     TODO: Inițializați matricea (m+1) x (n+1) cu toate valorile = 0.
     Hint: list comprehension sau bucle simple.
     """
-    raise NotImplementedError("TODO 1: implementați init_score_matrix_local")
+
+    # Inițializați matricea (m+1) x (n+1) cu toate valorile = 0.
+    return [[0 for _ in range(n + 1)] for _ in range(m + 1)]
 
 
 def score_cell_local(score, i: int, j: int, a: str, b: str, match: int, mismatch: int, gap: int):
@@ -39,8 +41,20 @@ def score_cell_local(score, i: int, j: int, a: str, b: str, match: int, mismatch
       - stânga   = score[i][j-1] + gap
     Rezultat = max(0, diagonal, sus, stânga).
     """
-    raise NotImplementedError("TODO 2: implementați scorarea pentru SW")
 
+    # diagonal = score[i-1][j-1] + (match dacă a == b altfel mismatch)
+    if a == b:
+        diagonal = score[i - 1][j - 1] + match
+    else:
+        diagonal = score[i - 1][j - 1] + mismatch
+
+    # sus      = score[i-1][j] + gap
+    up = score[i - 1][j] + gap
+
+    # stânga   = score[i][j-1] + gap
+    left = score[i][j - 1] + gap
+
+    return max(0, diagonal, up, left)
 
 
 def smith_waterman(seq1: str, seq2: str, match=3, mismatch=-3, gap=-2):
