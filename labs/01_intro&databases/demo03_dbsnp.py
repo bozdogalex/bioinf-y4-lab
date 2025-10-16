@@ -4,7 +4,7 @@ Entrez.email = "student@example.com"
 
 res = Entrez.esearch(
     db="snp",
-    term="BRCA1[gene] AND Homo sapiens[organism]",
+    term="ACE2[gene] AND Homo sapiens[organism]",
     retmax=5,
 )
 ids = Entrez.read(res)["IdList"]
