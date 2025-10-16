@@ -4,7 +4,11 @@ from Bio import Entrez, SeqIO
 import os
 
 # setează email pentru NCBI (sau: export NCBI_EMAIL="emailul_tău")
+<<<<<<< HEAD
 
+=======
+Entrez.email = os.getenv("NCBI_EMAIL", "mario.culda@student.upt.ro")
+>>>>>>> 9d5bb8f (lab1)
 
 DATA_DIR = Path("data")
 DATA_DIR.mkdir(exist_ok=True)
