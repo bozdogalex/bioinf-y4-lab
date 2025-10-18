@@ -7,10 +7,11 @@ on:
       - '.github/workflows/ci.yml'
       - '.flake8'
   pull_request:
-    paths:
-      - 'labs/**'
-      - '.github/workflows/ci.yml'
-      - '.flake8'
+    branches: [ main ]
+    paths-ignore:
+      - '**/**.md'
+      - 'docs/**'
+      - '.github/ISSUE_TEMPLATE/**'
 
 concurrency:
   group: ci-${{ github.ref }}
