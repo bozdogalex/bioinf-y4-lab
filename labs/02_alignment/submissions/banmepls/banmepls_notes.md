@@ -1,6 +1,6 @@
 1. Am rulat demo-urile
 
-2. Am rezolvat exercitiile
+2. Am rezolvat exercitiile folosind datele TP53 fasta, ce au fost folosite la fel si in demo-uri. Alinierea globala folosim cand comparam totul cu scopul de a gasi diferente, iar locala cand cautam similaritati.
 
 === Aliniere globală (NW) ===
 NM_000546.6  vs  NM_011640.3
