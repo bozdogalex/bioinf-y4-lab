@@ -31,13 +31,14 @@ Deschide http://localhost:8890/lab și rulează print("ok").
 python "labs/01_intro&databases/demo_entrez_brca1.py"
 
 ## Partea 1 — Task PR 
+Citeste [git-workflow.md](../../docs/git-workflow.md)
 Adaugă handle-ul tău GitHub în labs/01_intro&databases/roster/handles.csv (format: Nume Prenume,github_handle) prin Pull Request.
 
 Pași:
 
 - fork repo → creează branch feat/roster-<handle>.
 - edit labs/01_intro&databases/roster/handles.csv → adaugă o singură linie.
-- git commit -m "Add <handle> to roster" → git push → creează Pull Request.
+- git commit -m "Add <handle> to roster" → git push .
 - Completează checklist-ul PR (șablonul week1_roster.md).
 
 ## Partea 2 - Demo / Exercitii
@@ -59,7 +60,7 @@ _Notă: salvați fișierele proprii în `data/work/<handle>/lab01/`. Acest folde
 În PR trebuie să apară:
 
 1. O linie nouă în `labs/01_intro&databases/roster/handles.csv`.
-2. Un fișier `labs/01_intro&databases/<github_handle>_notes.md` care conține:
+2. Un fișier `labs/01_intro&databases/submissions/<github_handle>/notes.md` care conține:
    - Confirmarea că ai rulat toate scripturile demo și exercițiul.
    - Un rezultat simplu observat (ex.: “GC fraction = 0.47”).
 3. Exercitiul completat, salvat in:
