@@ -1,0 +1,2 @@
+Pentru comparații între gene întregi omoloage, alinierea globală este ideală.
+Pentru căutarea unor segmente similare între gene sau proteine diferite, alinierea locală oferă rezultate mai informative și biologic relevante.
