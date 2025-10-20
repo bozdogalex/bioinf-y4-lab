@@ -8,6 +8,7 @@ Rulare:
 import argparse
 from Bio import SeqIO, pairwise2
 
+
 def take_two_short_subseqs(fasta_path, k=7):
     recs = [r for r in SeqIO.parse(fasta_path, "fasta")]
     if len(recs) < 2:
