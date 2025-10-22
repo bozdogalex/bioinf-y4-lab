@@ -1,4 +1,4 @@
-[ok] Am scris 2 înregistrări în: data/work/tuhandle/lab01/test.fa
+[ok] Am scris 2 înregistrări în: data/work/Botoaca-Florentina-Veronica/lab01/test.fa
 NG_017013.2     GC=0.490
 NC_060941.1     GC=0.453
 
