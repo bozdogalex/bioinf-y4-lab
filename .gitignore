@@ -15,7 +15,8 @@ tools/
 data/*
 data/work/
 labs/01_intro&databases/data/work/Botoaca-Florentina-Veronica/lab01/brca1.gb
-labs/01_intro&databases/data/pdbaa
+labs/01_intro&databases/data/work/Botoaca-Florentina-Veronica/lab01/pdbaa
+labs/01_intro&databases/data/work/Botoaca-Florentina-Veronica/lab01/test.fa
 data/**/results/
 data/**/outputs/
 data/**/artifacts/
