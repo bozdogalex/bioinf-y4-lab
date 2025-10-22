@@ -18,3 +18,9 @@ ATG positions: [0, 12]
 SNP_ID: 2552281880 | CHRPOS: 17:43127053 | Funcție: upstream_transcript_variant,2KB_upstream_variant,intron_variant
 SNP_ID: 2552281808 | CHRPOS: 17:43126996 | Funcție: upstream_transcript_variant,2KB_upstream_variant,intron_variant
 SNP_ID: 2552281780 | CHRPOS: 17:43126982 | Funcție: upstream_transcript_variant,2KB_upstream_variant,intron_variant
+
+
+** Am rulat exercitiul cu TODO **
+[ok] Am scris 2 înregistrări în: data/work/tuhandle/lab01/test.fa
+NG_017013.2     GC=0.490
+NC_060941.1     GC=0.453
