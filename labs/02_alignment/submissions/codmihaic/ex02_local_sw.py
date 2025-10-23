@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Exercițiu: Aliniere globală (Needleman–Wunsch)
+Exercițiu: Aliniere locală (Smith–Waterman)
 
 Scop:
   - Încărcați două secvențe din fișierul descărcat în Lab 1 (data/work/<handle>/lab01/).
-  - Implementați pașii de bază ai algoritmului NW pentru a obține alinierea globală.
+  - Implementați pașii de bază ai algoritmului SW pentru a obține alinierea locală.
 
 TODO:
-  - Inițializarea matricei de scoruri pentru aliniere globală.
-  - Calculul scorurilor celulelor (match, mismatch, gap).
+  - Inițializarea matricei locale
+  - Scoring celulelor (match, mismatch, gap, cu max(0,...)).
 
-Exemplu rulare:
-  python labs/02_alignment/ex01_global_nw.py --fasta data/work/<handle>/lab01/my_tp53.fa --i1 0 --i2 1
+Exemplu Rulare:
+  python labs/02_alignment/ex03_local_sw.py --fasta data/work/<handle>/lab01/my_tp53.fa --i1 0 --i2 1
 """
 
 from pathlib import Path
@@ -20,83 +20,81 @@ import argparse
 from Bio import SeqIO
 
 
-# ===================== TODO: Scoring matrix init =========================================
+# ===================== Matrix initiation =========================================
 
-def init_score_matrix_global(m: int, n: int, gap: int):
+def init_score_matrix_local(m: int, n: int):
     """
-    Inițializați matricea (m+1) x (n+1) pentru aliniere globală.
-    Pași:
-      - creați o listă de liste plină cu 0 (dimensiune (m+1)x(n+1)).
-      - prima coloană: [i * gap] pentru i=0..m
-      - prima linie: [j * gap] pentru j=0..n
-    Returnati matricea.
-    """   
-    raise NotImplementedError("TODO: implementați inițializarea matricei globale")
+    TODO: Inițializați matricea (m+1) x (n+1) cu toate valorile = 0.
+    Hint: list comprehension sau bucle simple.
+    """
+    return [[0]*(n+1) for _ in range(m+1)]
+    # raise NotImplementedError("TODO 1: implementați init_score_matrix_local")
 
 
-def score_cell_global(score, i: int, j: int, a: str, b: str, match: int, mismatch: int, gap: int):
+def score_cell_local(score, i: int, j: int, a: str, b: str, match: int, mismatch: int, gap: int):
     """
     TODO: Calculați scorul unei celule (i, j).
     Pași:
       - diagonal = score[i-1][j-1] + (match dacă a == b altfel mismatch)
       - sus      = score[i-1][j] + gap
       - stânga   = score[i][j-1] + gap
-    Returnati max(diagonal, sus, stânga).
+    Rezultat = max(0, diagonal, sus, stânga).
     """
-    raise NotImplementedError("TODO: implementați scorarea pentru NW")
+    diagonal = score[i-1][j-1] + (match if a==b else mismatch)
+    sus = score[i-1][j] + gap
+    stanga = score[i][j-1] + gap 
+
+    return max (diagonal, sus, stanga)
+    # raise NotImplementedError("TODO 2: implementați scorarea pentru SW")
 
 
-def needleman_wunsch(seq1: str, seq2: str, match=1, mismatch=-1, gap=-2):
-    # Implementare simplificată Needleman–Wunsch.
+
+def smith_waterman(seq1: str, seq2: str, match=3, mismatch=-3, gap=-2):
+    # Implementare simplificată Smith–Waterman.
     m, n = len(seq1), len(seq2)
 
-    # Inițializare matrice (voi completați funcția)
-    score = init_score_matrix_global(m, n, gap)
+    # Inițializare matrice
+    score = init_score_matrix_local(m, n)
+
+    max_score = 0
+    max_pos = (0, 0)
 
     # Umplem matricea celulă cu celulă
-    # Observație: buclele merg de la 1 la lungimea secvenței
+    # + memorăm cea mai mare valoare și poziția asociată
     for i in range(1, m + 1):
         ai = seq1[i - 1]
         for j in range(1, n + 1):
             bj = seq2[j - 1]
-            # apelăm funcția pentru scor
-            score[i][j] = score_cell_global(score, i, j, ai, bj, match, mismatch, gap)
+            score[i][j] = score_cell_local(score, i, j, ai, bj, match, mismatch, gap)
+
+            if score[i][j] > max_score:
+                max_score = score[i][j]
+                max_pos = (i, j)
 
     # ================== Backtracking ==================
-    # pornim din colțul dreapta-jos (scor[m][n])
+    # pornim din celula cu scor maxim și mergem înapoi
     align1, align2 = "", ""
-    i, j = m, n
-    while i > 0 and j > 0:
-        current = score[i][j]
-        # recalculăm scorurile vecinilor pentru a decide de unde am venit
+    i, j = max_pos
+    while i > 0 and j > 0 and score[i][j] > 0:
+        # recalculăm scorurile vecinilor pentru a decide direcția
         diag = score[i - 1][j - 1] + (match if seq1[i - 1] == seq2[j - 1] else mismatch)
         up   = score[i - 1][j] + gap
         left = score[i][j - 1] + gap
 
-        if current == diag:  # am venit pe diagonală
+        if score[i][j] == diag:
             align1 = seq1[i - 1] + align1
             align2 = seq2[j - 1] + align2
             i -= 1; j -= 1
-        elif current == up:  # am venit de sus
+        elif score[i][j] == up:
             align1 = seq1[i - 1] + align1
             align2 = "-" + align2
             i -= 1
-        else:                # am venit de la stânga
+        else:  # stânga
             align1 = "-" + align1
             align2 = seq2[j - 1] + align2
             j -= 1
 
-    # dacă am ajuns la margine, completăm cu gap-uri
-    while i > 0:
-        align1 = seq1[i - 1] + align1
-        align2 = "-" + align2
-        i -= 1
-    while j > 0:
-        align1 = "-" + align1
-        align2 = seq2[j - 1] + align2
-        j -= 1
-
-    return align1, align2, score[m][n]
+    return align1, align2, max_score
 
 
 def load_two_sequences(fasta_path: Path, i1: int, i2: int):
@@ -123,9 +121,16 @@ def main():
         raise SystemExit(f"[eroare] Nu găsesc fișierul: {fasta_path}")
 
     s1, s2, id1, id2 = load_two_sequences(fasta_path, args.i1, args.i2)
-    a1, a2, sc = needleman_wunsch(s1, s2)
+    
+    """ 
+    Pentru a micsora secventele, caci la mine s1 are 32772 iar s2 are 84276897 caractere, 
+    voi pune o limita pentru ca programul sa poata rula 
+    """
+    L = min(len(s1), len(s2), 500)
+    s1, s2 = s1[:L], s2[:L]
+    a1, a2, sc = smith_waterman(s1, s2)
 
-    print("=== Aliniere globală (NW) ===")
+    print("=== Aliniere locală (SW) ===")
     print(f"{id1}  vs  {id2}")
     print(a1)
     print(a2)

@@ -30,8 +30,17 @@ def init_score_matrix_global(m: int, n: int, gap: int):
       - prima coloană: [i * gap] pentru i=0..m
       - prima linie: [j * gap] pentru j=0..n
     Returnati matricea.
-    """   
-    raise NotImplementedError("TODO: implementați inițializarea matricei globale")
+    """
+    # m + 1 linii si n + 1 coloane
+    score = [[0]*(n+1) for _ in range(m+1)]
+
+    for i in range (0, m+1):
+        score[i][0] = i * gap
+    for j in range (0, n+1):
+        score[0][j] = j * gap
+
+    return score    
+    # raise NotImplementedError("TODO: implementați inițializarea matricei globale")
 
 
 def score_cell_global(score, i: int, j: int, a: str, b: str, match: int, mismatch: int, gap: int):
@@ -43,7 +52,12 @@ def score_cell_global(score, i: int, j: int, a: str, b: str, match: int, mismatc
       - stânga   = score[i][j-1] + gap
     Returnati max(diagonal, sus, stânga).
     """
-    raise NotImplementedError("TODO: implementați scorarea pentru NW")
+    diagonal = score[i-1][j-1] + (match if a==b else mismatch)
+    sus = score[i-1][j] + gap
+    stanga = score[i][j-1] + gap 
+
+    return max (diagonal, sus, stanga)
+    # raise NotImplementedError("TODO: implementați scorarea pentru NW")
 
 
 def needleman_wunsch(seq1: str, seq2: str, match=1, mismatch=-1, gap=-2):
@@ -123,6 +137,13 @@ def main():
         raise SystemExit(f"[eroare] Nu găsesc fișierul: {fasta_path}")
 
     s1, s2, id1, id2 = load_two_sequences(fasta_path, args.i1, args.i2)
+
+    """ 
+    Pentru a micsora secventele, caci la mine s1 are 32772 iar s2 are 84276897 caractere, 
+    voi pune o limita pentru ca programul sa poata rula 
+    """
+    L = min(len(s1), len(s2), 500)
+    s1, s2 = s1[:L], s2[:L]
     a1, a2, sc = needleman_wunsch(s1, s2)
 
     print("=== Aliniere globală (NW) ===")
