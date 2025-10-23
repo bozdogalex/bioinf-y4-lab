@@ -1,7 +1,0 @@
-PMID: 30726743 | Title: The TP53 pathway in cancer: new insights and therapeutic opportunities.
-PMID: 22713868 | Title: TP53 mutations and their impact in human cancers.
-PMID: 17380152 | Title: Functional consequences of the TP53 codon 72 polymorphism.
-PMID: 31209396 | Title: MDM2–p53 interaction as a target for cancer therapy.
-PMID: 21658464 | Title: The role of p21 (CDKN1A) in the p53 pathway.
-
-#  Use only PubMed IDs + titles here (no abstract text to avoid copyright issues in-repo). Students fetch text in their own scripts or via NCBI E-utilities.

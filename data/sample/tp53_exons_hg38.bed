@@ -1,3 +1,0 @@
-# chrom  start   end     name
-chr17   7668421 7687490 TP53_gene_span_hg38   # hg38 gene span (UCSC RefSeq NM_000546.*), strand -
-# NOTE: For exact exon coordinates, use the UCSC Table Browser or NCBI GFF steps in data/sample/README.md

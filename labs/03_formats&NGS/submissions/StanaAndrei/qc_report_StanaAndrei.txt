@@ -1,0 +1,9 @@
+Handle: StanaAndrei
+Reads: 7178576
+Mean length: 36.00
+N rate: 0.002382
+Mean Phred (per base): 28.01
+
+Notes:
+- Mean Phred computed as total_phred / total_bases (per-bază).
+- If Phred scores are missing for some reads, ele nu sunt incluse în total_phred.

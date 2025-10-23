@@ -12,7 +12,7 @@ Date de intrare: un fișier FASTQ mic din data/sample/ (ex. sample.fastq)
 
 from Bio import SeqIO
 
-fastq_file = "data/sample/sample.fastq"  # înlocuiți cu calea fișierului vostru FASTQ
+fastq_file = "data/work/StanaAndrei/SRR000001_1.fastq"  # înlocuiți cu calea fișierului vostru FASTQ
 
 num_reads = 0
 total_length = 0

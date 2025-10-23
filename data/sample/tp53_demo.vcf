@@ -1,6 +1,0 @@
-##fileformat=VCFv4.2
-##source=mini_demo_curated
-##reference=GRCh38
-##INFO=<ID=NOTE,Number=.,Type=String,Description="Demo record; verify REF/ALT vs your reference FASTA">
-#CHROM  POS       ID         REF ALT QUAL FILTER INFO
-17      7676154   rs1042522  C   G   .    PASS   NOTE=TP53_Pro72Arg(GRCh38);GENE=TP53
