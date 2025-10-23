@@ -1,4 +1,3 @@
-Date folosite: TP53 (dummy) vs. BRCA1 (dummy)
-Reflecție: 
-Alinierea globală este de preferat când secvențele au lungimi similare și vrem o comparație completă. 
-Alinierea locală este mai bună pentru a detecta regiuni conservate între secvențe de lungimi diferite sau cu porțiuni nealiniabile.
+Date folosite: TP53 vs BRCA1
+Reflecție:
+Alinierea globală este de preferat pentru secvențe similare, alinierea locală pentru regiuni conservate sau secvențe cu lungimi diferite.
