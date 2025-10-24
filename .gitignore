@@ -53,3 +53,6 @@ build/
 !data/sample/
 !data/sample/**
 data/sample/data_generation_notes.md
+
+
+assigments/
