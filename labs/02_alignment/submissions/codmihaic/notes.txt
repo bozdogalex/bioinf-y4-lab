@@ -1,0 +1,41 @@
+Task-1:
+
+Am rulat o versiune modificată a demo02_distance_matrix.py, numită Task1-a2.py. Rezultatul ei a fost:
+pair,hamming,p_distance,len_used
+NG_017013.2-NC_060941.1,1484,0.742000,2000
+NG_017013.2-NC_000017.11,2000,1.000000,2000
+NC_060941.1-NC_000017.11,2000,1.000000,2000
+
+Pe baza reultatelor, am tras urmatoarele concluzii:
+- Cele mai apropiate secvențe sunt NG_017013.2 (gena TP53 umană) și NC_060941.1 (cromozom 17 cimpanzeu, sau chromozon 17 uman alternate assembly T2T-CHM13v2 ), 
+cu p-distance = 0.742 (ceea ce inseamnă că sunt diferite in proporție de 74,2%, deci o asemănare de 24,8%, 
+aproape 25%). Acest lucru ne arată că cele 2 gene sunt omoloage evolutiv, în timp ce NC_000017.11 
+(cromozom uman complet) este prea diferit de amândouă pentru a avea loc o potrivire locală.
+- Pentru a putea realiza acest task, am trunchiat la 2000 baze pentru performanță, deoarece p-distance exprimă 
+o proporție independentă de lungimea totală. În plus, genele sunt foarte lungi (NG_017013.2 are 32772 nucleotide, 
+NC_000017.11 are 83257441 nucleotide și NC_060941.1 84276897 are nucleotide), iar pentru ca programul să poată rula 
+în codespace, a fost nevoie de aceasta fragmentare (altfel, programul se termina afișând "Terminated", ceea 
+ce marcheaaz o depășire a spațiului de memorie alocat).
+
+Task-2:
+
+=== Aliniere globală (NW) ===
+NG_017013.2  vs  NC_060941.1
+CTCCTTGGTTCAAGTAATTCTCCTGCCTCAGACTCCAGAGTAGCTGGGATTACAGGCGCCCGCCACC-ACGCCCAGCTAATTTTTTGTATTTTTAATAGAGATGGGGTTTCATCATGTTGGCCAGGCTGGTCTCGAACTCCTGACCTCA-GGTGATCCACCTGCCTCAGCCT--CCCAAAGTGCT-GGGATTACAGGAGTCAGCCACCGCACCC-AGCCCCAA--CTAA-TTTTTGTATTTGAGTAGAGACAGGGTTTTACCATGTTGGCCAGGCTGGTCTAAAACTCTTCACCTCA-GGTGATCC-ACCCATCTCAGCCT--CCCAAAGTGTTGGGATTACAGGCGTGAGCC--ACCGT--GCCTGGCCCTGGATTTCACTCTTGCCC-ACCCATAAACCATTCACT-CTTCT-GTTTTAAAACT--CTCTTGGCCGGGCGCAGTGGCTCATGCCTGTAATCCCAGCACT-TTGGGAGGCC-AA-GGTGGGCAGATCACAAGGTCAGGAGTTCGAGACC--AGCCT--
+--CCTAACCCTAACCCATAACCCTAACCCTAAC-CTACCCTAAC---CCTAACCCTAACCC-TAACCTAACCCTAAC--CCTAACCCTAACCCTAA-CCCTAACCCTAACCCTAACCCTAACC---CT-AACCCTAAC-CCTAACCCAACCCTAACCTAAC--CCTAACCCTAACCCTAAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTA-ACCCTAACCCTAACCCT-AACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACC--CTAACCCTAACCCTAA-CCCTAACCCTA-A-CCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAAC-C-CTAAC-CCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTA--ACCCTAACCCTAACCCTAACCCTAA
+Score: -127
+
+=== Aliniere locală (SW) ===
+NG_017013.2  vs  NC_060941.1
+CTCGAACTCCTGACCTCAGGTGATCC--A-CCT-GCCTCAGCCT--CCCAAAGTGCTGGGATTA--C-AGGA-GTCAGCC--ACCGC--ACCC-AGCCCCAA--CTAATTTTTGTATTTGA--GTAGAGACAGGGTTTTACCATGTTGGCCAGGCT-GGTCTAAAACTCTTC-ACCTCAGGTGATCC-ACCCATCTCAGCCT--CCC-AAAGTGTTGGGATTACAGGCGTGAGCC--ACCGT--GCCTGGCCCTGGATTTCACTCTTGCCC--ACCCATAAACCATTCACTCTTCTGTTTTAA----AACTCTCTTGGCCGGGCGCAGTGGCTCATGCCTGTAATCCC-AGCACT
+C-CTAAC-CCTAACC-CA--TAACCCTAACCCTAACCT-ACCCTAACCCTAA-CCCT---A--ACCCTA--ACCTAACCCTAACC-CTAACCCTAACCCTAACCCTAA---CCCTA----ACCCT--A-AC----CCTAACC---CTAACC---CTAACCCT--AAC-C--CAACC-C---T-AACCTAACC--CTAACCCTAACCCTAAA-CCCT---A--AC---CCTAACCCTAACCCTAACCCTAACCCT--A----ACCCTAACCCTAACCC-T-AACC-CTAAC-C--C-----TAACCCTAAC-C-C-TAACC---C-TA-ACCCT-A-ACC-CTAA-CCCTAACCCT
+Score: 124
+
+Explicație:
+Am aliniat secvențele NG_017013.2 (gena TP53 umană) și NC_060941.1 (cromozom 17 de cimpanzeu, sau cromozon uman 17 alternate assembly T2T-CHM13v2).
+Alinierea globală (Needleman–Wunsch) a încercat o potrivire completă, rezultând mai multe gap-uri și un scor total foarte scăzut, chiar negativ (–127), ceea ce arată diferențe foarte mari între lungimile și regiunile comparate din aceste 2 gene.
+Alinierea locală (Smith–Waterman) a găsit o regiune relativ scurtă, dar bine conservată, cu un scor pozitiv mare (124), corespunzând unei porțiuni omoloage din gena TP53 dată.
+Fragmentul comun CTCGAACTCCTGACCTCAGGTGATCC...AGCACT evidențiază această regiune bine conservată, unde local am găsit o potrivire reală, în timp ce global este “forțată” la mai multe întreruperi.
+Astfel, alinierea locală este mai informativă în acestă situație, deoarece identifică regiunea funcțională omoloagă între două secvențe genomice mari (tăiate, cei drept, pentru a le putea rula în acest mediu), în timp ce alinierea globală distorsionează comparația celor două.
+
+Task-3:
