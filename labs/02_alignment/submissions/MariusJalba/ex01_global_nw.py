@@ -31,7 +31,14 @@ def init_score_matrix_global(m: int, n: int, gap: int):
       - prima linie: [j * gap] pentru j=0..n
     Returnati matricea.
     """
-    raise NotImplementedError("TODO: implementați inițializarea matricei globale")
+    score = [[0 for _ in range(n+1)] for _ in range(m+1)]
+    for i in range(1, m + 1):
+        score[i][0] = i * gap
+    
+    for j in range(1, n + 1):
+        score[0][j] = j * gap
+
+    return score
 
 
 def score_cell_global(score, i: int, j: int, a: str, b: str, match: int, mismatch: int, gap: int):
@@ -43,7 +50,11 @@ def score_cell_global(score, i: int, j: int, a: str, b: str, match: int, mismatc
       - stânga   = score[i][j-1] + gap
     Returnati max(diagonal, sus, stânga).
     """
-    raise NotImplementedError("TODO: implementați scorarea pentru NW")
+
+    diagonal = score[i - 1][j - 1] + (match if a==b else mismatch)
+    up = score[i - 1][j] + gap
+    left = score[i][j - 1] + gap
+    return max(diagonal, up, left)
 
 
 def needleman_wunsch(seq1: str, seq2: str, match=1, mismatch=-1, gap=-2):
@@ -123,6 +134,7 @@ def main():
         raise SystemExit(f"[eroare] Nu găsesc fișierul: {fasta_path}")
 
     s1, s2, id1, id2 = load_two_sequences(fasta_path, args.i1, args.i2)
+    s1, s2 = s1[:10000], s2[10000]
     a1, a2, sc = needleman_wunsch(s1, s2)
 
     print("=== Aliniere globală (NW) ===")
