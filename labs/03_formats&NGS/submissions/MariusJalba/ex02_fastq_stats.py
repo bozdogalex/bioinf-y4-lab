@@ -1,4 +1,3 @@
-
 """
 Exercițiu 04 — FASTQ QC pe date proprii
 
@@ -20,7 +19,7 @@ from pathlib import Path
 from Bio import SeqIO
 
 # TODO: înlocuiți <handle> cu username-ul vostru GitHub
-handle = "<handle>"
+handle = "MariusJalba"
 
 in_fastq_plain = Path(f"data/work/{handle}/lab03/your_reads.fastq")
 in_fastq_gz = Path(f"data/work/{handle}/lab03/your_reads.fastq.gz")
@@ -47,15 +46,18 @@ total_bases = 0
 
 # TODO: completați logica de agregare
 for record in reader:
-    # HINT:
-    # seq_str = str(record.seq)
-    # phred = record.letter_annotations["phred_quality"]
-    pass
+    num_reads += 1
+    seq = str(record.seq)
+    total_length += len(seq)
+    total_n += seq.count("N")
+    phred_scores = record.letter_annotations["phred_quality"]
+    total_phred += sum(phred_scores)
+    total_bases += len(phred_scores)
 
 # TODO: calculați valorile finale (atenție la împărțiri la zero)
-len_mean = 0.0
-n_rate = 0.0
-phred_mean = 0.0
+len_mean = total_length / num_reads if num_reads > 0 else 0
+n_rate = total_n / total_length if total_length > 0 else 0
+phred_mean = total_phred / total_bases if total_bases > 0 else 0
 
 with open(out_report, "w", encoding="utf-8") as out:
     out.write(f"Reads: {num_reads}\n")

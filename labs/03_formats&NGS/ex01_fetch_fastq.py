@@ -16,14 +16,37 @@ Recomandat :
 NOTĂ:
 - Nu contează biblioteca aleasă (requests/urllib/etc.), dar evitați pachete grele.
 """
+import sys
+import requests
 
-def main():
-    # TODO: citiți accession-ul (ex. sys.argv)
-    # TODO: interogați sursa (ENA/SRA) pentru link FASTQ
-    # TODO: descărcați fișierul în Locația ALEASĂ DE VOI
-    # TODO: print("Downloaded:", <cale_fisier>)
-    pass
+def get_fastq_url(accession):
+    ena_api = "https://www.ebi.ac.uk/ena/portal/api/filereport"
+    params = {
+        "accession": accession,
+        "result": "read_run",
+        "fields": "fastq_ftp",
+        "format": "tsv"
+    }
+    response = requests.get(ena_api, params=params)
+    lines = response.text.strip().split('\n')
+    if len(lines) < 2:
+        raise Exception("No FASTQ found.")
+    ftp_links = lines[1].split('\t')[1].split(';')
+    http_link = "https://" + ftp_links[0]
+    return http_link
 
+
+def download_fastq(url, output_path):
+    r = requests.get(url, stream=True)
+    with open(output_path, 'wb') as f:
+        for chunk in r.iter_content(chunk_size=8192):
+            f.write(chunk)
 
 if __name__ == "__main__":
-    main()
+    accession = sys.argv[1]
+    urls = get_fastq_url(accession)
+    print(f"urls:", urls)
+    output_path = "/workspaces/bioinf-y4-lab/data/work/MariusJalba/lab03/your_reads.fastq.gz"
+    download_fastq(urls, output_path)
+    print("your_reads.fastq.gz")
+
