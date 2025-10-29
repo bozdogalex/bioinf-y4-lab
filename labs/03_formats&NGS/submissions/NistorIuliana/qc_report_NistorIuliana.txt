@@ -1,0 +1,6 @@
+QC Report - Nistor Iuliana
+Reads: 9
+Mean length: 134.22
+N rate: 0.0000
+Mean Phred: 32.19
+Source FASTQ: https://raw.githubusercontent.com/OpenGene/fastp/master/testdata/R1.fq
