@@ -1,2 +1,0 @@
-# Source: GSE60424 (GEO Series Matrix)
-# Genes: TP53, MDM2, CDKN1A, BAX, BRCA1, GADD45A, ATM, CHEK2
