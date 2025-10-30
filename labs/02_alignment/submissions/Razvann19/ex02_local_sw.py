@@ -1,4 +1,4 @@
-gghhhh#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Exercițiu: Aliniere locală (Smith–Waterman)
