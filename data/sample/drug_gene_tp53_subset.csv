@@ -1,9 +1,0 @@
-drug,gene,mechanism,source_note
-Doxorubicin,TP53,induces DNA damage leading to p53 activation,literature/demo
-Nutlin-3,MDM2,MDM2 inhibitor (p53 pathway),tool compound/literature/demo
-Cisplatin,TP53,DNA crosslinking; p53-mediated response,literature/demo
-Etoposide,TP53,topoisomerase II inhibitor; p53 activation,literature/demo
-PARP_inhibitor,BRCA1,DNA repair synthetic lethality context,literature/demo
-
-# Week 9 drug–gene lab
-# We’re not shipping proprietary drug DB content; this is a didactic seed list. Students replace/extend with DGIdb/DrugBank exports and proper citations.
