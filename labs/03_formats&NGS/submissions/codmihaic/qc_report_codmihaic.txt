@@ -1,0 +1,5 @@
+FASTQ QC report for: data/work/codmihaic/lab03/your_reads.fastq.gz
+Reads: 7178576
+Mean length: 36.00
+N rate: 0.002382
+Mean Phred: 28.01
