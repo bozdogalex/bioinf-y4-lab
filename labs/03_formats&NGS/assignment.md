@@ -18,7 +18,7 @@ Tema are rolul de a integra cunoștințele despre baze de date, formate și QC, 
 - Salvați o copie ca `fasta_<handle>.fasta`.
 
 ### 3) FASTQ QC — **3p**
-- Completați `ex04_fastq_stats.py` pentru a calcula:
+- Folositi codul din `ex04_fastq_stats.py` pentru a calcula:
   - număr citiri, lungime medie, proporție de N, scor Phred mediu.  
 - Folosiți fișierul stocat în `data/work/<handle>/lab03/your_reads.fastq.gz`.  
 - Salvați raportul ca `qc_report_<handle>.txt`.  
@@ -36,7 +36,7 @@ Tema are rolul de a integra cunoștințele despre baze de date, formate și QC, 
 ---
 
 ### Bonus (+1p)
-- Generați o vizualizare simplă (matplotlib) cu distribuția lungimilor sau scorurilor Phred și salvați ca `qc_plot_<handle>.png`.
+- Generați o vizualizare simplă (matplotlib) cu distribuția lungimilor si scorurilor Phred și salvați ca `qc_plot_<handle>.png`.
 
 ---
 
