@@ -12,10 +12,10 @@ import matplotlib.pyplot as plt
 # Configuration
 # ------------------------------------------------------------
 BASE_URL = "https://raw.githubusercontent.com/<your_username>/lab9-datasets/main/"
-SNP_FILE = "snp_data.csv"
-EXPR_FILE = "expression_data.csv"
-PROT_FILE = "proteomics_data.csv"
-PHENO_FILE = "phenotypes.csv"
+SNP_FILE = "../../data/sample/snp_data.csv"
+EXPR_FILE = "../../data/sample/expression_data.csv"
+PROT_FILE = "../../data/sample/proteomics_data.csv"
+PHENO_FILE = "../../data/sample/phenotypes.csv"
 
 # ------------------------------------------------------------
 # Helper function to fetch CSV from GitHub
