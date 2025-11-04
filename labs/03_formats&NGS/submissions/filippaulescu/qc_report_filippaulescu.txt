@@ -1,0 +1,4 @@
+Reads: 5092543
+Mean length: 75.00
+N rate: 0.0000
+Mean Phred: 34.47

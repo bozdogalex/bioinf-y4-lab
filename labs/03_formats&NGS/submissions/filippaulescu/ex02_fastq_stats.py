@@ -28,6 +28,7 @@ out_report = Path(f"labs/03_formats&NGS/submissions/{handle}/qc_report_{handle}.
 out_report.parent.mkdir(parents=True, exist_ok=True)
 
 # Selectați fișierul existent
+file_handle = None
 if in_fastq_plain.exists():
     reader = SeqIO.parse(str(in_fastq_plain), "fastq")
 elif in_fastq_gz.exists():
