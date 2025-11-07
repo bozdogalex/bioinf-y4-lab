@@ -21,20 +21,11 @@ if __name__ == "__main__":
     fasta = Path("data/work/<handle>/lab04/your_sequences.fasta")
 
     # Exemplu (decomentați după ce înlocuiți <handle>):
-    # alignment = AlignIO.read(fasta, "fasta")
 
     # TODO 2: Calculați matricea de distanțe
-    # calculator = DistanceCalculator("identity")
-    # dm = calculator.get_distance(alignment)
 
     # TODO 3: Construiți arborele NJ
-    # constructor = DistanceTreeConstructor()
-    # tree = constructor.nj(dm)
 
     # TODO 4: Salvați arborele în format Newick
-    # output = Path("labs/04_phylogenetics/submissions/<handle>/tree_<handle>.nwk")
-    # output.parent.mkdir(parents=True, exist_ok=True)
-    # Phylo.write(tree, output, "newick")
 
     # TODO 5 Vizualizați arborele
-    # Phylo.draw_ascii(tree)
