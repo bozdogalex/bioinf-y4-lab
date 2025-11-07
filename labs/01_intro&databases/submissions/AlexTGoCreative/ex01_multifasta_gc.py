@@ -5,7 +5,7 @@ Exercițiu (Lab 1): Descărcare FASTA + calcul GC
 
 Scop:
   1) Descărcați un fișier FASTA de la NCBI (nucleotide sau proteină).
-  2) Salvați fișierul local în data/work/<handle>/lab01/ (NU îl urcați pe git).
+  2) Salvați fișierul local în ../../data/work/<handle>/lab01/ (NU îl urcați pe git).
   3) Calculați fracția GC pentru fiecare înregistrare din fișier.
 
 Instrucțiuni:
