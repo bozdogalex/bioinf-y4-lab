@@ -24,12 +24,12 @@ if __name__ == "__main__":
     fasta = Path("data/work/eeeevn0/lab04/my_sequences.fasta")
 
     if not fasta.exists():
-        print(f"Fișierul {fasta} nu există. Asigurați-vă că ați creat my_sequences.fasta.")
+        print(f"Fișierul {fasta} nu există.")
         sys.exit(1)
 
     records = list(SeqIO.parse(str(fasta), "fasta"))
     if len(records) < 3:
-        print("Aveți nevoie de cel puțin 3 secvențe pentru a construi un arbore NJ.")
+        print("Ai nevoie de cel puțin 3 secvențe pentru a construi un arbore NJ.")
         sys.exit(1)
 
     names = [r.id for r in records]
@@ -40,8 +40,8 @@ if __name__ == "__main__":
     min_len = min(lengths)
 
     if len(set(lengths)) != 1:
-        print(f"\nSecvențele AU lungimi diferite: {lengths}")
-        print(f"Tăiem toate secvențele la lungimea minimă: {min_len} baze")
+        print(f"\nSecvențele au lungimi diferite: {lengths}")
+        print(f"Trunchiem toate secvențele la lungimea minimă: {min_len} baze")
         for r in records:
             r.seq = r.seq[:min_len]
     else:
