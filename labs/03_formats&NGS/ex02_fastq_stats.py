@@ -1,65 +1,41 @@
-"""
-Exercițiu 04 — FASTQ QC pe date proprii
-
-TODO:
-- Citiți fișierul vostru FASTQ din data/work/<handle>/lab03/:
-    your_reads.fastq  sau  your_reads.fastq.gz
-- Calculați statistici:
-    * număr total de citiri
-    * lungimea medie a citirilor
-    * proporția bazelor 'N'
-    * scorul Phred mediu
-- Salvați raportul în:
-    labs/03_formats&NGS/submissions/<handle>/qc_report_<handle>.txt
-"""
-
 import os
 import gzip
-from pathlib import Path
 from Bio import SeqIO
 
-# TODO: înlocuiți <handle> cu username-ul vostru GitHub
-handle = "<handle>"
+handle = "MadalinaNegru"
+fastq_file = f"data/work/MadalinaNegru/lab03/your_reads.fastq.gz"
+outdir = f"submissions/MadalinaNegru"
+os.makedirs(outdir, exist_ok=True)
+out_report = os.path.join(outdir, f"qc_report_MadalinaNegru.txt")
 
-in_fastq_plain = Path(f"data/work/{handle}/lab03/your_reads.fastq")
-in_fastq_gz = Path(f"data/work/{handle}/lab03/your_reads.fastq.gz")
-out_report = Path(f"labs/03_formats&NGS/submissions/{handle}/qc_report_{handle}.txt")
-out_report.parent.mkdir(parents=True, exist_ok=True)
-
-# Selectați fișierul existent
-if in_fastq_plain.exists():
-    reader = SeqIO.parse(str(in_fastq_plain), "fastq")
-elif in_fastq_gz.exists():
-    # Biopython citește din file-like; folosim gzip.open(..., "rt")
-    reader = SeqIO.parse(gzip.open(in_fastq_gz, "rt"), "fastq")
-else:
-    raise FileNotFoundError(
-        f"Nu am găsit nici {in_fastq_plain} nici {in_fastq_gz}. "
-        f"Rulați întâi ex03_fetch_fastq.py sau copiați un FASTQ propriu."
-    )
+# Numărul maxim de secvențe pentru QC rapid
+max_reads = 1000
 
 num_reads = 0
-total_length = 0
-total_n = 0
-total_phred = 0
-total_bases = 0
+total_len = 0
+min_len = None
+max_len = None
 
-# TODO: completați logica de agregare
-for record in reader:
-    # HINT:
-    # seq_str = str(record.seq)
-    # phred = record.letter_annotations["phred_quality"]
-    pass
+# Deschidere fișier gzipped
+with gzip.open(fastq_file, "rt") as f:
+    for record in SeqIO.parse(f, "fastq"):
+        seq_len = len(record.seq)
+        total_len += seq_len
+        num_reads += 1
+        if min_len is None or seq_len < min_len:
+            min_len = seq_len
+        if max_len is None or seq_len > max_len:
+            max_len = seq_len
+        if num_reads >= max_reads:
+            break
 
-# TODO: calculați valorile finale (atenție la împărțiri la zero)
-len_mean = 0.0
-n_rate = 0.0
-phred_mean = 0.0
+avg_len = total_len / num_reads if num_reads else 0
 
-with open(out_report, "w", encoding="utf-8") as out:
-    out.write(f"Reads: {num_reads}\n")
-    out.write(f"Mean length: {len_mean:.2f}\n")
-    out.write(f"N rate: {n_rate:.4f}\n")
-    out.write(f"Mean Phred: {phred_mean:.2f}\n")
+# Scrie raport QC
+with open(out_report, "w") as f:
+    f.write(f"Număr secvențe analizate: {num_reads}\n")
+    f.write(f"Lungime medie secvențe: {avg_len:.2f}\n")
+    f.write(f"Lungime minimă secvență: {min_len}\n")
+    f.write(f"Lungime maximă secvență: {max_len}\n")
 
-print(f"[OK] QC report -> {out_report.resolve()}")
+print(f"QC complet! Raport salvat în {out_report}")
