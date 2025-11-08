@@ -7,7 +7,7 @@
 
 Pentru acest laborator am descărcat fișierul FASTQ cu accession **SRR000001** din **ENA (European Nucleotide Archive)**, folosind scriptul `ex01_fetch_fastq.py`. 
 
-Link: [https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR000/001/SRR000001/SRR000001.fastq.gz](https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR000/001/SRR000001/SRR000001.fastq.gz) 
+Link:[SRR000001.fastq.gz — ENA FTP](https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR000/001/SRR000001/SRR000001.fastq.gz)  
 
 Fișierul conține citiri brute de ADN (reads) generate prin tehnologia **Illumina** și a fost salvat local în `data/work/eeeevn0/lab03/SRR000001.fastq.gz`. Ulterior, același fișier a fost analizat pentru verificarea calității (QC).
 
