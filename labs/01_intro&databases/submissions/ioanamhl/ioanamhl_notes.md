@@ -1,3 +1,5 @@
+
+Lab 1:
 am rulat demo01, demo02, demo03 si ex01_multifasta_gc.py
 
 root@codespaces-ad53c2:/workspaces/bioinf-y4-lab# python "labs/01_intro&databases/demo01_entrez_brca1.py"
