@@ -30,7 +30,7 @@ După ce în săptămâna 4 am construit arbori filogenetici, acum aplicăm meto
 
 ## Livrabile
 În PR trebuie să apară:
-1. Fișierul `labs/05_clustering/<github_handle>_notes.md` cu:  
+1. Fișierul `labs/05_clustering/submissions/<github_handle>_notes.md` cu:  
    - ce metodă ați considerat cea mai potrivită pentru datele analizate,  
    - o scurtă reflecție: **Cum se compară clustering-ul cu arborii filogenetici în descoperirea relațiilor biologice?**  
 2. Scriptul completat `ex06_clustering.py`.  
