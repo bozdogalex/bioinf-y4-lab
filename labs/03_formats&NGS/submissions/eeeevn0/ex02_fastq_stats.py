@@ -10,7 +10,7 @@ import gzip
 from pathlib import Path
 from Bio import SeqIO
 
-# înlocuiește cu username-ul tău GitHub
+
 handle = "eeeevn0"
 
 in_fastq_plain = Path(f"data/work/{handle}/lab03/your_reads.fastq")
@@ -29,14 +29,11 @@ def open_fastq(path_plain: Path, path_gz: Path):
 
     if path_gz.exists():
         print(f"[INFO] Deschid fișier comprimat: {path_gz}")
-        # Detectează magic bytes gzip (0x1f 0x8b)
         with open(path_gz, "rb") as bfh:
             head = bfh.read(2)
         if head == b"\x1f\x8b":
-            # e gzip valid
             return gzip.open(path_gz, "rt")  # <- cheia
         else:
-            # fallback: poate e doar redenumit
             return open(path_gz, "rt")
 
     return None
