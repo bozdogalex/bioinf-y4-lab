@@ -23,23 +23,15 @@ from Bio import SeqIO
 # ===================== Matrix initiation =========================================
 
 def init_score_matrix_local(m: int, n: int):
-    """
-    TODO: Inițializați matricea (m+1) x (n+1) cu toate valorile = 0.
-    Hint: list comprehension sau bucle simple.
-    """
-    raise NotImplementedError("TODO 1: implementați init_score_matrix_local")
+    return [[0]*(n+1) for _ in range(m+1)]
 
 
 def score_cell_local(score, i: int, j: int, a: str, b: str, match: int, mismatch: int, gap: int):
-    """
-    TODO: Calculați scorul unei celule (i, j).
-    Pași:
-      - diagonal = score[i-1][j-1] + (match dacă a == b altfel mismatch)
-      - sus      = score[i-1][j] + gap
-      - stânga   = score[i][j-1] + gap
-    Rezultat = max(0, diagonal, sus, stânga).
-    """
-    raise NotImplementedError("TODO 2: implementați scorarea pentru SW")
+    diag = score[i-1][j-1] + (match if a == b else mismatch)
+    up   = score[i-1][j]   + gap
+    left = score[i][j-1]   + gap
+
+    return max(0, diag, up, left)
 
 
 
