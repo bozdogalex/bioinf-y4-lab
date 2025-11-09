@@ -1,3 +1,3 @@
-Am rulat demo-ul cu succes
+1. Am rulat demo-ul cu succes
 
-Am descarcat multi fasta, apoi aliniat in Clustal Omega, apoi rulat exercitiul
+2. Am descarcat multi fasta, apoi aliniat in Clustal Omega, apoi rulat exercitiul

@@ -17,22 +17,22 @@ from Bio import AlignIO, Phylo
 from Bio.Phylo.TreeConstruction import DistanceCalculator, DistanceTreeConstructor
 
 if __name__ == "__main__":
-    # TODO 1: Încărcați fișierul multi-FASTA propriu
+    # Încărcați fișierul multi-FASTA propriu
     fasta = Path("labs/04_phylogenetics/submissions/banmepls/sequence2.aln-fasta")
 
     # Exemplu (decomentați după ce înlocuiți <handle>):
     alignment = AlignIO.read(fasta, "fasta")
 
-    # TODO 2: Calculați matricea de distanțe
+    # Calculați matricea de distanțe
     calculator = DistanceCalculator('identity')
     dm = calculator.get_distance(alignment)
 
-    # TODO 3: Construiți arborele NJ
+    # Construiți arborele NJ
     constructor = DistanceTreeConstructor()
     tree = constructor.nj(dm)
 
-    # TODO 4: Salvați arborele în format Newick
+    # Salvați arborele în format Newick
     Phylo.write(tree, "tree.nwk", "newick")
 
-    # TODO 5 Vizualizați arborele
+    # Vizualizați arborele
     Phylo.draw_ascii(tree)
