@@ -28,15 +28,9 @@ from pathlib import Path
 
 if __name__ == "__main__":
     # TODO 1: Încărcați dataset-ul
-    url = "https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data"
-    columns = ["ID", "Diagnosis"] + [f"Feature_{i}" for i in range(1, 31)]
-    df = pd.read_csv(url, header=None, names=columns)
 
     # TODO 2: Preprocesare
     # - eliminați coloana ID
-    # - transformați Diagnosis: M → 1, B → 0
-    df = df.drop(columns=["ID"])
-    df["Diagnosis"] = df["Diagnosis"].apply(lambda x: 1 if x == "M" else 0)
 
     # TODO 3: Standardizare
     X = df.drop(columns=["Diagnosis"])
