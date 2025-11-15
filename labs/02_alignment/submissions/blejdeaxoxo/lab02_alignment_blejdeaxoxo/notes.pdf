@@ -1,0 +1,48 @@
+##task1
+
+S77916.1        S77921.1        S73756.1        S71596.1
+S77916.1        0.0000  0.3214  0.3019  0.0278
+S77921.1        0.3214  0.0000  0.1154  0.3276
+S73756.1        0.3019  0.1154  0.0000  0.3091
+S71596.1        0.0278  0.3276  0.3091  0.0000
+
+Cele mai apropiate: S77916.1 și S71596.1
+Argument: cele doua secvente reprezinta mutatii diferite ale aceleiasi gene, deci au p-distance foarte mic.
+
+##task2
+
+Alinierea globala este foarte asemanatoare cu cea locala pentru datele folosite intrucat secventele sunt foarte asemanatoare
+si de lungime similara => subsecventa locala coincide aproape cu intreaga secventa => gap-urile aproape identice, aceleasi 
+match-uri
+GTCCTT-GT-A-G
+     | |  | |     global (fortat cu gapuri)
+-----TAG-GATG
+
+T-GT-A-G
+  | |  |    local
+TAG-GATG
+
+##task3
+
+CLUSTAL O(1.2.4) multiple sequence alignment
+
+
+S77916.1      TAGGATGGGGTGTGGTAGGTGGCACGGAGAATT-TTGGATT------C----TCAGGGAT	49
+S71596.1      TAGGATGGGGTGTGATAGGTGGCACGGAGAATTTTTGGATT------C----TCAGGGAT	50
+S77921.1      --------GTCCTTGTAG-------TATAAACTAATACACCAGTCTTGTAAACCGGAGAT	45
+S73756.1      ----------CACTGTAA-------AGCTAACTTA-GCATTAACCTTTTAAGTTAAAGAT	42
+                             **            ** *     *                  ***
+
+S77916.1      GGG---TTCGATTCTCATAGTCCTAG----	72
+S71596.1      GGG---TTCGATTCTCATGGTCCTAG----	73
+S77921.1      G---------AAAACCTTTTTCCAAGGGCA	66
+S73756.1      TAAGAGAACCAACACCTCTCTACAGTGA--	70
+                        *    *    * *       
+Putem observa ca toate secventle au un segment de final similar, incheiat in GAT, acest lucru poate semnifica atat faptul ca
+secventele provin din aceeasi gena (homologie), cat si o importanta in functionalitate a acestui segment (o mutatie a sa ar
+afecta functia moleculei)
+
+MSA evidentiaza regiunile conservate intre mai mult de doua secvente (greu de observat altfel), ofera context evolutiv complet
+(foarte limitat la pairwise), gap-urile sunt plasate pentru toate secventele simlutan (plasate la nivel de pereche pentru
+pairwise), face posibila identificare trend-urilor si a variatiilor fara a fi nevoie sa comparam manual fiecare doua secvente
+(mai scalabil decat pairwise).
