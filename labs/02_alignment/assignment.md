@@ -1,7 +1,7 @@
 # Săptămâna 2 — Assignment (Sequence Alignment)
 
 ## Instrucțiuni generale
-- Folosiți **DOAR** propriile secvențe descărcate în Lab 1 din NCBI (stocate local în `data/work/<handle>/lab01/`).
+- Folosiți **DOAR** propriile secvențe descărcate în Lab 1 din NCBI (stocate local în `../../data/work/<handle>/lab01/`).
 - Puteți lucra în Jupyter (notebook) sau fișiere `.py`.
 - **Predare (Moodle)**: încărcați un fișier ZIP numit `lab02_alignment_<handle>.zip` care conține:
   - scripturile / notebook-urile voastre;

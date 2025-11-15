@@ -1,0 +1,97 @@
+CLUSTAL O(1.2.4) multiple sequence alignment
+
+
+sp|Q6P5F9|XPO1_MOUSE      MPAIMTMLADHAARQLLDFSQKLDINLLDNVVNCLYHGEGAQQRMAQEVLTHLKEHPDAW	60
+sp|P04637|P53_HUMAN       ------------------------------------------------------------	0
+sp|P02340|P53_MOUSE       -------------------------------------------------MT---------	2
+                                                                                      
+
+sp|Q6P5F9|XPO1_MOUSE      TRVDTILEFSQNMNTKYYGLQILENVIKTRWKILPRNQCEGIKKY--VVGLIIKTS----	114
+sp|P04637|P53_HUMAN       --------MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQ	52
+sp|P02340|P53_MOUSE       -------AMEESQSDISLELPLSQETFSGLWKLLPPEDILPSP--HCMDD-LLLPQDVEE	52
+                                  :.:  .       : ::.:.  **:** ::         : . ::  .    
+
+sp|Q6P5F9|XPO1_MOUSE      ---SDPTCVEKEKVYIG--------KLNMILVQILKQEWPKHWPTFISDIVGASRTSESL	163
+sp|P04637|P53_HUMAN       WFTEDPGPDEAPRMPEAAPPVAPAPAAPTPAAPAPAP----SWPLSS--SVPS-------	99
+sp|P02340|P53_MOUSE       FFE---GPSEALRVSGAPAAQDPVTETPGPVAPAPAT----PWPLSS--FVPS-------	96
+                                   *  ::  .              .          **      * :       
+
+sp|Q6P5F9|XPO1_MOUSE      CQNNMVILKLLSEEVFDFSSGQITQVKAKHLKDSMCN-------EFSQIFQLCQFVMENS	216
+sp|P04637|P53_HUMAN       --------QKTYQGSYGFRLGFLHSGTAK---SVTCTYSPALNKMFCQLAKTCPVQ----	144
+sp|P02340|P53_MOUSE       --------QKTYQGNYGFHLGFLQSGTAK---SVMCTYSPPLNKLFCQLAKTCPVQ----	141
+                                  :   :  :.*  * : . .**   .  *.        *.*: : * .     
+
+sp|Q6P5F9|XPO1_MOUSE      QNAPLVHATLETLLRFLNWIPLGYIFETKLISTLIYKFLNVPMFRNVSLKCLTEIAGVSV	276
+sp|P04637|P53_HUMAN       -----------------LWVDSTPPPGTRVRAMAIYKQSQ--HMTEVVRRCPHH------	179
+sp|P02340|P53_MOUSE       -----------------LWVSATPPAGSRVRAMAIYKKSQ--HMTEVVRRCPHH------	176
+                                            *:       ::: :  ***  :   : :*  :*  .      
+
+sp|Q6P5F9|XPO1_MOUSE      SQYEEQFETLFTLTMMQLKQMLPLNTNIRLAYSNGKDDEQNFIQNLSLFLCTFLKEHGQL	336
+sp|P04637|P53_HUMAN       ---------------------------ERCSDSDGLAPPQHLIRVE--------------	198
+sp|P02340|P53_MOUSE       ---------------------------ERCSDGDGLAPPQHLIRVE--------------	195
+                                                      * : .:*    *::*:                
+
+sp|Q6P5F9|XPO1_MOUSE      LEKRLNLREALMEALHYMLLVSEVEETEIFKICLEYWNHLAAELYRESPFSTSASPLLSG	396
+sp|P04637|P53_HUMAN       ------------------------------------------------------------	198
+sp|P02340|P53_MOUSE       ------------------------------------------------------------	195
+                                                                                      
+
+sp|Q6P5F9|XPO1_MOUSE      SQHFDIPPRRQLYLTVLSKVRLLMVSRMAKPEEVLVVENDQGEVVREFMKDTDSINLYKN	456
+sp|P04637|P53_HUMAN       -----------------------------------------GNL----------------	201
+sp|P02340|P53_MOUSE       -----------------------------------------GNL----------------	198
+                                                                   *::                
+
+sp|Q6P5F9|XPO1_MOUSE      MRETLVYLTHLDYVDTEIIMTKKLQNQVNGTEWSWKNLNTLCWAIGSISGAMHEEDEKRF	516
+sp|P04637|P53_HUMAN       ------------------------------------------------------------	201
+sp|P02340|P53_MOUSE       ------------------------------------------------------------	198
+                                                                                      
+
+sp|Q6P5F9|XPO1_MOUSE      LVTVIKDLLGLCEQKRGKDNKAIIASNIMYIVGQYPRFLRAHWKFLKTVVNKLFEFMHET	576
+sp|P04637|P53_HUMAN       ----------------------------------RVEYLDDRNTFRH-------------	214
+sp|P02340|P53_MOUSE       ----------------------------------YPEYLEDRQTFRH-------------	211
+                                                              .:*  : .* :             
+
+sp|Q6P5F9|XPO1_MOUSE      HDGVQDMACDTFIKIAQKCRRHFVQVQVGEVMPFIDEILNNINTIICDLQPQQVHTFYEA	636
+sp|P04637|P53_HUMAN       -------------------------------------------SVVVPYEPPEVGSDCT-	230
+sp|P02340|P53_MOUSE       -------------------------------------------SVVVPYEPPEAGSEYT-	227
+                                                                     :::   :* :. :    
+
+sp|Q6P5F9|XPO1_MOUSE      VGYMIGAQTDQTVQEHLIEKYMLLPNQVWDSIIQQATKNVDILKDPETVKQLGSILKTNV	696
+sp|P04637|P53_HUMAN       ------------------------------------------------------------	230
+sp|P02340|P53_MOUSE       ------------------------------------------------------------	227
+                                                                                      
+
+sp|Q6P5F9|XPO1_MOUSE      RACKAVGHPFVIQLGRIYLDMLNVYKCLSENISAAIQANGEMVTKQPLIRSMRTVKRETL	756
+sp|P04637|P53_HUMAN       -------------------TIHYNYMCN--------------------------------	239
+sp|P02340|P53_MOUSE       -------------------TIHYKYMCN--------------------------------	236
+                                              :   * *                                 
+
+sp|Q6P5F9|XPO1_MOUSE      KLISGWVSRSNDPQMVAENFVPPLLDAVLIDYQRNVPAAREPEVLSTMAIIVNKLGGHIT	816
+sp|P04637|P53_HUMAN       ------------------------------------------------------------	239
+sp|P02340|P53_MOUSE       ------------------------------------------------------------	236
+                                                                                      
+
+sp|Q6P5F9|XPO1_MOUSE      AEIPQIFDAVFECTLNMINKDFEEYPEHRTNFFLLLQAVNSHCFPAFLAIPPAQFKLVLD	876
+sp|P04637|P53_HUMAN       ----------------------------------------SSCMGGMNRRPIL-------	252
+sp|P02340|P53_MOUSE       ----------------------------------------SSCMGGMNRRPIL-------	249
+                                                                  * *: .:   *         
+
+sp|Q6P5F9|XPO1_MOUSE      SIIWAFKHTMRNVADTGLQILFTLLQNVAQEEAAAQSFYQTYFCDILQHIFSVVTDTSHT	936
+sp|P04637|P53_HUMAN       -------------------TIITLE-DSSG-NLLGRNSFEVRVCACPGRDR---------	282
+sp|P02340|P53_MOUSE       -------------------TIITLE-DSSG-NLLGRDSFEVRVCACPGRDR---------	279
+                                              ::**  : :  :  .:. ::. .*    :           
+
+sp|Q6P5F9|XPO1_MOUSE      AGLTMHASILAYMFNLVEEGKISTPLNPGNPVNNQMFIQDYVANLLKSAFPHLQDA----	992
+sp|P04637|P53_HUMAN       ---------RTEEENLRKKGEPHHELPPGSTK---------------RALPNNTSSSPQP	318
+sp|P02340|P53_MOUSE       ---------RTEEENFRKKEVLCPELPPGSAK---------------RALPTCTSASPPQ	315
+                                    :   *: ::      * **.                  *:*   .:    
+
+sp|Q6P5F9|XPO1_MOUSE      QVKLFVTGLFSLNQ----DIPAFKEHLRDFLVQIKEFAGEDTS-----DLFLEERETALR	1043
+sp|P04637|P53_HUMAN       KKKPLDGEYFTLQIRGRERFEMFREL-NEALELKDAQAGKEPGGSRAHSSHLKSKK---G	374
+sp|P02340|P53_MOUSE       KKKPLDGEYFTLKIRGRKRFEMFREL-NEALELKDAHATEESGDSRAHSSYLKTKK---G	371
+                          : * :    *:*:      :  *:*  .: *   .  * :: .     . .*: ::    
+
+sp|Q6P5F9|XPO1_MOUSE      QAQEEKHKLQ-MSVPGILNPHEIPEEMCD	1071
+sp|P04637|P53_HUMAN       QS-TSRHKKLMFKTEG---PD----SD--	393
+sp|P02340|P53_MOUSE       QS-TSRHKKTMVKKVG---PD----SD--	390
+                          *:  .:**   ..  *   *.    .   
