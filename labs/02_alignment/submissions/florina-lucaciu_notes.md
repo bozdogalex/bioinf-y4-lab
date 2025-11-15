@@ -1,0 +1,3 @@
+-> a fost folosit T53
+-> folosim alinierea globala atunci cand vrem sa comparam mai multe versiuni ale aceleiasi gene, secvente complete sau cand ne intereseaza similaritate totala
+-> folosim alinierea locala la gene care nu sunt inrudite, pentru secvente scurte sau cand vrem sa analizam doar anumite regiuni ale genei
