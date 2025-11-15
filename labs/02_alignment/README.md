@@ -7,7 +7,6 @@
 - Construirea competențelor de implementare a algoritmilor de bază pentru aliniere.
 
 ---
-
 ## Partea 1 — Demo / Exerciții
 **Rulați**  
 - `demo01_pairwise_biopython.py` — aliniere globală și locală cu Biopython (pairwise2).  
