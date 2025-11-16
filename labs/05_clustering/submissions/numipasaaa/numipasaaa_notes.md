@@ -1,0 +1,15 @@
+- ce metodă ați considerat cea mai potrivită pentru datele analizate,
+    - Consider ca metoda K-Means Clustering este cea mai potrivita pentru datele analizate deoarece:
+        - Graficul arata o **separare clara si distincta** a datelor in doua clustere (diagnostice maligne - M si benigne - B), iar astfel, faciliteaza intelegerea datelor.
+
+- o scurtă reflecție: **Cum se compară clustering-ul cu arborii filogenetici în descoperirea relațiilor biologice?**  
+    - **Clusteringul** si **filogenetica** abordeaza relatiile biologice din perspective **fundamental** diferite:
+        - **Obiectivul principal**:
+            - **Clustering**: Are un obiectiv **fenetic**, sorteaza datele pe baza similaritatii / distantei actuale.
+            - **Filogenetica**: Are un obiectiv **cladistic**, reconstruieste istoria evolutiva si descendenta dintr-un stramos comun.
+        - **Gestionarea homoplasiei**:
+            - **Clustering**: Este **extrem de vulnerabil** la homoplasie.
+            - **Filogenetica**: Este **conceputa special** pentru a gestiona homoplasia.
+        - **Interpretarea rezultatului**:
+            - **Clustering**: Produce o dendrograma. Lungimea ramurilor si punctele de unire reprezinta doar niveluri de similaritate numerica.
+            - **Filogenetica**: Produce un arbore filogenetic. Nodurile interne reprezinta stramosi comuni, iar lungimile ramurilor reprezinta timpul.
