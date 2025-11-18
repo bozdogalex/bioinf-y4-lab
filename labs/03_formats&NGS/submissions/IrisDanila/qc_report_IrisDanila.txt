@@ -1,0 +1,11 @@
+
+FASTQ Quality Control Report
+
+Reads: 236003
+Mean length: 254.62
+N rate: 0.0005
+Mean Phred: 25.96
+
+
+Quality Assessment:
+   PASS - Low N-rate (< 1%)
