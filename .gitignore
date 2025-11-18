@@ -53,5 +53,3 @@ build/
 !data/sample/
 !data/sample/**
 data/sample/data_generation_notes.md
-assignments/
-labs/05_clustering/submissions/
