@@ -1,6 +1,6 @@
 ##task1
 
-S77916.1        S77921.1        S73756.1        S71596.1
+              S77916.1 S77921.1 S73756.1 S71596.1
 S77916.1        0.0000  0.3214  0.3019  0.0278
 S77921.1        0.3214  0.0000  0.1154  0.3276
 S73756.1        0.3019  0.1154  0.0000  0.3091
@@ -14,12 +14,13 @@ Argument: cele doua secvente reprezinta mutatii diferite ale aceleiasi gene, dec
 Alinierea globala este foarte asemanatoare cu cea locala pentru datele folosite intrucat secventele sunt foarte asemanatoare
 si de lungime similara => subsecventa locala coincide aproape cu intreaga secventa => gap-urile aproape identice, aceleasi 
 match-uri
+
 GTCCTT-GT-A-G
      | |  | |     global (fortat cu gapuri)
 -----TAG-GATG
 
 T-GT-A-G
-  | |  |    local
+| | |  |    local
 TAG-GATG
 
 ##task3
