@@ -40,14 +40,14 @@ import networkx as nx
 # --------------------------
 # Config — completați după nevoie
 # --------------------------
-INPUT_CSV = Path("data/work/<handle>/lab06/expression_matrix.csv")
-OUTPUT_DIR = Path("labs/06_networks/submissions/<handle>")
-OUTPUT_CSV = OUTPUT_DIR / "modules_<handle>.csv"
+INPUT_CSV = Path("data/work/LeachAntonia/lab06/expression_matrix.csv")
+OUTPUT_DIR = Path("labs/06_wgcna/submissions/LeachAntonia")
+OUTPUT_CSV = OUTPUT_DIR / "modules_LeachAntonia.csv"
 
 CORR_METHOD = "spearman"   # TODO: "pearson" sau "spearman"
-VARIANCE_THRESHOLD = 0.5   # prag pentru filtrare gene
-ADJ_THRESHOLD = 0.6        # prag pentru |cor| (ex: 0.6)
-USE_ABS_CORR = True        # True => folosiți |cor| la prag
+VARIANCE_THRESHOLD = 0.5  # prag pentru filtrare gene
+ADJ_THRESHOLD = 0.6    # prag pentru |cor| (ex: 0.6)
+USE_ABS_CORR =  True      # True => folosiți |cor| la prag
 MAKE_UNDIRECTED = True     # rețelele de co-expresie sunt de obicei neorientate
 
 
@@ -69,22 +69,22 @@ def log_and_filter(df: pd.DataFrame,
     - aplică log2(x+1)
     - filtrează genele cu varianță scăzută
     """
+
     df_log = np.log2(df + 1)
     df_filt = df_log.loc[df_log.var(axis=1) > variance_threshold]
     return df_filt
-
 
 def correlation_matrix(df: pd.DataFrame,
                        method: str = "spearman",
                        use_abs: bool = True) -> pd.DataFrame:
     """
     TODO: calculați matricea de corelație între gene (rânduri).
-    Hint:
-      - df este (gene x probe); pentru corelație între gene, folosiți df.T.corr(method=...)
-      - dacă use_abs=True, întoarceți |cor|
     """
-    # TODO: înlocuiți acest placeholder cu implementarea voastră
-    corr = pd.DataFrame(np.eye(len(df)), index=df.index, columns=df.index)
+
+    corr = df.T.corr(method=method)
+    if use_abs:
+        corr = corr.abs()
+
     return corr
 
 
@@ -96,6 +96,7 @@ def adjacency_from_correlation(corr: pd.DataFrame,
     - binară: A_ij = 1 dacă corr_ij >= threshold, altfel 0
     - ponderată: A_ij = corr_ij dacă corr_ij >= threshold, altfel 0
     """
+    
     if weighted:
         A = corr.copy()
         A[A < threshold] = 0
@@ -124,11 +125,10 @@ def detect_modules_louvain_or_greedy(G: nx.Graph) -> Dict[str, int]:
       - încercați louvain_communities(G, seed=42) dacă e disponibil
       - altfel greedy_modularity_communities(G)
     """
-    # Schelet cu fallback pe greedy_modularity_communities:
+        
     try:
-        # from networkx.algorithms.community import louvain_communities
-        # communities = louvain_communities(G, seed=42)
-        raise ImportError
+        from networkx.algorithms.community import louvain_communities
+        communities = louvain_communities(G, seed=42)
     except Exception:
         from networkx.algorithms.community import greedy_modularity_communities
         communities_iterable: Iterable[Iterable[str]] = greedy_modularity_communities(G)
@@ -139,7 +139,6 @@ def detect_modules_louvain_or_greedy(G: nx.Graph) -> Dict[str, int]:
         for gene in comm:
             mapping[gene] = midx
     return mapping
-
 
 def save_modules_csv(mapping: Dict[str, int], out_csv: Path) -> None:
     out_csv.parent.mkdir(parents=True, exist_ok=True)
