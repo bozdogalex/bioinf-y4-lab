@@ -62,10 +62,18 @@ def download_fasta(email: str, out_path: Path, query: str = None,
 
     if not accession and not query:
         raise ValueError("Trebuie să specificați fie --accession, fie --query")
-
+    
     # Descarcă datele corespunzătoare
     if accession:
-        handle = Entrez.efetch(db=db, id=accession, rettype="fasta", retmode="text")
+        if isinstance(accession, str):
+            accs = [a.strip() for a in accession.split(",") if a.strip()]
+        else:
+            accs = []
+        for a in accession:
+            accs += [x.strip() for x in str(a).split(",") if x.strip()]
+        if not accs:
+            raise ValueError("Ai dat --accession dar lista e goală.")
+        handle = Entrez.efetch(db=db, id=",".join(accs), rettype="fasta", retmode="text")
     else:
         search = Entrez.esearch(db=db, term=query, retmax=retmax)
         search_result = Entrez.read(search)
@@ -90,7 +98,11 @@ def main():
     ap.add_argument("--email", required=True, help="Email obligatoriu pentru NCBI Entrez")
     ap.add_argument("--api_key", help="NCBI API key (opțional)")
     ap.add_argument("--query", help="Ex: 'TP53[Gene] AND Homo sapiens[Organism]'")
-    ap.add_argument("--accession", help="Ex: NM_000546")
+    ap.add_argument(
+    "--accession",
+    nargs="+",
+    help='Unul sau mai multe accession-uri (ex: NM_000546 NM_001126112 sau "NM_000546,NM_001276760")'
+    )
     ap.add_argument("--db", default="nuccore", choices=["nuccore", "protein"])
     ap.add_argument("--retmax", type=int, default=3)
     ap.add_argument("--out", required=True, help="Fișier FASTA de ieșire")
