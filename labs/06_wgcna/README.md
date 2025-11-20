@@ -30,9 +30,9 @@ Clustering-ul grupează probe sau gene global, în timp ce rețelele de co-expre
 
 ## Livrabile
 În PR trebuie să apară:
-1. Fișierul `labs/06_networks/<github_handle>_notes.md` cu:  
+1. Fișierul `labs/06_networks/submissions/<github_handle>_notes.md` cu:  
    - ce metrică de corelație și ce prag ați folosit,  
-   - o scurtă reflecție: **Cum diferă o rețea de co-expresie față de clustering-ul clasic (Lab 5)?**  
+   - o scurtă reflecție: **Cum diferă o rețea de co-expresie față de clustering-ul clasic?**  
 2. Scriptul completat `ex07_gce_networks.py`.  
 3. Fișierul generat:  
    ```bash
