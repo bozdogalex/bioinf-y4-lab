@@ -1,5 +1,5 @@
 """
-Demo 1 — Calculul corelației și pragului pe date toy
+Demo — Calculul corelației și pragului pe date toy
 
 Acest demo arată cum se calculează o matrice de corelație între gene
 și cum se aplică un prag pentru a obține o matrice de adiacență simplă.

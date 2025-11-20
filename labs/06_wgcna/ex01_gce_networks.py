@@ -40,25 +40,18 @@ import networkx as nx
 # --------------------------
 # Config — completați după nevoie
 # --------------------------
-INPUT_CSV = Path("data/work/<handle>/lab06/expression_matrix.csv")
-OUTPUT_DIR = Path("labs/06_networks/submissions/<handle>")
-OUTPUT_CSV = OUTPUT_DIR / "modules_<handle>.csv"
+INPUT_CSV =
+OUTPUT_DIR =
+OUTPUT_CSV =
 
 CORR_METHOD = "spearman"   # TODO: "pearson" sau "spearman"
-VARIANCE_THRESHOLD = 0.5   # prag pentru filtrare gene
-ADJ_THRESHOLD = 0.6        # prag pentru |cor| (ex: 0.6)
-USE_ABS_CORR = True        # True => folosiți |cor| la prag
-MAKE_UNDIRECTED = True     # rețelele de co-expresie sunt de obicei neorientate
+VARIANCE_THRESHOLD =   # prag pentru filtrare gene
+ADJ_THRESHOLD =     # prag pentru |cor| (ex: 0.6)
+USE_ABS_CORR =        # True => folosiți |cor| la prag
+MAKE_UNDIRECTED =      # rețelele de co-expresie sunt de obicei neorientate
 
 
 def read_expression_matrix(path: Path) -> pd.DataFrame:
-    if not path.exists():
-        raise FileNotFoundError(
-            f"Nu am găsit {path}. Puneți matricea de expresie la această locație."
-        )
-    df = pd.read_csv(path, index_col=0)
-    if df.empty:
-        raise ValueError("Matricea de expresie este goală.")
     return df
 
 
@@ -69,19 +62,12 @@ def log_and_filter(df: pd.DataFrame,
     - aplică log2(x+1)
     - filtrează genele cu varianță scăzută
     """
-    df_log = np.log2(df + 1)
-    df_filt = df_log.loc[df_log.var(axis=1) > variance_threshold]
-    return df_filt
-
 
 def correlation_matrix(df: pd.DataFrame,
                        method: str = "spearman",
                        use_abs: bool = True) -> pd.DataFrame:
     """
     TODO: calculați matricea de corelație între gene (rânduri).
-    Hint:
-      - df este (gene x probe); pentru corelație între gene, folosiți df.T.corr(method=...)
-      - dacă use_abs=True, întoarceți |cor|
     """
     # TODO: înlocuiți acest placeholder cu implementarea voastră
     corr = pd.DataFrame(np.eye(len(df)), index=df.index, columns=df.index)
@@ -96,13 +82,6 @@ def adjacency_from_correlation(corr: pd.DataFrame,
     - binară: A_ij = 1 dacă corr_ij >= threshold, altfel 0
     - ponderată: A_ij = corr_ij dacă corr_ij >= threshold, altfel 0
     """
-    if weighted:
-        A = corr.copy()
-        A[A < threshold] = 0
-    else:
-        A = (corr >= threshold).astype(int)
-    np.fill_diagonal(A.values, 0.0)
-    return A
 
 
 def graph_from_adjacency(A: pd.DataFrame,
@@ -124,21 +103,6 @@ def detect_modules_louvain_or_greedy(G: nx.Graph) -> Dict[str, int]:
       - încercați louvain_communities(G, seed=42) dacă e disponibil
       - altfel greedy_modularity_communities(G)
     """
-    # Schelet cu fallback pe greedy_modularity_communities:
-    try:
-        # from networkx.algorithms.community import louvain_communities
-        # communities = louvain_communities(G, seed=42)
-        raise ImportError
-    except Exception:
-        from networkx.algorithms.community import greedy_modularity_communities
-        communities_iterable: Iterable[Iterable[str]] = greedy_modularity_communities(G)
-        communities = [set(c) for c in communities_iterable]
-
-    mapping: Dict[str, int] = {}
-    for midx, comm in enumerate(communities, start=1):
-        for gene in comm:
-            mapping[gene] = midx
-    return mapping
 
 
 def save_modules_csv(mapping: Dict[str, int], out_csv: Path) -> None:
@@ -151,13 +115,6 @@ def save_modules_csv(mapping: Dict[str, int], out_csv: Path) -> None:
 
 
 if __name__ == "__main__":
-    expr = read_expression_matrix(INPUT_CSV)
-    expr_pp = log_and_filter(expr, variance_threshold=VARIANCE_THRESHOLD)
-
-    corr = correlation_matrix(expr_pp, method=CORR_METHOD, use_abs=USE_ABS_CORR)
-    adj = adjacency_from_correlation(corr, threshold=ADJ_THRESHOLD, weighted=False)
-
-    G = graph_from_adjacency(adj, undirected=MAKE_UNDIRECTED)
     print(f"Grafic creat cu {G.number_of_nodes()} noduri și {G.number_of_edges()} muchii.")
 
     gene_to_module = detect_modules_louvain_or_greedy(G)
