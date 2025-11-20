@@ -24,7 +24,7 @@ După ce în săptămâna 2 am studiat alinierea secvențelor (globală și loca
 
 ## Livrabile
 În PR trebuie să apară:
-1. Fișierul `labs/03_formats&NGS/<github_handle>_notes.md` cu:  
+1. Fișierul `labs/03_formats&NGS/submissions/<github_handle>_notes.md` cu:  
    - ce FASTQ ați folosit (link sau accession SRA),  
    - o scurtă reflecție: **De ce este esențială verificarea calității datelor înainte de analiza variantelor?**  
 2. Exercițiul completat, salvat în:  

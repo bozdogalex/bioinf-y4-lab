@@ -27,7 +27,7 @@ Vom compara rezultatele cu un MSA realizat online pentru a observa regiunile con
 
 ## Livrabile
 În PR trebuie să apară:
-1. Fișierul `labs/04_phylogenetics/<github_handle>_notes.md` cu:  
+1. Fișierul `labs/04_phylogenetics/submissions/<github_handle>_notes.md` cu:  
    - ce secvențe FASTA ați folosit (link/descriere),  
    - o scurtă reflecție: **Ce informații suplimentare oferă arborele filogenetic față de o simplă matrice de distanțe?**  
 2. Exercițiul completat, salvat în:  
