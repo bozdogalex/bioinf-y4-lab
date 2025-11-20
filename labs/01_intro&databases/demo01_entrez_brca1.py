@@ -3,6 +3,18 @@ from io import StringIO
 from Bio import Entrez, SeqIO
 import os
 
+# setează email pentru NCBI (sau: export NCBI_EMAIL="emailul_tău")
+
+
+DATA_DIR = Path("data")
+DATA_DIR.mkdir(exist_ok=True)
+
+QUERY = 'BRCA1[Gene] AND "Homo sapiens"[Organism]'
+OUT_GB = DATA_DIR / "brca1.gb"
+
+def gc_content(seq: str) -> float:
+    s = seq.upper().replace("N", "")
+    return 0.0 if not s else (s.count("G") + s.count("C")) / len(s)
 Entrez.email = "student@example.com"
 Path("data").mkdir(exist_ok=True)
 
