@@ -1,0 +1,12 @@
+=== RAPORT CALITATE FASTQ ===
+Fișier analizat: /workspaces/bioinf-y4-lab/labs/01_intro&databases/data/work/Botoaca-Florentina-Veronica/lab01/1_control_psbA3_2019_minq7.fastq
+Tip fișier: plain
+========================================
+Reads: 4437
+Mean length: 199.16
+N rate: 0.0000
+Mean Phred: 13.34
+========================================
+Total bases: 883678
+Total N bases: 0
+N percentage: 0.00%
