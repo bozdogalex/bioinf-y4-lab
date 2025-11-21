@@ -1,0 +1,25 @@
+==================================================
+FASTQ Quality Control Report
+==================================================
+
+Input file: data/work/olezhka0809/lab03/SRR000001.fastq.gz
+Author: olezhka0809
+
+--- Basic Statistics ---
+Reads: 236003
+Mean length: 254.62
+Min length: 28
+Max length: 750
+Total bases: 60092071
+
+--- Quality Statistics ---
+N rate: 0.0005
+N count: 31672
+Mean Phred: 25.96
+Min Phred: 0
+Max Phred: 41
+
+--- Quality Interpretation ---
+Quality: GOOD (Phred ≥ 20, error rate < 1%)
+
+==================================================
