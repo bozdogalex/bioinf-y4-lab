@@ -1,0 +1,5 @@
+--- Raport QC pentru florina-lucaciu ---
+Reads: 189144
+Mean length: 301.00
+N rate: 0.0001
+Mean Phred: 30.00
