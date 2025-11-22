@@ -1,0 +1,3 @@
+Dintre metodele analizate, K-Means s-a dovedit cea mai potrivită pentru acest dataset deoarece datele despre cancerul mamar sunt bine separabile în două grupuri principale (malign și benign), iar K-Means funcționează foarte eficient atunci când există clustere compacte și globulare.
+
+Clustering-ul grupează datele exclusiv pe baza similarității matematice dintre observații, fără a ține cont de un context biologic sau istoric, pe când arborii filogenetici modelează relațiile evolutive, indicând nu doar cât de apropiate sunt organismele, ci și ordinea și direcția în care au apărut în timp. Astfel, clustering-ul este o metodă generală de clasificare, în timp ce filogenia explică originea și evoluția relațiilor biologice dintre elemente.
