@@ -9,7 +9,7 @@ Instrucțiuni (în laborator):
 1) Pregătire date
    - Descărcați și pregătiți matricea de expresie (ex: GSE115469) într-un CSV cu:
      * rânduri = gene (index), coloane = probe (sample IDs)
-   - Salvați fișierul la: data/work/<handle>/lab06/expression_matrix.csv
+   - Salvați fișierul la: data/work/{handle}/lab06/expression_matrix.csv
 
 2) Preprocesare
    - log2(x + 1)
@@ -22,7 +22,7 @@ Instrucțiuni (în laborator):
 4) Graf + Module
    - construiți graful cu NetworkX
    - detectați modulele (Louvain sau alternativă)
-   - exportați mapping-ul gene → modul în submissions/<handle>/modules_<handle>.csv
+   - exportați mapping-ul gene → modul în submissions/{handle}/modules_{handle}.csv
 
 Notă:
 - Documentați în <github_handle>_notes.md: metrica de corelație, pragul, observații scurte.
@@ -40,9 +40,12 @@ import networkx as nx
 # --------------------------
 # Config — completați după nevoie
 # --------------------------
-INPUT_CSV = Path("data/work/<handle>/lab06/expression_matrix.csv")
-OUTPUT_DIR = Path("labs/06_networks/submissions/<handle>")
-OUTPUT_CSV = OUTPUT_DIR / "modules_<handle>.csv"
+handle = "MariusJalba"
+
+INPUT_CSV = Path(f"data/work/{handle}/lab06/expression_matrix.csv")
+OUTPUT_DIR = Path(f"labs/06_networks/submissions/{handle}")
+OUTPUT_CSV = OUTPUT_DIR / f"modules_{handle}.csv"
+
 
 CORR_METHOD = "spearman"   # TODO: "pearson" sau "spearman"
 VARIANCE_THRESHOLD = 0.5   # prag pentru filtrare gene
@@ -67,24 +70,32 @@ def log_and_filter(df: pd.DataFrame,
     """
     Preprocesare:
     - aplică log2(x+1)
-    - filtrează genele cu varianță scăzută
+    - filtrează genele cu varianță scăzută (păstrează DOAR genele cu varianță <= prag)
     """
+    # log2(x+1)
     df_log = np.log2(df + 1)
-    df_filt = df_log.loc[df_log.var(axis=1) > variance_threshold]
+
+    # varianța pe gene (rânduri)
+    var = df_log.var(axis=1)
+
+    # păstrăm genele cu varianță SCĂZUTĂ
+    kept = var <= variance_threshold
+    df_filt = df_log.loc[kept]
+
+    # (opțional) poți printa să vezi câte au rămas
+    print(f"Gene cu varianță ≤ {variance_threshold}: {df_filt.shape[0]}")
+
     return df_filt
 
 
 def correlation_matrix(df: pd.DataFrame,
                        method: str = "spearman",
                        use_abs: bool = True) -> pd.DataFrame:
-    """
-    TODO: calculați matricea de corelație între gene (rânduri).
-    Hint:
-      - df este (gene x probe); pentru corelație între gene, folosiți df.T.corr(method=...)
-      - dacă use_abs=True, întoarceți |cor|
-    """
-    # TODO: înlocuiți acest placeholder cu implementarea voastră
-    corr = pd.DataFrame(np.eye(len(df)), index=df.index, columns=df.index)
+    corr = df.T.corr(method=method)
+    
+    if use_abs:
+        corr = corr.abs()
+
     return corr
 
 
@@ -126,8 +137,9 @@ def detect_modules_louvain_or_greedy(G: nx.Graph) -> Dict[str, int]:
     """
     # Schelet cu fallback pe greedy_modularity_communities:
     try:
-        # from networkx.algorithms.community import louvain_communities
-        # communities = louvain_communities(G, seed=42)
+        from networkx.algorithms.community import louvain_communities
+        communities_iterable: Iterable[Iterable[str]] = community.louvain_communities(G, seed=42)
+        communities = [set(c) for c in communities_iterable]
         raise ImportError
     except Exception:
         from networkx.algorithms.community import greedy_modularity_communities
