@@ -1,0 +1,3 @@
+Metrica de corelatie: Spearman Prag (threshold): 0.6 (valoare absoluta)
+
+Reflectie: Spre deosebire de clustering-ul clasic (K-Means sau ierarhic), care doar imparte genele in grupuri disjuncte bazate pe distante, retelele de co-expresie modeleaza structura relatiilor dintre gene sub forma unui graf. Acest lucru permite nu doar detectarea comunitatilor (modulelor), ci si analiza topologiei interne, cum ar fi identificarea genelor centrale ("hubs") care sunt puternic conectate si pot avea un rol biologic crucial de reglare, informatie care se pierde in clustering-ul standard.
