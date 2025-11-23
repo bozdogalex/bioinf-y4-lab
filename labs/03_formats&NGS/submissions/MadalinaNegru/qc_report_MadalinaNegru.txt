@@ -1,0 +1,4 @@
+Număr secvențe analizate: 1000
+Lungime medie secvențe: 76.32
+Lungime minimă secvență: 30
+Lungime maximă secvență: 79
