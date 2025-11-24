@@ -37,11 +37,11 @@ HANDLE = "indibotoc"
 
 # Fișiere de intrare
 # Matricea de expresie folosită în Lab 6
-EXPR_CSV = Path(f"data/work/{HANDLE}/lab06/expression_matrix.csv")
+EXPR_CSV = Path(f"expression_matrix_lab06.csv")
 
 # Mapping gene -> modul (produs în Lab 6 sau în exercițiul anterior din Lab 7)
 
-MODULES_CSV = Path(f"labs/07_network_viz/submissions/{HANDLE}/modules_{HANDLE}.csv")
+MODULES_CSV = Path(f"modules_{HANDLE}.csv")
 
 # (Opțional) încărcați o adiacență pregătită; altfel, reconstruiți din corelații
 # Dacă ai un fișier de tip adj_codmihaic.csv din Lab 6, poți decomenta și seta aici calea lui:
