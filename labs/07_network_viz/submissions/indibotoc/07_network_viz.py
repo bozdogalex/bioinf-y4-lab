@@ -40,13 +40,16 @@ HANDLE = "indibotoc"
 EXPR_CSV = Path(f"data/work/{HANDLE}/lab06/expression_matrix.csv")
 
 # Mapping gene -> modul (produs în Lab 6 sau în exercițiul anterior din Lab 7)
+
 MODULES_CSV = Path(f"labs/07_network_viz/submissions/{HANDLE}/modules_{HANDLE}.csv")
 
+# (Opțional) încărcați o adiacență pregătită; altfel, reconstruiți din corelații
+# Dacă ai un fișier de tip adj_codmihaic.csv din Lab 6, poți decomenta și seta aici calea lui:
 # PRECOMPUTED_ADJ_CSV: Optional[Path] = Path(f"labs/06_networks/submissions/{HANDLE}/adj_{HANDLE}.csv")
 PRECOMPUTED_ADJ_CSV: Optional[Path] = None
 
 # Parametri pentru reconstrucția adiacenței (dacă nu aveți CSV)
-CORR_METHOD = "spearman"
+CORR_METHOD = "spearman"   # "pearson" sau "spearman"
 USE_ABS_CORR = True        # True => folosiți |cor|
 ADJ_THRESHOLD = 0.6        # prag pentru |cor| (ex: 0.6)
 WEIGHTED = False           # False => 0/1; True => păstrează valorile corr peste prag
