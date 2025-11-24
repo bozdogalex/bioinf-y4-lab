@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d4" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d3" for="node" attr.name="is_hub" attr.type="boolean" />
+  <key id="d2" for="node" attr.name="betweenness" attr.type="double" />
+  <key id="d1" for="node" attr.name="degree" attr.type="double" />
+  <key id="d0" for="node" attr.name="module" attr.type="long" />
+  <graph edgedefault="undirected">
+    <node id="C1QA">
+      <data key="d0">0</data>
+      <data key="d1">1.460358175548347</data>
+      <data key="d2">0.0</data>
+      <data key="d3">True</data>
+    </node>
+    <node id="C1QB">
+      <data key="d0">0</data>
+      <data key="d1">1.5008460837332214</data>
+      <data key="d2">0.0</data>
+      <data key="d3">True</data>
+    </node>
+    <node id="C1QC">
+      <data key="d0">0</data>
+      <data key="d1">1.4983930064852777</data>
+      <data key="d2">0.0</data>
+      <data key="d3">True</data>
+    </node>
+    <node id="CTSS">
+      <data key="d0">2</data>
+      <data key="d1">1.2734349816582837</data>
+      <data key="d2">0.0</data>
+      <data key="d3">True</data>
+    </node>
+    <node id="DNASE1L3">
+      <data key="d0">3</data>
+      <data key="d1">2.021246708889336</data>
+      <data key="d2">0.0</data>
+      <data key="d3">True</data>
+    </node>
+    <node id="FCER1G">
+      <data key="d0">2</data>
+      <data key="d1">1.2147413351124532</data>
+      <data key="d2">0.0</data>
+      <data key="d3">False</data>
+    </node>
+    <node id="FCN3">
+      <data key="d0">3</data>
+      <data key="d1">1.9652056248717718</data>
+      <data key="d2">0.01282051282051282</data>
+      <data key="d3">True</data>
+    </node>
+    <node id="GPX1">
+      <data key="d0">2</data>
+      <data key="d1">0.6229196302669695</data>
+      <data key="d2">0.0</data>
+      <data key="d3">False</data>
+    </node>
+    <node id="IGFBP7">
+      <data key="d0">3</data>
+      <data key="d1">1.2394949423419943</data>
+      <data key="d2">0.0</data>
+      <data key="d3">True</data>
+    </node>
+    <node id="S100A4">
+      <data key="d0">1</data>
+      <data key="d1">1.3646537755588297</data>
+      <data key="d2">0.01282051282051282</data>
+      <data key="d3">True</data>
+    </node>
+    <node id="S100A6">
+      <data key="d0">1</data>
+      <data key="d1">0.723127353892067</data>
+      <data key="d2">0.0</data>
+      <data key="d3">False</data>
+    </node>
+    <node id="S100A9">
+      <data key="d0">2</data>
+      <data key="d1">1.8898737151035978</data>
+      <data key="d2">0.02564102564102564</data>
+      <data key="d3">True</data>
+    </node>
+    <node id="SH3BGRL3">
+      <data key="d0">1</data>
+      <data key="d1">0.6415264216667627</data>
+      <data key="d2">0.0</data>
+      <data key="d3">False</data>
+    </node>
+    <node id="STAB1">
+      <data key="d0">3</data>
+      <data key="d1">1.294833059743088</data>
+      <data key="d2">0.0</data>
+      <data key="d3">True</data>
+    </node>
+    <edge source="C1QA" target="C1QB">
+      <data key="d4">0.7314056263981453</data>
+    </edge>
+    <edge source="C1QA" target="C1QC">
+      <data key="d4">0.7289525491502017</data>
+    </edge>
+    <edge source="C1QB" target="C1QC">
+      <data key="d4">0.7694404573350759</data>
+    </edge>
+    <edge source="CTSS" target="FCER1G">
+      <data key="d4">0.6106111159670543</data>
+    </edge>
+    <edge source="CTSS" target="S100A9">
+      <data key="d4">0.6628238656912294</data>
+    </edge>
+    <edge source="DNASE1L3" target="FCN3">
+      <data key="d4">0.7260621658380129</data>
+    </edge>
+    <edge source="DNASE1L3" target="IGFBP7">
+      <data key="d4">0.6372437409925042</data>
+    </edge>
+    <edge source="DNASE1L3" target="STAB1">
+      <data key="d4">0.6579408020588192</data>
+    </edge>
+    <edge source="FCER1G" target="S100A9">
+      <data key="d4">0.6041302191453989</data>
+    </edge>
+    <edge source="FCN3" target="IGFBP7">
+      <data key="d4">0.6022512013494901</data>
+    </edge>
+    <edge source="FCN3" target="STAB1">
+      <data key="d4">0.6368922576842688</data>
+    </edge>
+    <edge source="GPX1" target="S100A9">
+      <data key="d4">0.6229196302669695</data>
+    </edge>
+    <edge source="S100A4" target="S100A6">
+      <data key="d4">0.723127353892067</data>
+    </edge>
+    <edge source="S100A4" target="SH3BGRL3">
+      <data key="d4">0.6415264216667627</data>
+    </edge>
+  </graph>
+</graphml>
