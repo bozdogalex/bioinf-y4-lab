@@ -53,3 +53,5 @@ build/
 !data/sample/
 !data/sample/**
 data/sample/data_generation_notes.md
+data/work/olezhka0809/lab01/my_tp53_dr_protein.fasta
+**/work/
