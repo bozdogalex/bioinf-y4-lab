@@ -34,13 +34,13 @@ Mai mult, putem valida biologic modulele prin **analiză de îmbogățire funcț
 
 ## Livrabile
 În PR trebuie să apară:
-1. Fișierul `labs/07_networkviz/<github_handle>_notes.md` cu:  
+1. Fișierul `labs/07_networkviz/submission/<github_handle>_notes.md` cu:  
    - ce metodă de layout ați folosit (ex: spring, kamada-kawai),  
    - o scurtă reflecție: **Ce avantaje aduce vizualizarea față de analiza numerică din Lab 6?**  
-2. Scriptul completat `ex08_network_viz.py`.  
+2. Scriptul completat `ex01_network_viz.py`.  
 3. Fișierul generat:  
    ```bash
-   labs/07_networkviz/submissions/<handle>/network_<handle>.png
+   labs/07_networkviz/submissions/<github_handle>/network_<handle>.png
    ```
 4. Completarea checklist-ului din șablonul PR.
 
