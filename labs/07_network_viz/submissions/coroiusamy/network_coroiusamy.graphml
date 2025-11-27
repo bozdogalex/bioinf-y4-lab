@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d1" for="edge" attr.name="weight" attr.type="long" />
+  <key id="d0" for="node" attr.name="module" attr.type="long" />
+  <graph edgedefault="undirected">
+    <node id="RPL11">
+      <data key="d0">1</data>
+    </node>
+    <node id="RPL32">
+      <data key="d0">1</data>
+    </node>
+    <node id="RPS27">
+      <data key="d0">1</data>
+    </node>
+    <node id="APOA2">
+      <data key="d0">4</data>
+    </node>
+    <node id="FABP1">
+      <data key="d0">4</data>
+    </node>
+    <node id="FGB">
+      <data key="d0">4</data>
+    </node>
+    <node id="FGG">
+      <data key="d0">4</data>
+    </node>
+    <node id="PLG">
+      <data key="d0">4</data>
+    </node>
+    <node id="RARRES2">
+      <data key="d0">4</data>
+    </node>
+    <node id="UQCRQ">
+      <data key="d0">4</data>
+    </node>
+    <edge source="RPL11" target="RPL32">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="RPL11" target="RPS27">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="RPL32" target="RPS27">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="APOA2" target="FABP1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="APOA2" target="FGB">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="APOA2" target="FGG">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="APOA2" target="PLG">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="APOA2" target="RARRES2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="APOA2" target="UQCRQ">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="FABP1" target="FGB">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="FABP1" target="FGG">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="FABP1" target="RARRES2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="FGB" target="FGG">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="FGB" target="PLG">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="FGB" target="RARRES2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="FGG" target="PLG">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="FGG" target="RARRES2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="PLG" target="RARRES2">
+      <data key="d1">1</data>
+    </edge>
+  </graph>
+</graphml>
