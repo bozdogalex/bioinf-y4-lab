@@ -12,6 +12,7 @@ Acest demo folosește un graf mic, nu date reale.
 import networkx as nx
 import matplotlib.pyplot as plt
 import pandas as pd
+from pathlib import Path
 
 # 1) Construim un graf mic
 G = nx.Graph()
@@ -54,10 +55,10 @@ nx.draw_networkx_labels(G, pos, font_size=10)
 
 plt.axis("off")
 plt.tight_layout()
-plt.savefig("labs/07_networkviz/demo_network.png", dpi=200)
+plt.savefig("labs/07_network_viz/demo_network.png", dpi=200)
 plt.show()
 
 # 6) Export hub genes în CSV
 df_hubs = pd.DataFrame(hubs, columns=["Gene", "Degree"])
-df_hubs.to_csv("labs/07_networkviz/demo_hubs.csv", index=False)
+df_hubs.to_csv("labs/07_network_viz/demo_hubs.csv", index=False)
 print("Am salvat demo_network.png și demo_hubs.csv")

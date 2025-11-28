@@ -7,4 +7,4 @@ Reteaua de co-expresie porneste de la relatiile pereche dintre gene, construind 
 
 Am folosit corelatia Spearman, deoarece surprinde relatiile monotone dintre gene si este robusta la distrubutii cu forma neregulata si valori extreme din RNA-Seq.
 Matricea de adiacenta a fost construita folosind pragul 0.5 pastrand doar conexiunile cu co-expresie puternica si eliminand legaturile slabe
-Filtrarea genelor cu varianta scazuta si aplicarea pragului au redus zgomotul si au generat o retea mai precisa. Aplicarea Louvain a identificat mai multe noduri distincte, reflectand grupuri de gene cu relatii stranse de co-expresie
+Filtrarea genelor cu varianta scazuta si aplicarea pragului au redus zgomotul si au generat o retea mai precisa. Aplicarea Louvain a identificat mai multe noduri distincte, reflectand grupuri de gene cu relatii stranse de co-expresie.
