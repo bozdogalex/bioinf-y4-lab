@@ -1,0 +1,6 @@
+Metrică,Valoare
+K-means ARI,0.6536246043910179
+DBSCAN ARI,-0.02269397997042009
+K-means Clusters,2.0
+DBSCAN Clusters,2.0
+Outliers DBSCAN,550.0
