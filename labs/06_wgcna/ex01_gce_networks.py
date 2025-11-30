@@ -40,9 +40,9 @@ import networkx as nx
 # --------------------------
 # Config — completați după nevoie
 # --------------------------
-INPUT_CSV = Path("data/work/<handle>/lab06/expression_matrix.csv")
-OUTPUT_DIR = Path("labs/06_networks/submissions/<handle>")
-OUTPUT_CSV = OUTPUT_DIR / "modules_<handle>.csv"
+INPUT_CSV = Path("data/work/itsediii/lab06/expression_matrix.csv")
+OUTPUT_DIR = Path("labs/06_networks/submissions/itsediii")
+OUTPUT_CSV = OUTPUT_DIR / "modules_itsediii.csv"
 
 CORR_METHOD = "spearman"   # TODO: "pearson" sau "spearman"
 VARIANCE_THRESHOLD = 0.5   # prag pentru filtrare gene
@@ -64,7 +64,7 @@ def read_expression_matrix(path: Path) -> pd.DataFrame:
 
 def log_and_filter(df: pd.DataFrame,
                    variance_threshold: float) -> pd.DataFrame:
-    """
+    """c
     Preprocesare:
     - aplică log2(x+1)
     - filtrează genele cu varianță scăzută
@@ -84,7 +84,9 @@ def correlation_matrix(df: pd.DataFrame,
       - dacă use_abs=True, întoarceți |cor|
     """
     # TODO: înlocuiți acest placeholder cu implementarea voastră
-    corr = pd.DataFrame(np.eye(len(df)), index=df.index, columns=df.index)
+    corr = df.T.corr(method=method)
+    if use_abs:
+        corr = corr.abs()
     return corr
 
 
@@ -126,8 +128,8 @@ def detect_modules_louvain_or_greedy(G: nx.Graph) -> Dict[str, int]:
     """
     # Schelet cu fallback pe greedy_modularity_communities:
     try:
-        # from networkx.algorithms.community import louvain_communities
-        # communities = louvain_communities(G, seed=42)
+        from networkx.algorithms.community import louvain_communities
+        communities = louvain_communities(G, seed=42)
         raise ImportError
     except Exception:
         from networkx.algorithms.community import greedy_modularity_communities
