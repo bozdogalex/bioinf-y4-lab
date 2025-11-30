@@ -7,12 +7,12 @@ import pandas as pd
 import networkx as nx
 
 
-INPUT_CSV = Path("data/work/eeeevn0/lab06/expression_matrix1.csv")
+INPUT_CSV = Path("data/work/eeeevn0/lab06/expression_matrix.csv")
 OUTPUT_DIR = Path("labs/06_wgcna/submissions/eeeevn0")
 OUTPUT_CSV = OUTPUT_DIR / "modules_eeeevn0.csv"
 
 CORR_METHOD = "spearman"   
-VARIANCE_THRESHOLD = 0.001  
+VARIANCE_THRESHOLD = 0.01
 ADJ_THRESHOLD = 0.6        
 USE_ABS_CORR = True        
 MAKE_UNDIRECTED = True   
