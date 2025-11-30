@@ -53,3 +53,4 @@ build/
 !data/sample/
 !data/sample/**
 data/sample/data_generation_notes.md
+labs/06_wgcna/data/work/itsediii/lab06/expression_matrix.csv
