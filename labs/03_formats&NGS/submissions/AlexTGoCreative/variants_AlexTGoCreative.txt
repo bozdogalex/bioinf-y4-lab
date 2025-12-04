@@ -1,0 +1,213 @@
+================================================================================
+VCF Variant → PubMed Query Results
+================================================================================
+
+Variant 1
+--------------------------------------------------------------------------------
+Chromosome: 1
+Position: 55516888
+ID: rs1801133
+Reference: G
+Alternate: A
+Quality: .
+Filter: PASS
+
+PubMed Query: rs1801133
+Total Articles Found: 719
+
+Top Articles:
+--------------------------------------------------------------------------------
+
+1. PMID: 41259404
+   Title: Pharmacogenetic insights into MTHFR and SLC19A1 variants in low-dose methotrexate therapy for rheumatologic diseases.
+   Authors: Martínez Téllez G, Teruel BM
+   Source: Drug Metab Pers Ther
+   Date: 2025 Nov 20
+
+2. PMID: 41201764
+   Title: Εffects of MTR and AS3MT variants on antipsychotic response: prospective evidence from a naturalistic study in Greece.
+   Authors: Ntenti C, Filippiadou M, Loukaki-Gkountara D, Garyfallos G, Papazisis G et al.
+   Source: Pharmacol Rep
+   Date: 2025 Nov 7
+
+3. PMID: 41153409
+   Title: Newborn MTHFR rs1801133 Variant and Extremely Low Birth Weight: A Case-Control Study and Meta-Analysis.
+   Authors: Skulimowski B, Durska A, Sobaniec A, Gotz-Więckowska A, Strauss E
+   Source: Genes (Basel)
+   Date: 2025 Oct 13
+
+4. PMID: 41150742
+   Title: Genotype Combinations and Genetic Risk Score Analyses of MTHFR, MTRR, and MTR Polymorphisms in Hypothyroidism Susceptibility: A Case-Control Study.
+   Authors: Tabakoglu NT, Ay A, Alkanli N, Celik M
+   Source: Curr Issues Mol Biol
+   Date: 2025 Sep 25
+
+5. PMID: 41079121
+   Title: Association of folate metabolism-related enzymes (MTHFR, MYD88, and TP53) and their single nucleotide polymorphisms with breast cancer susceptibility in women from Southwest China: a Bayesian network approach.
+   Authors: Li X, Gong Y, Zhao Y, Kong X, Liu Y et al.
+   Source: Front Oncol
+   Date: 2025
+
+================================================================================
+
+Variant 2
+--------------------------------------------------------------------------------
+Chromosome: 7
+Position: 117199644
+ID: rs2893453
+Reference: G
+Alternate: A
+Quality: .
+Filter: PASS
+
+PubMed Query: rs2893453
+Total Articles Found: 0
+
+No articles found for this variant.
+
+================================================================================
+
+Variant 3
+--------------------------------------------------------------------------------
+Chromosome: 10
+Position: 100187608
+ID: rs7903146
+Reference: C
+Alternate: T
+Quality: .
+Filter: PASS
+
+PubMed Query: rs7903146
+Total Articles Found: 550
+
+Top Articles:
+--------------------------------------------------------------------------------
+
+1. PMID: 40995373
+   Title: Genetic association analysis of TCF7L2 common variants with type 2 diabetes risk within the Bushehr Elderly Health (BEH) program.
+   Authors: Jannatalipour A, Amrollahi Bioky A, Tavasoli N, Farsi F, Bidkhori M et al.
+   Source: J Diabetes Metab Disord
+   Date: 2025 Dec
+
+2. PMID: 40961511
+   Title: Association of dietary fibre with type 2 diabetes risk is modified by transcription factor 7 like 2 genotype in men with impaired fasting glucose: The T2D-GENE study.
+   Authors: Tolonen UK, Lankinen MA, Laakso M, Schwab US
+   Source: Clin Nutr
+   Date: 2025 Oct
+
+3. PMID: 40870963
+   Title: Association of TCF7L2 rs7903146 (C/T) Polymorphism with Type 2 Diabetes Mellitus in a Chinese Population: Clinical Characteristics and Ethnic Context.
+   Authors: Lu YC, Yu TH, Hsuan CF, Hsu CC, Hung WC et al.
+   Source: Diagnostics (Basel)
+   Date: 2025 Aug 21
+
+4. PMID: 40864349
+   Title: Genetic Variants and Alteration in Transcription Factor 7-Like 2 (TCF7L2) mRNA Level in Ischemic Stroke Patients Among Bengali and Gujarati Population from India.
+   Authors: Sadhukhan D, Roy A, Nath S, Basu E, Mukherjee J et al.
+   Source: Biochem Genet
+   Date: 2025 Aug 27
+
+5. PMID: 40754711
+   Title: Genetic variants linked to statin-associated Type 2 diabetes mellitus: Findings from the UK Biobank and the All of Us Research Program.
+   Authors: Park YA, Lee DH, Kim JS, Yee J, Gwak HS
+   Source: Br J Pharmacol
+   Date: 2025 Dec
+
+================================================================================
+
+Variant 4
+--------------------------------------------------------------------------------
+Chromosome: 19
+Position: 44908684
+ID: rs429358
+Reference: T
+Alternate: C
+Quality: .
+Filter: PASS
+
+PubMed Query: rs429358
+Total Articles Found: 375
+
+Top Articles:
+--------------------------------------------------------------------------------
+
+1. PMID: 41269415
+   Title: Associations Between APOE Polymorphisms, Neurological Symptoms, and Cognitive Assessments in Long COVID Patients: An Analysis of SNPs rs7412 and rs429358.
+   Authors: de Almeida Gomes I, Braga-Neto P, Matos TL, da Silva EL, de Oliveira LLB et al.
+   Source: Mol Neurobiol
+   Date: 2025 Nov 21
+
+2. PMID: 41149812
+   Title: Genetic and Clinical Insights into ALS/FTD: Profiling a Rare Cohort to Explore Spectrum Heterogeneity.
+   Authors: Marjanovic A, Stefanova E, Viric V, Palibrk A, Mandić Stojmenović G et al.
+   Source: J Pers Med
+   Date: 2025 Sep 28
+
+3. PMID: 41129700
+   Title: Genetic association analyses of cognitive performance across multi-ancestry older adults: Application of Tobit models.
+   Authors: Wu X, Tsuchiya I, Aung KZ, Qiao Q, Fardo DW et al.
+   Source: J Alzheimers Dis
+   Date: 2025 Dec
+
+4. PMID: 41089540
+   Title: Gender-Specific Next-Generation Sequencing Reveals First Allelic Variation Patterns in Dementia Risk Among Bangladeshis: The CARED Study.
+   Authors: Ranjan R, Yusuf MA, Uddin MN, Mamun MT, Mamun AA et al.
+   Source: Int J Gen Med
+   Date: 2025
+
+5. PMID: 41088299
+   Title: The APOE ε4 allele affects the survival of patients with Parkinson's disease independent of dementia.
+   Authors: Wang Z, Li L, Xu Q, Pan H, Wang Y et al.
+   Source: J Transl Med
+   Date: 2025 Oct 14
+
+================================================================================
+
+Variant 5
+--------------------------------------------------------------------------------
+Chromosome: 19
+Position: 44908822
+ID: rs7412
+Reference: C
+Alternate: T
+Quality: .
+Filter: PASS
+
+PubMed Query: rs7412
+Total Articles Found: 315
+
+Top Articles:
+--------------------------------------------------------------------------------
+
+1. PMID: 41269415
+   Title: Associations Between APOE Polymorphisms, Neurological Symptoms, and Cognitive Assessments in Long COVID Patients: An Analysis of SNPs rs7412 and rs429358.
+   Authors: de Almeida Gomes I, Braga-Neto P, Matos TL, da Silva EL, de Oliveira LLB et al.
+   Source: Mol Neurobiol
+   Date: 2025 Nov 21
+
+2. PMID: 41234028
+   Title: Immune Response and Lipid Metabolism Genes Associated with Acute Cerebral Circulatory Failure in Pre-Eclampsia in a Central Asian Population.
+   Authors: Mirzakhmetova D, Svyatova G, Berezina G, Murtazaliyeva A
+   Source: J Mother Child
+   Date: 2025 Feb 1
+
+3. PMID: 41230927
+   Title: Screening of the key single nucleotide polymorphisms in type 2 diabetes mellitus complicated with lower extremity arterial disease by machine learning.
+   Authors: Li X, Yang A, Liu X, Xu S, Zhou H
+   Source: J Hypertens
+   Date: 2025 Nov 7
+
+4. PMID: 41163121
+   Title: Immune, blood-brain barrier, and metabolic biomarkers mediate gut-brain axis crosstalk in alzheimer's disease.
+   Authors: Li J, Yuan Z, Li J, Liu Z, Wang Y et al.
+   Source: Biomark Res
+   Date: 2025 Oct 29
+
+5. PMID: 41149812
+   Title: Genetic and Clinical Insights into ALS/FTD: Profiling a Rare Cohort to Explore Spectrum Heterogeneity.
+   Authors: Marjanovic A, Stefanova E, Viric V, Palibrk A, Mandić Stojmenović G et al.
+   Source: J Pers Med
+   Date: 2025 Sep 28
+
+================================================================================
+

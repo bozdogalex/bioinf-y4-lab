@@ -40,15 +40,15 @@ import networkx as nx
 # --------------------------
 # Config — completați după nevoie
 # --------------------------
-INPUT_CSV =
-OUTPUT_DIR =
-OUTPUT_CSV =
+INPUT_CSV = None  # TODO: Path("data/work/<handle>/lab06/expression_matrix.csv")
+OUTPUT_DIR = None  # TODO: Path("labs/06_wgcna/submissions/<handle>")
+OUTPUT_CSV = None  # TODO: OUTPUT_DIR / "modules_<handle>.csv"
 
 CORR_METHOD = "spearman"   # TODO: "pearson" sau "spearman"
-VARIANCE_THRESHOLD =   # prag pentru filtrare gene
-ADJ_THRESHOLD =     # prag pentru |cor| (ex: 0.6)
-USE_ABS_CORR =        # True => folosiți |cor| la prag
-MAKE_UNDIRECTED =      # rețelele de co-expresie sunt de obicei neorientate
+VARIANCE_THRESHOLD = 0.1   # TODO: prag pentru filtrare gene
+ADJ_THRESHOLD = 0.6     # TODO: prag pentru |cor| (ex: 0.6)
+USE_ABS_CORR = True        # TODO: True => folosiți |cor| la prag
+MAKE_UNDIRECTED = True      # TODO: rețelele de co-expresie sunt de obicei neorientate
 
 
 def read_expression_matrix(path: Path) -> pd.DataFrame:

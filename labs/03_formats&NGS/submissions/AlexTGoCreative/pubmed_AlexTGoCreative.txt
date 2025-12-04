@@ -1,0 +1,69 @@
+================================================================================
+PubMed Query Results: TP53 AND cancer
+================================================================================
+
+Article 1
+--------------------------------------------------------------------------------
+PMID: 41299103
+
+Title: Natural products as therapeutic interventions for inflammation-mediated cancer.
+
+Authors: Roy S, Shaw R, Pandey A, Trigun SK
+
+Abstract:
+Inflammation serves as the body's immune response mechanism against noxious irritants, ranging from removing factors causing injury to regenerating damaged tissue. Chronic inflammation, in particular, has emerged as a crucial contributor to both the development of cancer and its spread through a variety of mechanisms. This phenomenon is referred to as inflammation-induced tumorigenesis. Differing from other forms of inflammation that typically precede tumor formation, 'cancer-elicited inflammation (CEI)' is induced following the initiation of a tumor. Beyond the cell-autonomous effects observed in cancer cells, the activation of several oncogenes, including KRAS and MYC, coupled with the rendering of tumor suppressors, for instance, TP53 inactive, triggers programs at the transcription level that culminate in the formation of a tumor-encouraging microenvironment. This is accomplished by the overproduction of chemokines and pro-inflammatory cytokines, immune cell recruitment, and the initiation of angiogenesis. Although it is critical to comprehend the mechanisms by which inflammation aids in the development of cancer, the impact that tumors themselves have on the immune system must be considered because these effects have significant repercussions for the therapy and prevention of cancer. This comprehensive review primarily centers on various inflammatory pathways that have been influenced by cancer and have, in turn, influenced cancer progression. Additionally, we delve deeply into the intricate mechanisms through which specific natural products exert regulatory control over the complex molecular foundations that drive their robust anti-inflammatory and anti-cancer effects.
+
+================================================================================
+
+Article 2
+--------------------------------------------------------------------------------
+PMID: 41296436
+
+Title: Descriptive Genomic Analysis of Ampullary Carcinoma Utilizing the AACR Project GENIE Dataset.
+
+Authors: Martin S, Recupido B, Torbenson E, Hsia B, Braaten M, Tauseef A
+
+Abstract:
+<b>Background:</b> Ampullary cancer is a rare biliary tract cancer arising from one of the three epithelial tissues in the region. Leveraging a large patient-level genomic database, this study aims to identify, explore, and describe the genetic landscape of ampullary carcinoma and its implications. <b>Methods:</b> A retrospective analysis of ampullary cancer samples was conducted using the AACR Project GENIE database. Analysis of recurrent somatic mutations at large and between patient populations, and co-occurrence and mutual exclusivity of mutations was conducted, with a <i>p</i>-value < 0.05. <b>Results:</b> The most frequent mutations were identified as <i>TP53</i> (53.2%), <i>KRAS</i> (46.6%), and <i>SMAD4</i> (16.6%). Mutational differences were noted between sexes, White vs. Non-white groups, and histopathological subtypes. Significant mutual exclusivity was found between <i>KRAS</i> and <i>ERBB2.</i> Co-occurrence was observed in the <i>ARID1A</i> mutation with <i>KMT2D</i>, <i>ERBB2</i>, and <i>PIK3CA</i>; <i>CDKN2A</i> with the <i>SMAD4</i> and <i>KRAS</i> mutations; <i>TP53</i> mutation with the <i>CTNNB1</i> mutation; and <i>KRAS</i> co-occurred with an <i>APC</i> mutation. Reduced survival rates were seen in populations with the <i>TP53</i> or <i>KRAS</i> mutation. <b>Conclusions:</b> This study provides a detailed descriptive genomic landscape of ampullary carcinoma, highlighting frequent mutations between patient groups and the mutational burden of the DNA damage response pathway in ampullary cancer, laying important groundwork for the development of therapeutic targets and more individualized treatment regimens.
+
+================================================================================
+
+Article 3
+--------------------------------------------------------------------------------
+PMID: 41296434
+
+Title: Bridging Andrology and Oncology: Prognostic Indicators of Cancer Among Infertile Men.
+
+Authors: Zachariou A, Moustakli E, Zikopoulos A, Filiponi M, Potiris A, Kathopoulis N, Grigoriadis T, Tzeli M, Machairiotis N, Domali E, Thomakos N, Stavros S
+
+Abstract:
+Approximately 7% of males globally suffer from male infertility, which is becoming more widely acknowledged as a clinical indicator of potential health hazards as well as a cause of reproductive failure. Among these, cancer has become a significant worry due to mounting evidence that spermatogenesis impairment is associated with increased risk of prostate, testicular, and other cancers. Male infertility may be an early clinical manifestation of systemic genomic instability due to shared biological pathways, such as Y-chromosome microdeletions (AZF regions), germline DNA repair defects, mutations in tumor suppressor genes (e.g., <i>BRCA1/2</i>, <i>TP53</i>), mismatch repair gene mutations (e.g., <i>MLH1</i>, <i>MSH2</i>), and dysregulated epigenetic profiles. This narrative review covers the most recent research on prognostic markers of cancer in infertile men. These include molecular biomarkers such as genetic, epigenetic, and proteomic signatures; endocrine and hormonal profiles; and clinical predictors such as azoospermia, severe oligozoospermia, and a history of cryptorchidism. The possibility of incorporating these indicators into risk stratification models for precision medicine and early cancer surveillance is highlighted. For this high-risk group, bridging the domains of andrology and oncology may allow for better counseling, earlier detection, and focused therapies.
+
+================================================================================
+
+Article 4
+--------------------------------------------------------------------------------
+PMID: 41296188
+
+Title: Retroelements in thyroid cancer: epigenetic plasticity, dedifferentiation, and therapeutic opportunities.
+
+Authors: D'Alessandre NDR, Pessoa BS, Guardia GA, Marques JM, Galante PAF, Batista RL
+
+Abstract:
+Thyroid tumors display remarkable phenotypic plasticity, particularly in their progression from well-differentiated forms to aggressive, dedifferentiated subtypes such as anaplastic thyroid carcinoma. While genetic drivers such as BRAF, TP53, and members of the RAS gene family underpin key oncogenic transitions, they do not fully explain the profound transcriptional deregulation and therapeutic resistance that characterize advanced disease. Mobile genetic elements, including LINE-1 retrotransposons and human endogenous retroviruses, constitute nearly half of the human genome and normally contribute to gene regulation, chromatin organization and developmental plasticity. However, epigenetic erosion and loss of genome surveillance lead to their aberrant reactivation, generating non-canonical transcripts, regulatory rewiring and insertional mutagenesis. In cancer, TERT promoter mutations have been linked to transcriptional activation of specific endogenous retroviral elements, and TP53 dysfunction exacerbates LINE-1 derepression, functionally connecting classical genetic alterations to mobilome reactivation, genome instability and phenotypic dedifferentiation. Emerging data also indicate that reverse transcriptase inhibitors (e.g., lamivudine, nevirapine) can partially suppress retroelement activity, induce transcriptional reprogramming and restore radioiodine uptake in refractory thyroid tumors, highlighting a potential therapeutic vulnerability. By integrating cancer epigenetics and mobilome biology, this review reframes thyroid tumor evolution as a process shaped not only by genetic alterations but also by retroelement-mediated disruption of genome regulation. Retroelements may serve as biomarkers of aggressive transformation and as actionable targets in translational oncology.
+
+================================================================================
+
+Article 5
+--------------------------------------------------------------------------------
+PMID: 41295250
+
+Title: Gene Expression Profiling Provides an Improved Characterization of <i>CD79B</i>-Mutated Diffuse Large B-Cell Lymphomas.
+
+Authors: Grossmann L, Jagla W, Bettstetter M, Bertz S, Schwarz-Furlan S, Richter T, Dechow T, Decker T, Dreyling M, Sotlar K, Bartsch H, Hartmann A, Honecker J, Gaumann A
+
+Abstract:
+<b>Background and Objectives</b>: Diffuse large B-cell lymphomas (DLBCLs) are heterogeneous neoplasms. <i>CD79B</i> and <i>MYD88</i> mutations are associated with the activated B-cell-like (ABC) subtype of DLBCL and often co-occur and lead to constitutive activation of the NF-κB pathway. Several different genetic classifications to date have recognized <i>CD79B</i>- and <i>MYD88</i>-mutated DLBCLs as a unique subtype with poor response to therapy and unfavorable survival. However, little is known about gene expression in DLBCLs with mutated <i>CD79B</i> (and <i>MYD88</i>) in comparison to their wild type counterparts. The objective of this study was to compare the gene expression in DLBCLs according to their <i>CD79B</i> mutational status. <b>Methods</b>: A total of 48 primary, treatment-naïve DLBCLs (<i>CD79B</i>-mutated: 35%/n = 17, <i>CD79B</i>-wild type: 65%/n = 31) were investigated using RNA expression profiling (770 genes), followed by immunohistochemical analysis of the up-regulated genes and survival analysis. <b>Results</b>: The gene expression analysis revealed that downstream of CD79B <i>CARD11</i> and the NF-κB targets <i>NFKBIZ</i>, <i>IL10</i>, <i>IL12A</i>, <i>PIM1</i> and <i>BCL2A1</i> were up-regulated in <i>CD79B</i>-mutated DLBCLs. The strongest up-regulation was detected for <i>ARNT2</i> and <i>WNT11</i>. Other up-regulated genes included the apoptosis-related <i>BID</i> and <i>granzyme B</i>, as well as genes of cell cycle regulation such as <i>RUNX1</i>, <i>RUNX1T1</i> and <i>RASGRF1</i>. Up-regulation was also found for <i>IL7</i>, <i>STAT3</i>, <i>MLLT4</i>, <i>CD14</i> and the <i>HSP90B1</i> subunit. <i>TP53</i> mutation showed an association with poorer overall survival in a secondary analysis, consistent with prior reports, while survival by <i>CD79B</i>/<i>MYD88</i> mutation status and the differentially expressed genes showed no significant differences in this cohort. <b>Conclusions</b>: In conclusion, the current study identified novel up-regulated genes in <i>CD79B</i>-mutated DLBCLs beyond NF-κB pathway signaling, which may contribute to a better definition of potential therapeutic targets and further improves the characterization of this distinct and aggressive DLBCL subgroup.
+
+================================================================================
+
