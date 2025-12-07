@@ -38,7 +38,8 @@ HANDLE = "RAZVAN24RR" # ATENTIE: Inlocuiti cu handle-ul corect!
 
 # Fișiere de intrare (aceleași ca în Lab 6)
 EXPR_CSV = Path(f"data/work/{HANDLE}/lab06/expression_matrix.csv")
-MODULES_CSV = Path(f"labs/06_networks/submissions/{HANDLE}/modules_{HANDLE}.csv")
+# Calea ta corectată:
+MODULES_CSV = Path(f"data/work/{HANDLE}/lab06/modules_{HANDLE}.csv")
 
 # (Opțional) încărcați o adiacență pregătită; altfel, reconstruiți din corelații
 PRECOMPUTED_ADJ_CSV: Optional[Path] = None  # ex: Path(f"labs/06_networks/submissions/{HANDLE}/adj_{HANDLE}.csv")
@@ -46,7 +47,7 @@ PRECOMPUTED_ADJ_CSV: Optional[Path] = None  # ex: Path(f"labs/06_networks/submis
 # Parametri pentru reconstrucția adiacenței (dacă nu aveți CSV)
 CORR_METHOD = "spearman"   # "pearson" sau "spearman"
 USE_ABS_CORR = True        # True => folosiți |cor|
-ADJ_THRESHOLD = 0.8        # prag pentru |cor| (am crescut la 0.8 pentru performanță)
+ADJ_THRESHOLD = 0.7        # Prag ajustat la 0.7 pentru a obține muchii (conexiuni)
 WEIGHTED = False           # False => 0/1; True => păstrează valorile corr peste prag
 
 # Parametri de vizualizare
@@ -54,6 +55,7 @@ SEED = 42                  # pentru layout determinist
 TOPK_HUBS = 10             # câte gene hub etichetăm (după grad)
 NODE_BASE_SIZE = 60        # mărimea de bază a nodurilor
 EDGE_ALPHA = 0.15          # transparența muchiilor
+MAX_GENES_FOR_VIZ = 1000   # Noua limită de gene pentru a preveni crash-ul
 
 # Ieșiri
 OUT_DIR = Path(f"labs/07_networkviz/submissions/{HANDLE}")
@@ -139,7 +141,9 @@ def compute_hubs(G: nx.Graph, topk: int) -> pd.DataFrame:
     Returnează DataFrame cu nod, grad, betweenness (opțional), ordonat descrescător.
     """
     deg = dict(G.degree())
-    btw = nx.betweenness_centrality(G, normalized=True, seed=SEED) if G.number_of_nodes() <= 5000 else {n: np.nan for n in G.nodes()}  # evitați costul mare
+    # MODIFICARE: Evităm betweenness centrality (O(V^3)) care cauzează Terminated
+    # Păstrăm doar calculul gradului
+    btw = {n: np.nan for n in G.nodes()} 
     hubs = (
         pd.DataFrame({"Gene": list(deg.keys()), "Degree": list(deg.values()), "Betweenness": [btw.get(n, np.nan) for n in deg.keys()]})
         .sort_values(["Degree", "Betweenness"], ascending=False)
@@ -159,6 +163,11 @@ if __name__ == "__main__":
 
     expr = read_expression_matrix(EXPR_CSV)
     
+    # MODIFICARE CRITICĂ: Limităm matricea pentru a preveni Terminated
+    if expr.shape[0] > MAX_GENES_FOR_VIZ:
+        print(f"ATENTIE: Limitam matricea de expresie la primele {MAX_GENES_FOR_VIZ} gene pentru vizualizare.")
+        expr = expr.iloc[:MAX_GENES_FOR_VIZ, :]
+
     # Citire/Simulare module
     gene2module = read_modules_csv(MODULES_CSV)
     if not gene2module:
@@ -201,9 +210,9 @@ if __name__ == "__main__":
     node_sizes = [NODE_BASE_SIZE * (1.5 if n in hubs_set else 1.0) for n in G.nodes()]
 
     # 6) Layout + desen
-    # Folosim spring_layout (mai simplu si rapid)
-    # MODIFICARE: setam k=0.3 pentru a forta o convergenta mai rapida
-    pos = nx.spring_layout(G, seed=SEED, k=0.3) 
+    # Folosim circular_layout care nu necesită calcul bazat pe forțe (cel mai rapid)
+    pos = nx.circular_layout(G) 
+
     plt.figure(figsize=(12, 12))
     # Titlu adăugat
     plt.title(f"Rețea de Co-expresie Genică Vizualizată ({G.number_of_nodes()} noduri)", fontsize=16)
