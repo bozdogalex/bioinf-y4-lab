@@ -8,15 +8,20 @@ polars>=1.0,<1.2
 duckdb>=1.0,<1.2
 matplotlib>=3.9,<3.10
 
-# ML & graphs
+# ML (supervised, unsupervised, semi-supervised)
+# NOTE: remove raw "sklearn" — only scikit-learn is correct
 scikit-learn>=1.5,<1.6
-networkx>=3.3,<3.4
+seaborn>=0.13,<0.14    # for confusion matrices & PCA plots
 
-# Lint
+# Graphs & networks
+networkx>=3.3,<3.4
+python-louvain>=0.16,<0.17   # for Louvain community detection (Lab 6 & 7)
+
+# Linting
 flake8>=7.0,<7.1
 
-# Tracking
+# Experiment tracking
 mlflow>=2.14,<3
 
-# Bioinformatics (needed since Lab 1)
+# Bioinformatics
 biopython>=1.84,<1.86
