@@ -23,7 +23,7 @@ Notă: folosiți datele descărcate în Lab 1 (din `data/work/<handle>/lab01/`)
 
 ## Livrabile
 În PR trebuie să apară:
-1. Fișierul `labs/02_alignment/<github_handle>_notes.md` cu:  
+1. Fișierul `labs/02_alignment/submissions/<github_handle>_notes.md` cu:  
    - ce date ați folosit (ex. TP53 vs. BRCA1),  
    - o scurtă reflecție: **Când este de preferat alinierea globală vs. locală?”**  
 2. Exercițiile completate, salvate în:  
