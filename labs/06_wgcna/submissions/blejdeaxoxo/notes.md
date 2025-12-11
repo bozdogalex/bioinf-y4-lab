@@ -1,0 +1,3 @@
+Spearman + threshold 0.7
+
+Clustering-ul grupeaza genele in grupuri mutual exclusive pe baza similaritatii globale, avand drept obiectiv formarea de grupuri de obiecte similare, in schimb retelele de co-expresie modeleaza o structura la nivelul relatiilor dintre gene, pastrand informatiile despre aceste legaturi, asta permite aplicarea algoritmilor de community detection care pot identifica structuri topologice.

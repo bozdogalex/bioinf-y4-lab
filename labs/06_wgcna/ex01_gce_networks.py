@@ -40,7 +40,7 @@ import networkx as nx
 # --------------------------
 # Config — completați după nevoie
 # --------------------------
-INPUT_CSV =
+INPUT_CSV = 
 OUTPUT_DIR =
 OUTPUT_CSV =
 
