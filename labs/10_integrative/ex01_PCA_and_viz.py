@@ -1,5 +1,5 @@
 """
-Exercise 10.1 — PCA Single-Omics vs Joint
+Exercise 10 — PCA Single-Omics vs Joint
 
 TODO:
 - încărcați SNP și Expression

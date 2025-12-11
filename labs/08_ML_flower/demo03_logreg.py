@@ -22,7 +22,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
-DATA_CSV = Path("labs/08_ml/data/expression_demo.csv")
+DATA_CSV = Path("../data/sample/tissue_gene_expression_demo.csv")
 OUT_DIR = Path("labs/08_ml/demo_outputs")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
