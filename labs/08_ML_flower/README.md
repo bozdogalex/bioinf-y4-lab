@@ -77,8 +77,7 @@ Task-uri:
 2. `confusion_rf_<handle>.png`  
 3. `feature_importance_<handle>.csv`  
 4. *(opțional)* `cluster_crosstab_<handle>.csv`  
-5. `report_lab08_<handle>.pdf` (max 3 pagini)  
-6. checklist PR completat
+5. checklist PR completat
 
 ---
 
