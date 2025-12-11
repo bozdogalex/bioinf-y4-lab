@@ -1,0 +1,24 @@
+=== Random Forest ===
+              precision    recall  f1-score   support
+
+       Brain       0.88      0.96      0.92        23
+       Heart       0.67      0.29      0.40         7
+       Liver       0.70      0.82      0.76        17
+       Tumor       1.00      0.80      0.89         5
+
+    accuracy                           0.81        52
+   macro avg       0.81      0.72      0.74        52
+weighted avg       0.80      0.81      0.79        52
+
+
+=== Logistic Regression ===
+              precision    recall  f1-score   support
+
+       Brain       0.96      0.96      0.96        23
+       Heart       0.43      0.43      0.43         7
+       Liver       0.75      0.88      0.81        17
+       Tumor       1.00      0.40      0.57         5
+
+    accuracy                           0.81        52
+   macro avg       0.78      0.67      0.69        52
+weighted avg       0.82      0.81      0.80        52
