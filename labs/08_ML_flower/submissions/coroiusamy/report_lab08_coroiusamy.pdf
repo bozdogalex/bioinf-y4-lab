@@ -1,0 +1,39 @@
+În acest laborator am implementat un pipeline de învățare supervizată (Supervised Learning) pentru a clasifica mostre biologice pe baza expresiei genice. Setul de date a fost procesat pentru a elimina metadatele nenumerice, iar etichetele (Labels) au fost codificate numeric.
+
+Am antrenat două modele:
+Random Forest Classifier (n_estimators=50)
+Logistic Regression (pentru comparație)
+
+Datele au fost împărțite în set de antrenare și set de test (20%).
+
+2. Rezultate - Random Forest (Model Principal)
+
+Performanță Generală:
+Acuratețe (Accuracy): 97%
+Macro F1-Score: 0.09 (Foarte mic)
+
+Matricea de confuzie și raportul de clasificare indică o dezechilibrare masivă a claselor (Class Imbalance):
+Clasa 0.0 este majoritară (3870 mostre din 4000 în test set). Modelul a învățat să prezică această clasă aproape perfect (Precision 0.97, Recall 1.00).
+Clasele minoritare (ex: 2.06..., 2.88...) sunt clasificate greșit în marea majoritate a cazurilor.
+De exemplu, pentru clasa 2.065... (94 mostre), modelul a identificat corect doar 3 mostre (Recall 0.03), restul de 91 fiind prezise eronat ca aparținând clasei 0.0.
+
+3. Importanța Trăsăturilor (Feature Importance)
+Cele mai importante gene identificate de Random Forest pentru discriminarea claselor sunt:
+
+P1TLH_TGGCGCATCCGGCACA_1 (Importanță: ~0.0051)
+P1TLH_CTGATAGTCGGTCCGA_1 (Importanță: ~0.0045)
+P1TLH_ACTTTCAGTGTGAATA_1 (Importanță: ~0.0035)
+P1TLH_GCAGTTATCCCTCAGT_1
+P1TLH_CTAAGACTCGACGGAA_1
+
+Faptul că scorurile de importanță sunt mici (sub 1%) sugerează că decizia nu este luată de o singură genă, ci de o combinație complexă a acestora.
+
+4. Comparație cu Logistic Regression
+Am comparat Random Forest cu Logistic Regression:
+
+Random Forest Accuracy: 97%
+Logistic Regression Accuracy: 94%
+Deși Random Forest are o acuratețe generală mai bună, ambele modele suferă din cauza lipsei de date pentru clasele minoritare. Logistic Regression are un Recall și mai slab pentru clasele rare (ex: clasa 2.88... are Recall 0.08).
+
+5. Concluzii
+Modelul obține o acuratețe aparent excelentă (97%), dar aceasta este înșelătoare (the accuracy paradox). Deoarece setul de date este dominat de clasa 0.0, modelul a optimizat funcția de cost prezicând majoritar această clasă.
