@@ -3,7 +3,7 @@ Cisplatin,2.0,High priority,Direct proximity to TP53 and DNA damage response gen
 Doxorubicin,2.0,High priority,Targets TP53 pathway and stress response module
 Etoposide,2.0,High priority,Connected to TOP2A and TP53-related mechanisms
 Nutlin-3,2.0,High priority,MDM2 inhibitor with direct link to TP53 regulation
-PARP_inhibitor,3.5,Medium priority,Indirect proximity via BRCA1 and DNA repair pathways
+PARP inhibitor,3.5,Medium priority,Indirect proximity via BRCA1 and DNA repair pathways
 Olaparib,3.5,Medium priority,PARP inhibition connected to BRCA1-mediated repair
 Aspirin,6.0,Low priority,Inflammatory pathway not directly linked to disease module
 Ibuprofen,6.0,Low priority,Peripheral inflammatory targets distant from disease genes
