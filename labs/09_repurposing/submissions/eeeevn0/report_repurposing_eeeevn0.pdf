@@ -1,0 +1,36 @@
+
+1.Datele utilizate și construirea rețelei
+
+Pentru realizarea acestui laborator am utilizat un fișier CSV ce conține interacțiuni directe între medicamente și gene țintă. 
+Pe baza acestor date a fost construită o rețea bipartită drug–gene, care permite analizarea relațiilor dintre medicamente și componentele genetice asupra cărora acestea acționează.
+
+În cadrul rețelei, medicamentele sunt reprezentate prin noduri albastre, iar genele prin noduri roșii. Muchiile dintre noduri indică existența unor interacțiuni biologice directe între un medicament și o genă.
+
+Rețeaua obținută este organizată în mai multe grupuri distincte, fiecare corespunzând unui mecanism biologic specific. 
+Aceste grupuri reflectă procese importante precum repararea ADN-ului, răspunsul inflamator sau căile de semnalizare EGFR, evidențiind organizarea funcțională a interacțiunilor din rețea.
+
+
+2.Similaritatea dintre medicamente
+
+Pentru a evalua gradul de asemănare dintre medicamente, am analizat seturile de gene pe care acestea le țintesc. 
+Similaritatea dintre medicamente a fost calculată utilizând coeficientul Jaccard,care compară genele comune raportate la totalul genelor țintă.
+
+Medicamentele care împart un număr mai mare de gene țintă comune sunt mai apropiate din punct de vedere topologic în rețea, lucru care sugerează existența unor mecanisme biologice similare sau a unor efecte terapeutice apropiate, aspect important în procesul de reutilizare a medicamentelor.
+
+3.Analiza de proximitate
+
+Pentru analiza de proximitate am calculat distanța dintre fiecare medicament și un set de gene asociate bolii. 
+Această distanță a fost determinată folosind cel mai scurt drum din rețea, ceea ce permite evaluarea apropierii topologice dintre medicamente și genele bolii.
+Medicamentele care prezintă valori mai mici ale distanței sunt considerate mai apropiate de modulul bolii și, implicit, mai relevante din punct de vedere biologic.
+
+Rezultatele obținute indică faptul că Cisplatin, Doxorubicin, Etoposide și Nutlin-3 au cele mai mici distanțe, sugerând o proximitate ridicată față de genele bolii. 
+PARP inhibitors și Olaparib prezintă valori intermediare ale distanței, fiind conectați indirect prin gene implicate în procesele de reparare a ADN-ului. 
+În schimb, Aspirin, Ibuprofen, Erlotinib și Gefitinib au distanțe mai mari, ceea ce indică o legătură mai slabă cu modulul bolii analizate.
+
+
+4.Concluzii
+
+Rețelele biologice pot fi utilizate eficient pentru prioritizarea medicamentelor. 
+Metoda bazată pe proximitate evidențiază medicamentele apropiate de genele bolii și penalizează medicamentele situate la distanță în rețea.
+
+Chiar și în cazul unui set de date simplificat, rezultatele obținute sunt clare și ușor de interpretat, demonstrând utilitatea abordării bazate pe rețele.
