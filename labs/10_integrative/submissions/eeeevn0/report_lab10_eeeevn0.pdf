@@ -1,0 +1,40 @@
+1. Date utilizate și procesare
+
+Pentru acest laborator au fost utilizate date multi-omics sintetice, generate pentru a simula integrarea dintre date genetice de tip SNP și date de expresie genică. Setul de date este alcătuit din două componente principale: o matrice de SNP-uri și o matrice de expresie genică, construite astfel încât să permită observarea relațiilor dintre cele două straturi biologice.
+Datele au fost organizate în așa fel încât fiecare rând să reprezinte o probă, iar fiecare coloană să corespundă unui SNP sau unei gene. De exemplu, coloane precum SNP_00 sau SNP_04 descriu variații genetice, în timp ce coloane de tipul GENE_06 sau GENE_08 reprezintă niveluri de expresie genică. Valorile asociate SNP-urilor sunt discrete (0, 1 sau 2), iar valorile de expresie genică sunt continue și includ zgomot biologic, pentru a imita condiții apropiate de cele întâlnite în seturi de date biologice reale.
+
+În etapa de procesare, probele comune dintre cele două straturi de date au fost aliniate, astfel încât aceeași probă să fie reprezentată corect în ambele matrici. 
+Pentru a asigura comparabilitatea între cele două tipuri de date, fiecare strat a fost normalizat folosind normalizarea de tip Z-score. Ulterior, datele SNP și cele de expresie genică au fost concatenate într-o matrice multi-omics integrată (multiomics_concat_eeeevn0.csv), care a fost utilizată atât pentru analiza PCA, cât și pentru identificarea relațiilor dintre SNP-uri și gene.
+
+Pentru analiza cross-omics au fost calculate corelații Pearson între fiecare SNP și fiecare genă. 
+Au fost păstrate doar perechile cu valori |r| > 0.5, considerate suficient de puternice pentru a fi relevante în contextul acestui exercițiu.
+De exemplu, au fost identificate corelații ridicate între SNP-uri precum SNP_04 și genele GENE_08 sau GENE_09. Rezultatele finale au fost salvate într-un fișier CSV și utilizate ulterior pentru interpretarea rezultatelor.
+
+2.Exercițiul 1 — Feature Fusion & PCA
+În cadrul primului exercițiu a fost aplicată analiza Principal Component Analysis (PCA) pentru a studia distribuția probelor în trei situații diferite: pe datele SNP, pe datele de expresie genică și pe datele integrate (SNP + expresie genică). 
+Pentru fiecare dintre aceste cazuri au fost generate reprezentări grafice bidimensionale, corespunzătoare primelor două componente principale.
+
+Rezultatele obținute arată că aplicarea PCA pe fiecare strat separat surprinde tipuri diferite de variație biologică. 
+În schimb, PCA realizată pe datele integrate combină informația genetică și transcriptomică, ceea ce conduce la o distribuție a probelor diferită față de analizele single-omics. Acest lucru sugerează faptul că integrarea multi-omics oferă o imagine mai generală și mai completă asupra structurii datelor.
+
+Figurile generate în cadrul acestui exercițiu sunt:
+- pca_snp_eeeevn0.png
+- pca_expression_eeeevn0.png
+- pca_joint_eeeevn0.png
+
+3.Exercițiul 2 — Identificarea markerilor cross-omics
+Al doilea exercițiu a avut ca scop identificarea relațiilor dintre variațiile genetice și expresia genică, prin calcularea corelațiilor SNP–genă utilizând coeficientul Pearson, pe matricea multi-omics integrată.
+Procesul a inclus separarea coloanelor corespunzătoare SNP-urilor și genelor, calcularea corelației pentru fiecare pereche posibilă și filtrarea rezultatelor pe baza pragului |r| > 0.5, conform cerinței exercițiului.
+
+În urma analizei, au fost identificate 10 perechi SNP–genă care prezintă corelații moderate și puternice, cu valori ale coeficientului Pearson cuprinse între aproximativ 0.58 și 0.80. 
+Valorile foarte mici ale p-value indică o semnificație statistică ridicată a acestor corelații.
+Printre cele mai relevante perechi identificate se numără:
+SNP_04 – GENE_08 (r ≈ 0.80)
+SNP_03 – GENE_06 (r ≈ 0.74)
+SNP_00 – GENE_00 (r ≈ 0.72)
+
+Rezultatele finale au fost exportate într-un fișier CSV și utilizate pentru interpretarea relațiilor cross-omics identificate.
+
+4. Concluzie
+Prin rezolvarea exercițiilor propuse în acest laborator,a fost realizată integrarea datelor SNP și a datelor de expresie genică într-o analiză multi-omics. 
+Utilizarea analizei PCA și a corelațiilor SNP–genă a permis observarea diferențelor dintre datele analizate separat și cele integrate, precum și identificarea unor markeri cross-omics relevanți.
