@@ -1,0 +1,12 @@
+drug1,drug2,similarity
+Adalimumab,Infliximab,1.0
+Aspirin,Celecoxib,0.5
+Baricitinib,Tofacitinib,0.3333333333333333
+Cisplatin,Doxorubicin,0.3333333333333333
+Cisplatin,Etoposide,0.3333333333333333
+Cisplatin,Olaparib,0.6666666666666666
+Dasatinib,Imatinib,0.25
+Doxorubicin,Etoposide,1.0
+Doxorubicin,Olaparib,0.25
+Erlotinib,Gefitinib,1.0
+Etoposide,Olaparib,0.25

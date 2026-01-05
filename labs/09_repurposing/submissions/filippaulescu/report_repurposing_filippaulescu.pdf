@@ -1,0 +1,45 @@
+Raport: Network-Based Drug Repurposing (Saptamana 9)
+
+Student: Filip Paulescu
+Handle: filippaulescu
+Data: 05 Ianuarie 2026
+
+
+1. Introducere
+
+Acest laborator a vizat construirea si analiza unei retele bipartite drug–gene pentru a identifica oportunitati de drug repurposing. Procesul a implicat transformarea interactiunilor directe in retele de similaritate si utilizarea metricilor de proximitate pentru a prioritiza medicamente candidate fata de un set de gene asociate unei patologii.
+
+
+2. Metodologie
+
+2.1 Construirea Retelei
+
+S-a utilizat un set de date extins cu peste 30 de interactiuni. Reteaua a fost modelata ca un graf bipartit G = (U, V, E), unde U reprezinta medicamentele, V reprezinta genele tinta, iar E reprezinta interactiunile drug–gene.
+
+2.2 Calculul Similaritatii
+
+Pentru proiectarea layer-ului de medicamente s-a aplicat coeficientul Jaccard, definind similaritatea dintre doua medicamente ca raportul dintre numarul genelor tinta comune si numarul total de gene tinta unice. Aceasta masura permite gruparea medicamentelor cu mecanisme de actiune similare.
+
+2.3 Network Proximity
+
+S-a calculat distanta medie (shortest path) in reteaua globala intre setul de medicamente si setul de gene asociate bolii: TNF, JAK1, TP53. Aceasta metrica a fost folosita pentru prioritizarea candidatilor de repurposing.
+
+
+3. Rezultate si Interpretare Biologica
+
+3.1 Top Prioritizare
+
+Grupul principal de medicamente, format din Baricitinib, Adalimumab si Doxorubicin, a obtinut un scor de proximitate de 5.66. Aceasta indica o relevanta biologica ridicata, deoarece setul de gene ale bolii contine exact tintele acestor medicamente: TNF pentru Adalimumab, JAK1 pentru Baricitinib si TP53 pentru chimioterapice.
+
+3.2 Similaritate Maximala
+
+S-a observat o similaritate de 1.0 intre medicamente din clase terapeutice identice, de exemplu inhibitorii TNF, confirmand ca modelul de retea poate grupa corect compusii cu mecanisme de actiune redundante.
+
+3.3 Medicamente Secundare
+
+Compusul Imatinib, cu o distanta de 8.0, a fost penalizat in ranking deoarece, desi este un medicament potent cu trei tinte, genele sale (ABL1, KIT, PDGFRB) sunt mai indepartate de centrul de interes al bolii definite in acest scenariu.
+
+
+4. Concluzii
+
+Analiza demonstreaza ca proximitatea in retea este un predictor mai bun pentru drug repurposing decat simplul numar de tinte. Desi Imatinib are cele mai multe gene asociate, Adalimumab si Baricitinib sunt candidati superiori pentru setul de boala selectat datorita distantei topologice reduse fata de genele de interes.
