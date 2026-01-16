@@ -1,0 +1,22 @@
+drug1,drug2,similarity
+# Week 9 drug–gene lab,# We’re not shipping proprietary drug DB content; this is a didactic seed list. Students replace/extend with DGIdb/DrugBank exports and proper citations.,1.0
+Cisplatin,Doxorubicin,1.0
+Cisplatin,Etoposide,1.0
+Doxorubicin,Etoposide,1.0
+# Week 9 drug–gene lab,Cisplatin,0.0
+# Week 9 drug–gene lab,Doxorubicin,0.0
+# Week 9 drug–gene lab,Etoposide,0.0
+# Week 9 drug–gene lab,Nutlin-3,0.0
+# Week 9 drug–gene lab,PARP_inhibitor,0.0
+# We’re not shipping proprietary drug DB content; this is a didactic seed list. Students replace/extend with DGIdb/DrugBank exports and proper citations.,Cisplatin,0.0
+# We’re not shipping proprietary drug DB content; this is a didactic seed list. Students replace/extend with DGIdb/DrugBank exports and proper citations.,Doxorubicin,0.0
+# We’re not shipping proprietary drug DB content; this is a didactic seed list. Students replace/extend with DGIdb/DrugBank exports and proper citations.,Etoposide,0.0
+# We’re not shipping proprietary drug DB content; this is a didactic seed list. Students replace/extend with DGIdb/DrugBank exports and proper citations.,Nutlin-3,0.0
+# We’re not shipping proprietary drug DB content; this is a didactic seed list. Students replace/extend with DGIdb/DrugBank exports and proper citations.,PARP_inhibitor,0.0
+Cisplatin,Nutlin-3,0.0
+Cisplatin,PARP_inhibitor,0.0
+Doxorubicin,Nutlin-3,0.0
+Doxorubicin,PARP_inhibitor,0.0
+Etoposide,Nutlin-3,0.0
+Etoposide,PARP_inhibitor,0.0
+Nutlin-3,PARP_inhibitor,0.0

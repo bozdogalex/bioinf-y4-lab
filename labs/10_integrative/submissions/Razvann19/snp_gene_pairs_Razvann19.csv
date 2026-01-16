@@ -1,0 +1,3 @@
+snp,gene,correlation,n_samples
+SNP1,GENE_A,0.9999999999999999,2
+SNP1,GENE_B,0.9999999999999999,2

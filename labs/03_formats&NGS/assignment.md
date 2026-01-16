@@ -36,7 +36,7 @@ Tema are rolul de a integra cunoștințele despre baze de date, formate și QC, 
 ---
 
 ### Bonus (+1p)
-- Generați o vizualizare simplă (matplotlib) cu distribuția lungimilor si scorurilor Phred și salvați ca `qc_plot_<handle>.png`.
+- Generați o vizualizare simplă (matplotlib) cu distribuția lungimilor sau scorurilor Phred și salvați ca `qc_plot_<handle>.png`.
 
 ---
 

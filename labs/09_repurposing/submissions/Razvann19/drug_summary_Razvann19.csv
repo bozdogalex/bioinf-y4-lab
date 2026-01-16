@@ -1,0 +1,8 @@
+drug,num_targets
+# Week 9 drug–gene lab,1
+# We’re not shipping proprietary drug DB content; this is a didactic seed list. Students replace/extend with DGIdb/DrugBank exports and proper citations.,1
+Cisplatin,1
+Doxorubicin,1
+Etoposide,1
+Nutlin-3,1
+PARP_inhibitor,1

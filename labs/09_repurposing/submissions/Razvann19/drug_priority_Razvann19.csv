@@ -1,0 +1,8 @@
+drug,distance
+Cisplatin,1.0
+Doxorubicin,1.0
+Etoposide,1.0
+Nutlin-3,1.0
+PARP_inhibitor,1.0
+# Week 9 drug–gene lab,6.0
+# We’re not shipping proprietary drug DB content; this is a didactic seed list. Students replace/extend with DGIdb/DrugBank exports and proper citations.,6.0
