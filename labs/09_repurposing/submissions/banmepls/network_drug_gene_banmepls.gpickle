@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="node" attr.name="bipartite" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="Aspirin">
+      <data key="d0">drug</data>
+    </node>
+    <node id="Ibuprofen">
+      <data key="d0">drug</data>
+    </node>
+    <node id="Statin">
+      <data key="d0">drug</data>
+    </node>
+    <node id="Metformin">
+      <data key="d0">drug</data>
+    </node>
+    <node id="PTGS1">
+      <data key="d0">gene</data>
+    </node>
+    <node id="PTGS2">
+      <data key="d0">gene</data>
+    </node>
+    <node id="IL6">
+      <data key="d0">gene</data>
+    </node>
+    <node id="TNF">
+      <data key="d0">gene</data>
+    </node>
+    <node id="NPC1">
+      <data key="d0">gene</data>
+    </node>
+    <node id="AMPK">
+      <data key="d0">gene</data>
+    </node>
+    <node id="GLUT4">
+      <data key="d0">gene</data>
+    </node>
+    <edge source="Aspirin" target="PTGS1" />
+    <edge source="Aspirin" target="PTGS2" />
+    <edge source="Aspirin" target="IL6" />
+    <edge source="Ibuprofen" target="PTGS2" />
+    <edge source="Ibuprofen" target="TNF" />
+    <edge source="Statin" target="NPC1" />
+    <edge source="Metformin" target="AMPK" />
+    <edge source="Metformin" target="GLUT4" />
+  </graph>
+</graphml>
