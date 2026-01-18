@@ -29,7 +29,7 @@ from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 
 HANDLE = "AlexTGoCreative"
-DATA_PATH = Path("/workspaces/bioinf-y4-lab/data/work/AlexTGoCreative/lab08/expression_matrix.csv")
+DATA_PATH = Path("/workspaces/bioinf-y4-lab/data/work/AlexTGoCreative/lab08/expression_matrix_1.csv")
 OUT_DIR = Path("assignment")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 OUT_CLASSIFICATION_REPORT = OUT_DIR / f"classification_report_{HANDLE}.txt"

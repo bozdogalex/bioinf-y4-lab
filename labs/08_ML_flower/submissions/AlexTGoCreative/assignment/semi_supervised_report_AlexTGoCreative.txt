@@ -1,0 +1,15 @@
+============================================================
+SEMI-SUPERVISED LEARNING EXPERIMENT
+============================================================
+
+Procent date neetichetate: 40%
+Probe etichetate: 120
+Probe neetichetate: 80
+
+REZULTATE:
+----------------------------------------
+Baseline (doar date etichetate): 0.6250
+Dupa Pseudo-labeling: 0.6250
+Full data (upper bound): 0.3500
+
+Imbunatatire pseudo-labeling: +0.0000

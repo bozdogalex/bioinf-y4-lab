@@ -1,0 +1,25 @@
+============================================================
+COMPARATIE: RANDOM FOREST vs LOGISTIC REGRESSION
+============================================================
+
+LOGISTIC REGRESSION:
+              precision    recall  f1-score   support
+
+       Brain       0.40      0.46      0.43        13
+      Kidney       0.47      0.50      0.48        14
+       Liver       0.60      0.46      0.52        13
+
+    accuracy                           0.47        40
+   macro avg       0.49      0.47      0.48        40
+weighted avg       0.49      0.47      0.48        40
+
+Accuracy LR: 0.4750
+F1-Score LR (weighted): 0.4778
+
+============================================================
+COMPARATIE SUMARA:
+Random Forest Accuracy: 0.3750
+Logistic Regression Accuracy: 0.4750
+Diferenta (RF - LR): -0.1000
+
+============================================================
