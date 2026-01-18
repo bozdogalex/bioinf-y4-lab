@@ -1,0 +1,355 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d1" for="edge" attr.name="weight" attr.type="long" />
+  <key id="d0" for="node" attr.name="degree" attr.type="long" />
+  <graph edgedefault="undirected">
+    <node id="TP53">
+      <data key="d0">9</data>
+    </node>
+    <node id="MDM2">
+      <data key="d0">9</data>
+    </node>
+    <node id="CDKN1A">
+      <data key="d0">9</data>
+    </node>
+    <node id="BAX">
+      <data key="d0">9</data>
+    </node>
+    <node id="PUMA">
+      <data key="d0">9</data>
+    </node>
+    <node id="NOXA">
+      <data key="d0">9</data>
+    </node>
+    <node id="GADD45A">
+      <data key="d0">9</data>
+    </node>
+    <node id="CCND1">
+      <data key="d0">14</data>
+    </node>
+    <node id="CCNE1">
+      <data key="d0">14</data>
+    </node>
+    <node id="CDK2">
+      <data key="d0">6</data>
+    </node>
+    <node id="CDK4">
+      <data key="d0">6</data>
+    </node>
+    <node id="E2F1">
+      <data key="d0">6</data>
+    </node>
+    <node id="RB1">
+      <data key="d0">6</data>
+    </node>
+    <node id="CCNA2">
+      <data key="d0">6</data>
+    </node>
+    <node id="BRCA1">
+      <data key="d0">7</data>
+    </node>
+    <node id="BRCA2">
+      <data key="d0">7</data>
+    </node>
+    <node id="ATM">
+      <data key="d0">7</data>
+    </node>
+    <node id="ATR">
+      <data key="d0">7</data>
+    </node>
+    <node id="CHEK1">
+      <data key="d0">7</data>
+    </node>
+    <node id="CHEK2">
+      <data key="d0">7</data>
+    </node>
+    <node id="RAD51">
+      <data key="d0">7</data>
+    </node>
+    <node id="XRCC1">
+      <data key="d0">7</data>
+    </node>
+    <node id="PTEN">
+      <data key="d0">9</data>
+    </node>
+    <edge source="TP53" target="MDM2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="TP53" target="CDKN1A">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="TP53" target="BAX">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="TP53" target="PUMA">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="TP53" target="NOXA">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="TP53" target="GADD45A">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="TP53" target="CCND1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="TP53" target="CCNE1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="TP53" target="PTEN">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="MDM2" target="CDKN1A">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="MDM2" target="BAX">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="MDM2" target="PUMA">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="MDM2" target="NOXA">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="MDM2" target="GADD45A">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="MDM2" target="CCND1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="MDM2" target="CCNE1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="MDM2" target="PTEN">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDKN1A" target="BAX">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDKN1A" target="PUMA">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDKN1A" target="NOXA">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDKN1A" target="GADD45A">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDKN1A" target="CCND1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDKN1A" target="CCNE1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDKN1A" target="PTEN">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BAX" target="PUMA">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BAX" target="NOXA">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BAX" target="GADD45A">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BAX" target="CCND1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BAX" target="CCNE1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BAX" target="PTEN">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="PUMA" target="NOXA">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="PUMA" target="GADD45A">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="PUMA" target="CCND1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="PUMA" target="CCNE1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="PUMA" target="PTEN">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="NOXA" target="GADD45A">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="NOXA" target="CCND1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="NOXA" target="CCNE1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="NOXA" target="PTEN">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="GADD45A" target="CCND1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="GADD45A" target="CCNE1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="GADD45A" target="PTEN">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCND1" target="CCNE1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCND1" target="CDK2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCND1" target="CDK4">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCND1" target="E2F1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCND1" target="RB1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCND1" target="CCNA2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCND1" target="PTEN">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCNE1" target="CDK2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCNE1" target="CDK4">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCNE1" target="E2F1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCNE1" target="RB1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCNE1" target="CCNA2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CCNE1" target="PTEN">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDK2" target="CDK4">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDK2" target="E2F1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDK2" target="RB1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDK2" target="CCNA2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDK4" target="E2F1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDK4" target="RB1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CDK4" target="CCNA2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="E2F1" target="RB1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="E2F1" target="CCNA2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="RB1" target="CCNA2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA1" target="BRCA2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA1" target="ATM">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA1" target="ATR">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA1" target="CHEK1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA1" target="CHEK2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA1" target="RAD51">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA1" target="XRCC1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA2" target="ATM">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA2" target="ATR">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA2" target="CHEK1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA2" target="CHEK2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA2" target="RAD51">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="BRCA2" target="XRCC1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="ATM" target="ATR">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="ATM" target="CHEK1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="ATM" target="CHEK2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="ATM" target="RAD51">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="ATM" target="XRCC1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="ATR" target="CHEK1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="ATR" target="CHEK2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="ATR" target="RAD51">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="ATR" target="XRCC1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CHEK1" target="CHEK2">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CHEK1" target="RAD51">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CHEK1" target="XRCC1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CHEK2" target="RAD51">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="CHEK2" target="XRCC1">
+      <data key="d1">1</data>
+    </edge>
+    <edge source="RAD51" target="XRCC1">
+      <data key="d1">1</data>
+    </edge>
+  </graph>
+</graphml>

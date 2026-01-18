@@ -1,0 +1,72 @@
+======================================================================
+CLUSTERING AND PHYLOGENETICS ANALYSIS REPORT
+======================================================================
+
+Dataset: 10 p53 protein sequences from multiple species
+
+--- K-MEANS CLUSTERING ---
+
+K = 2:
+  Silhouette Score: 0.2359
+  Davies-Bouldin Index: 0.5631
+  Calinski-Harabasz Index: 2.4261
+
+K = 3:
+  Silhouette Score: 0.1520
+  Davies-Bouldin Index: 1.1619
+  Calinski-Harabasz Index: 2.4553
+
+K = 4:
+  Silhouette Score: 0.1600
+  Davies-Bouldin Index: 0.9295
+  Calinski-Harabasz Index: 2.6229
+
+--- HIERARCHICAL CLUSTERING (Average Linkage) ---
+
+K = 2:
+  Silhouette Score: 0.2359
+  Davies-Bouldin Index: 0.5631
+  Calinski-Harabasz Index: 2.4261
+
+K = 3:
+  Silhouette Score: 0.1710
+  Davies-Bouldin Index: 0.5818
+  Calinski-Harabasz Index: 2.3788
+
+K = 4:
+  Silhouette Score: 0.1464
+  Davies-Bouldin Index: 0.5659
+  Calinski-Harabasz Index: 2.4639
+
+--- DBSCAN CLUSTERING ---
+
+eps = 0.3:
+  Number of clusters: 1
+  Noise points: 0
+  Silhouette Score: 0.0000
+
+eps = 0.5:
+  Number of clusters: 1
+  Noise points: 0
+  Silhouette Score: 0.0000
+
+eps = 0.7:
+  Number of clusters: 1
+  Noise points: 0
+  Silhouette Score: 0.0000
+
+======================================================================
+COMPARISON WITH PHYLOGENETIC TREE
+======================================================================
+
+              Sequence  Cluster  Phylo_Position
+0           ASE05898.1        1             7.0
+1       NP_001120705.1        0             9.0
+2  sp|P10361.1|P53_RAT        0             8.0
+3       NP_001315517.1        0             6.0
+4       NP_001001903.1        0             5.0
+5          NP_990595.1        0             4.0
+6          NP_776626.1        0             3.0
+7       NP_001376147.1        0             1.0
+8          NP_998989.3        0             2.0
+9       XP_077825621.1        0             0.0

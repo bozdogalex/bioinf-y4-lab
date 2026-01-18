@@ -87,4 +87,3 @@ Livrați în `labs/08_ml/submissions/<handle>/`:
 ## Bonus (+1p)
 Comparați vizual PCA înainte și după eliminarea a 10 gene cu varianță mică.  
 Discută dacă vizibilitatea clusterelor devine mai bună.
-
