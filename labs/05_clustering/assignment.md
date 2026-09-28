@@ -1,5 +1,7 @@
 # Assignment 5 — Clustering și Filogenetică
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Obiectiv
 Această temă extinde exercițiul din laborator și vă provoacă să combinați **clustering-ul** cu analiza **filogenetică** realizată în Lab 4.  
 Veți re-folosi dataset-ul propriu și arborele filogenetic creat anterior, pentru a compara clusterele statistice cu ramurile evolutive.  
@@ -57,3 +59,4 @@ Veți re-folosi dataset-ul propriu și arborele filogenetic creat anterior, pent
 - Cum se aliniază rezultatele clustering-ului cu arborele filogenetic?  
 - Ce explică diferențele observate între metode și între tree vs. clustering?  
 - Cum poate fi utilă combinarea clustering-ului cu filogenetica în alte aplicații (ex: identificarea subtipurilor de boală, gene families, evoluție funcțională)?  
+

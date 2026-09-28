@@ -1,5 +1,7 @@
 # Săptămâna 2 — Assignment (Sequence Alignment)
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Instrucțiuni generale
 - Folosiți **DOAR** propriile secvențe descărcate în Lab 1 din NCBI (stocate local în `data/work/<handle>/lab01/`).
 - Puteți lucra în Jupyter (notebook) sau fișiere `.py`.

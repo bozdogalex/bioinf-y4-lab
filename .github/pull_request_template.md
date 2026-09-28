@@ -1,3 +1,7 @@
+<!-- Coursework: open this PR inside your PRIVATE repository, not bozdogalex/bioinf-y4-lab. Public PRs are for teaching-material fixes only. -->
+
+**Tip PR:** lucrare în repository privat / corecție de material didactic public
+
 ## PR laborator
 
 **Săptămâna:** `1`  *(ex.: 1, 2, 3…)*  

@@ -4,7 +4,11 @@ This document describes the governance, contribution, and data-use policies for 
 
 ---
 
-## Contributing Guidelines
+## Assessed submissions (2026–2027)
+
+Student solutions, reports, and roster entries belong in private student repositories shared with `bozdogalex`. Assessment PRs target the student's own `main`; PR links and submitted commit SHAs are recorded in the LMS. See the [submission guide](git-workflow.md). The public repository accepts teaching-material improvements only.
+
+## Teaching-material Contributing Guidelines
 We welcome contributions from students, teaching assistants, and collaborators.
 
 - Fork the repository and create a feature branch.  
@@ -60,7 +64,8 @@ See [docs/GA4GH_primer.md](GA4GH_primer.md) for details.
 ---
 
 ## Sustainability & Continuity
-- Best student projects may be merged into this repository.  
+- Assessed student solutions are not merged into this public repository.  
 - Annual updates ensure labs remain aligned with industry and research practice.  
 - The BIOINF-Y4 Lab is connected with **Oncohelp clinical collaborations** and may directly support MSc dissertations and PhD research.
-- Python license inventory: see [LICENSES-THIRD-PARTY.md](LICENSES-THIRD-PARTY.md).
+- Python license inventory: see [LICENSES.md](LICENSES.md).
+

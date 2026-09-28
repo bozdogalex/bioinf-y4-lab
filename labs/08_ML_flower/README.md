@@ -1,4 +1,6 @@
 # Săptămâna 8 — Machine Learning în Bioinformatică  
+
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
 ## Supervised, Unsupervised & Semi-Supervised Learning
 
 ## Scopuri
@@ -105,3 +107,4 @@ Task-uri:
 - GTEx Portal  
 - van Dam et al., 2018 — ML în omică  
 - Ng & Jordan — Semi-Supervised Learning
+

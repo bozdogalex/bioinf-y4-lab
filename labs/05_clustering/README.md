@@ -1,5 +1,7 @@
 # Săptămâna 5 — Clustering în Bioinformatică
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Scopuri
 - Înțelegerea metodelor de bază pentru clustering: **Hierarchical, K-means, DBSCAN**.  
 - Aplicarea clustering-ului pe date biologice reale.  
@@ -49,7 +51,7 @@ După ce în săptămâna 4 am construit arbori filogenetici, acum aplicăm meto
 
 - Gene Co-expression Networks.
 - De la clustering clasic la module biologice și integrare multi-omics.
-- [Vezi Săptămâna 6 — Gene Co-expression Networks](./06_wgcna/README.md))
+- [Vezi Săptămâna 6 — Gene Co-expression Networks](../06_wgcna/README.md)
 
 ---
 

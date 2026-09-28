@@ -1,5 +1,7 @@
 # Săptămâna 4 — Filogenetică
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Scopuri
 - Înțelegerea conceptelor de bază în filogenetică.  
 - Calcularea distanțelor între secvențe și construirea arborilor filogenetici.  
@@ -42,7 +44,7 @@ Vom compara rezultatele cu un MSA realizat online pentru a observa regiunile con
 ## Săptămâna următoare
 - Clustering de expresie genică și analiza grupurilor.
 - De la arbori evolutivi la module de co-expresie.
-- [Vezi Săptămâna 5 — Clustering](../04_phylogenetics/README.md)
+- [Vezi Săptămâna 5 — Clustering](../05_clustering/README.md)
 
 ---
 

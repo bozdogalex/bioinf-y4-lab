@@ -1,47 +1,27 @@
-# Contributing Guidelines – BIOINF-Y4 Lab
+# Contributing Guidelines — BIOINF-Y4 Lab
 
-## Pair Work
-- Laboratoarele se rezolvă individual sau în perechi (Rol A și Rol B).
-- Rolurile se rotesc între laboratoare:
-  - Rol A = „driver” (scrie codul, rulează comenzi).
-  - Rol B = „navigator” (verifică, întreabă, documentează).
+## Coursework (2026–2027)
 
-## Workflow
-1. Fork repo-ul principal pe contul vostru GitHub.
-2. Creați un branch:
-``` bash
-git checkout -b feat/labNN-handle
-```
-(unde NN = numărul laboratorului, handle = username GitHub).
-3. Adăugați livrabilele:
-- cod (scripturi / notebook-uri completate),
-- rezultate mici (CSV ≤10 linii),
-- *notes.md* scurt (≤10 linii).
-Livrabilele merg în folderul:
-```bash
-labs/NN_topic/submissions/<handle>/
-```
-4. Faceți commit cu un mesaj clar (ex.: "lab02: adaugare aliniere globală").
-5. Deschideți un Pull Request spre branch-ul main al cursului.
-- Completați template-ul implicit de PR (Săptămâna, livrabile bifate).
-- CI trebuie să fie verde (syntax + smoke + mlflow).
+Complete assessed work in your own **private repository**, shared with the instructor `bozdogalex`. Open each lab PR **inside that private repository**, targeting its `main` branch. Submit the PR URL and deadline commit SHA through the university LMS.
 
-### Acceptarea PR
-- Un PR este acceptat dacă:
-  - respectă structura de fișiere,
-  - trece verificările CI,
-  - are PR template completat.
-- PR-urile se îmbină în branch-ul principal de către asistent.
+Follow the [private repository and submission guide](docs/git-workflow.md) for setup, instructor access, review, and receiving teaching updates. Do not send solutions, reports, or roster entries to the public course repository.
 
-## Style Guide
-- **Python**: urmați PEP8 (CI verifică doar erorile de sintaxă).
-- **Notebook-uri**: ștergeți output-urile înainte de commit.
-- **Rapoarte**: maxim 2 pagini PDF per assignment.
-- **Politica de date** : respectați [GDPR_and_DataPolicy](docs/GDPR_and_DataPolicy.md) si [policies](docs/policies.md)— nu încărcați fișiere mari sau date sensibile.
+- Put completed exercise copies and results in `labs/NN_topic/submissions/<handle>/`.
+- Preserve the original teaching skeletons.
+- Follow each lab's deliverable requirements; reports are at most two pages unless specified otherwise.
+- Keep large working datasets in `data/work/<handle>/`; do not upload sensitive data.
+- Include execution instructions, results, and any AI-assistance attribution.
+- Run syntax, smoke, and MLflow checks where available; CI is not a correctness grade.
+- Keep assessment PRs open until reviewed or instructed otherwise. Grades are recorded in the LMS.
 
-### Nota
-- Toate livrabilele vor fi evaluate la **finalul semestrului**.
-- Datele colectate în primele săptămâni (GEO/TCGA/NCBI/Ensembl) vor fi reutilizate în toate laboratoarele ulterioare (aliniere, NGS, filogenie, co-expresie, ML etc.).
+## Pair work
 
+Labs may be completed individually or in pairs as allowed by the instructor. For pairs, identify both contributors and rotate driver/navigator roles. Confirm the submission arrangement with the instructor; do not expose a partner's work publicly.
 
+## Public teaching-material contributions
 
+Public PRs are welcome for corrections and improvements to teaching material. Fork the public repository, use a descriptive branch, and explain the change. Do not include assessed solutions, generated student results, personal roster data, or grades. Maintainers review teaching changes before merging.
+
+## Style and data policy
+
+Use readable Python and clear commit messages. Clear notebook outputs before committing unless required for assessment. Follow [data policy](docs/GDPR_and_DataPolicy.md) and [repository policies](docs/policies.md).

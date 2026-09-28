@@ -1,5 +1,7 @@
 # Lab 8 — Machine Learning aplicat pe date omice (Supervised, Unsupervised, Semi-Supervised)
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Obiective
 - Construirea unui pipeline complet de clasificare.  
 - Analiza performanței unui model ML pe date biologice.  
@@ -87,4 +89,5 @@ Livrați în `labs/08_ml/submissions/<handle>/`:
 ## Bonus (+1p)
 Comparați vizual PCA înainte și după eliminarea a 10 gene cu varianță mică.  
 Discută dacă vizibilitatea clusterelor devine mai bună.
+
 

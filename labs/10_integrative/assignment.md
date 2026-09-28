@@ -1,5 +1,7 @@
 # Lab 10 — Multi-Omics Integration (SNPs + Expression)
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Obiective
 - Construirea unui pipeline integrativ pe două straturi omice.  
 - Compararea analizei single-omics versus integrative.  
@@ -47,4 +49,5 @@ Raport PDF (max 3 pagini):
 
 ## Bonus (+1p)
 Aplicați clustering (KMeans sau Hierarchical) pe matricea integrată și comparați cu subtipurile clinice.
+
 

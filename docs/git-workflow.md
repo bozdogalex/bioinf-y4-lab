@@ -1,246 +1,77 @@
-# Working with Forks, GitHub, and Codespaces (Student Guide)
+# Private student repositories — 2026–2027
 
-> ✅ **TL;DR**
->
-> 1. **Fork** the course repo.  
-> 2. **Open Codespaces on your fork.**  
-> 3. Create a **branch** (`feat/lab1-yourname`). Branch names always start with feat/<...> for featurees  
-> 4. **Commit & push** to your fork.  
-> 5. Open a **Pull Request** → base: `bozdogalex/bioinf-y4-lab:main`, head: `yourname/bioinf-y4-lab:lab1-yourname`.  
-> 6. When the instructor updates `main`, **sync** via `git pull --ff-only upstream main` and **rebase your branch** if needed.
+The public course repository contains teaching materials. Assessed work stays in your own **private repository**, shared with the instructor **bozdogalex**. Do not submit solutions or your roster entry to the public course repository.
 
----
+## 1. Create your private repository
 
-## 0) Before You Start
-
-- Have a GitHub account and be logged in.
-- Know your Git remotes vocabulary:  
-  - **origin** = your fork (you can push to this)  
-  - **upstream** = the instructor’s repo (you can only fetch/pull)
-
----
-
-## 1) Fork the Repo
-
-- Visit the course repo: `https://github.com/bozdogalex/bioinf-y4-lab`  
-- Click **Fork** → **Create fork**.  
-- Your fork will be: `https://github.com/<your-username>/bioinf-y4-lab`.
-
----
-
-## 2) Open Codespaces **from Your Fork**
-
-- Go to **your fork** (`<your-username>/bioinf-y4-lab`).  
-- Click **Code → Codespaces → Create codespace on main**.
-
-### How to verify you’re on your fork
-
-- The **URL** should start with `github.com/<your-username>/...` (not `bozdogalex/...`), **or**
-- In the terminal:
-  ```bash
-  git remote -v
-  ```
-  You should see:
-  ```
-  origin  https://github.com/<your-username>/bioinf-y4-lab.git
-  ```
-  (Later we’ll add `upstream` for the instructor’s repo.)
-
----
-
-## 3) Set Up Remotes (one time)
-
-Inside the Codespace terminal:
+1. On the course repository, choose **Code → Download ZIP** and extract it. Use the cleaned 2026–2027 version.
+2. Create a new GitHub repository named `bioinf-y4-2026-2027-<handle>` with **Private** visibility. Do not initialize it with a README, license, or .gitignore.
+3. Open a terminal in the extracted folder containing the course README. Initialize and upload this snapshot (replace `<handle>`):
 
 ```bash
-# Show current remotes
-git remote -v
-
-# If you don't see 'upstream', add the instructor's repo:
-git remote add upstream https://github.com/bozdogalex/bioinf-y4-lab.git
-
-# Verify
-git remote -v
+git init -b main
+git add .
+git commit -m "Initialize private BIOINF-Y4 coursework"
+git remote add origin https://github.com/<handle>/bioinf-y4-2026-2027-<handle>.git
+git push -u origin main
 ```
 
-**Expected:**
-```
-origin   https://github.com/<your-username>/bioinf-y4-lab.git (fetch/push)
-upstream https://github.com/bozdogalex/bioinf-y4-lab.git       (fetch)
-```
+Create a new repository, not a public fork. The ZIP contains the current files without the course Git history. Preserve the included configuration files, license, and attribution. If a PDF is only a Git LFS pointer in your download, open/download the actual file from the public course repository.
 
-> ⚠️ If `origin` shows `bozdogalex/...`, you opened Codespaces on the **wrong repo**. Close it and reopen Codespaces **from your fork**.  
-> (Alternatively, you can `git remote rename origin upstream` then add your fork as `origin`, but it’s easier to start on the right repo.)
+4. In your private repository, open **Settings → Collaborators**, invite **bozdogalex**, and ensure the invitation is accepted before assessment.
+5. Submit the private repository URL through the university LMS. Keep the repository private throughout the course.
 
----
+## 2. Open your working environment
 
-## 4) Create a Branch for Your Lab
+Open **Code → Codespaces → Create codespace on main** from your private repository, or clone it locally and use Docker. See [onboarding](onboarding.md). Check `git remote -v`: `origin` must point to your private repository.
+
+The copied CI workflow can check your work if GitHub Actions is enabled and your account has available usage. Otherwise run the same checks locally and include the result in your PR. The image-publishing workflow runs only in the instructor's repository; students use the existing course image.
+
+## 3. One branch and PR per lab
+
+Start each lab from your private `main`:
 
 ```bash
-git switch -c feat/lab1-<yourname>   # e.g., lab1-alex
+git switch main
+git pull --ff-only origin main
+git switch -c feat/lab02-<handle>
 ```
 
-Work, then commit & push:
+Copy the exercise skeleton into `labs/NN_topic/submissions/<handle>/` and complete it there. Keep the teaching skeleton unchanged. Follow the lab's deliverable requirements; use `data/work/<handle>/` for local working datasets and do not commit large or sensitive data.
+
+For the first lab, add your own row to `labs/01_intro&databases/roster/handles.csv` **only in your private repository**.
 
 ```bash
-git add -A
-git commit -m "Lab 1: <short summary>"
+git add labs
+git commit -m "Lab 02: submission"
 git push -u origin HEAD
 ```
 
----
+Open a PR **within your private repository**:
 
-## 5) Open a Pull Request (PR) to the Instructor’s Repo
+- Base repository: your private repository; base branch: `main`.
+- Head repository: the same private repository; head branch: `feat/lab02-<handle>`.
+- Title: `Lab 02 — <handle>`.
+- Fill in the PR checklist and describe how to reproduce your results.
 
-On **your fork** page → **Pull requests → New pull request** → click **Compare across forks** and set:
+Do not select `bozdogalex/bioinf-y4-lab` as the base repository for coursework.
 
-- **Base repository:** `bozdogalex/bioinf-y4-lab`  
-- **Base branch:** `main` *(unless told to use a lab-specific base branch)*  
-- **Head repository:** `<your-username>/bioinf-y4-lab`  
-- **Head branch:** `lab1-<yourname>`
+## 4. Submit for assessment
 
-Then **Create pull request**.
+By the deadline announced in the LMS, submit:
 
-**PR title suggestion:**
-```
-lab1(<yourname>): short summary
-```
+- the private PR URL;
+- the full submitted commit SHA (`git rev-parse HEAD`);
+- any additional items explicitly requested by the instructor.
 
----
+Keep the PR open for review. The instructor can inspect code, results, CI, and the recorded deadline commit, and request corrections. Push corrections to the same branch; do not rewrite submitted history. Grades are recorded in the LMS. A green CI result checks the environment/syntax, not the scientific correctness of your answer.
 
-## 6) Keep Your Fork Up to Date (Sync with Instructor)
+Merge into your private `main` after assessment or when the instructor allows it. If the next lab depends on work still awaiting review, branch from that lab's branch and explain the dependency in the next PR. Do not wait for grading to continue your work.
 
-Run this regularly, especially after the instructor merges fixes:
+## 5. Receive teaching updates
 
-```bash
-# Update your local 'main' from the instructor's 'main'
-git fetch upstream
-git switch main
-git pull --ff-only upstream main
+Check the public course repository for announcements and updated files. Download the updated materials and copy only the files the instructor identifies into your private repository, reviewing changes before committing. Preserve your submissions and personal roster row. Do not merge the public repository's historical branches into your private repository.
 
-# Push the updated main back to your fork
-git push origin main
-```
+## Instructor assessment
 
-### Update your lab branch onto the new main (when PR shows “out of date”)
-
-```bash
-git switch lab1-<yourname>
-git rebase main
-# Resolve any conflicts, then:
-git push --force-with-lease
-```
-
-✅ `--ff-only` on `main` keeps history clean.  
-✅ Use **rebase** for your feature/lab branches when needed.
-
-### Web UI alternative
-
-On your fork’s GitHub page → **Sync fork / Fetch upstream → Update branch**.  
-Then in Codespaces:
-
-```bash
-git pull
-```
-
----
-
-## 7) When the Instructor Updates Your Open PR Branch
-
-If the PR allows **“edits by maintainers,”** the instructor may push changes to your PR branch.
-
-- Codespaces may prompt you to **Pull**.  
-- Or pull manually:
-  ```bash
-  git pull
-  ```
-
-No need to reopen Codespaces.
-
----
-
-## 8) Environment Changes (requirements/devcontainer)
-
-If `requirements.txt`, `.devcontainer/`, or `Dockerfile` changed:
-
-1. Pull the latest code (Section 6).  
-2. Rebuild the container (no need to recreate Codespaces):  
-   **Ctrl+Shift+P** → “**Codespaces: Rebuild Container**”.
-
----
-
-## 9) Common Errors & Fixes
-
-### “origin does not seem to be a repository”
-
-You don’t have `origin` set, or it’s wrong.
-
-```bash
-git remote -v
-# If missing:
-git remote add origin https://github.com/<your-username>/bioinf-y4-lab.git
-```
-
-### `git pull` says “Already up to date” but instructor merged changes
-
-You’re pulling from **origin** (your fork), not from **upstream**.
-
-```bash
-git fetch upstream
-git switch main
-git pull --ff-only upstream main
-git push origin main
-```
-
-### Pushed to wrong place / opened Codespaces on instructor repo
-
-Check:
-
-```bash
-git remote -v
-```
-
-If `origin` shows `bozdogalex/...`, you’re on the wrong repo.  
-Best fix: open a new Codespace **from your fork**.
-
-### “Permission denied (publickey)” with SSH
-
-Use HTTPS URLs in remotes, or set up SSH keys first.
-
-### Merge conflicts during rebase
-
-Git will mark conflicts. Fix files, then:
-
-```bash
-git add <fixed-file>
-git rebase --continue
-```
-
-If you need to abort:
-
-```bash
-git rebase --abort
-```
-
----
-
-## 10) Minimal Daily Commands (Cheat Sheet)
-
-```bash
-# Sync my main with instructor's main
-git fetch upstream
-git switch main
-git pull --ff-only upstream main
-git push origin main
-
-# Update my lab branch to the latest main
-git switch lab1-<yourname>
-git rebase main
-git push --force-with-lease
-
-# Create PR from my branch to instructor/main (via GitHub UI)
-```
-
----
-
-If anything here is unclear, ask on the course discussion board with your PR link and the output of `git remote -v`.
+Use the LMS repository/PR links to access each private submission. Review the recorded commit for deadline assessment, leave feedback on the private PR, and record the grade in the LMS. Never merge student solutions into the public teaching repository. Public PRs are for teaching-material fixes and improvements only.

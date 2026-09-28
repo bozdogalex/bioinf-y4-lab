@@ -2,7 +2,7 @@
 
 ## Obiective
 - Verificarea mediului comun de lucru (Codespaces / Docker + Jupyter).
-- Primul Pull Request pe GitHub (roster).
+- Primul Pull Request intern în repository-ul privat (roster); vezi [ghidul de predare](../git-workflow.md).
 - Introducere în interogarea bazelor de date biologice (NCBI Entrez, dbSNP).
 - Operații de bază pe secvențe ADN/ARN/proteine.
 
@@ -29,7 +29,7 @@
 
 ## Competențe dobândite
 - Rulare mediu reproducibil (Codespaces / Docker).  
-- Flux GitHub: fork → branch → PR cu șablon.  
+- Flux GitHub: repository privat → branch → PR intern cu șablon.  
 - Interogare Entrez și SNP, analiză simplă de secvențe cu Biopython.  
 
 ---
@@ -41,3 +41,4 @@
 - [TCGA (The Cancer Genome Atlas) Portal](https://portal.gdc.cancer.gov/)  
 - Carte: [Pevsner, *Bioinformatics and Functional Genomics*, 3rd ed., Wiley Blackwell, 2015](https://genetics.elte.hu/oktatasi_anyag/archivum/bioinfo/Bioinformatika_2018-2019/book.pdf)  
 - Carte: [Lesk, *Introduction to Bioinformatics*, 5th ed., Oxford University Press, 2019](https://edscl.in/pluginfile.php/3340/mod_folder/content/0/Introduction%20To%20Bioinformatics.pdf?forcedownload=1)  
+

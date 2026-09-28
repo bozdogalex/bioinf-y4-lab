@@ -1,4 +1,6 @@
 # Săptămâna 10 — Integrative Genomics Approaches  
+
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
 ## Multi-Omics Fusion for Precision Medicine
 
 ## Scopuri
@@ -94,4 +96,5 @@ Vom lucra pe un set simplificat (SNPs + expresie + opțional methylation) pentru
 - HapMap & GTEx cross-omics correlation  
 - Jolliffe – PCA  
 - Broad Institute: Single-Cell + multi-omics pipelines
+
 

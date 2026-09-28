@@ -1,4 +1,6 @@
 # Săptămâna 9 — Network-Based Drug Repurposing  
+
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
 ## Similarity Networks, Drug–Gene Interactions & Network Proximity
 
 ## Scopuri
@@ -101,3 +103,4 @@ Pentru 3–5 gene asociate cu o boală:
 - Cheng et al., *Drug–target interaction prediction*  
 - Yıldırım et al., *Drug–gene network organization*  
 - scikit-learn, networkx documentație  
+

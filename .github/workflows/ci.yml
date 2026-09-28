@@ -1,17 +1,14 @@
 name: CI
 on:
   push:
-    branches: [ main, env/**, feat/** ]
-    paths:
-      - 'labs/**'
-      - '.github/workflows/ci.yml'
-      - '.flake8'
+    branches: [ main, env/**, feat/**, lab** ]
+
   pull_request:
     branches: [ main ]
-    paths-ignore:
-      - '**/**.md'
-      - 'docs/**'
-      - '.github/ISSUE_TEMPLATE/**'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -27,13 +24,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Python compile (fail fast on syntax errors)
         run: |
-          python -m compileall -q "labs/01_intro&databases"
-          python -m compileall -q "labs/02_alignment"
-          python -m compileall -q "labs/03_formats&NGS"
-          python -m compileall -q "labs/04_phylogenetics"
-          python -m compileall -q "labs/05_clustering"
-          python -m compileall -q "labs/06_wgcna"
-          python -m compileall -q "labs/07_network_viz"
+          python -m compileall -q labs mlops
 
   smoke:
     name: smoke
@@ -65,3 +56,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: flake8 (advisory, does not fail)
         run: flake8 labs || true
+

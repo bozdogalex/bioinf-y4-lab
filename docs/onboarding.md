@@ -11,7 +11,7 @@ This guide shows two supported ways to run the labs **identically** everywhere:
 
 ## Option A — GitHub Codespaces (recommended)
 
-1. On the repository page, click **Code → Create codespace on main**.
+1. First create your private coursework repository using the [submission guide](git-workflow.md). On **your private repository** page, click **Code → Create codespace on main**.
 2. Wait while it **pulls** the image `ghcr.io/bozdogalex/bioinf-y4-lab:base`. (No build needed.)
 3. In VS Code (web), open the **Terminal** and run the smoke test:
    ```bash
@@ -75,3 +75,4 @@ mlflow ui --backend-store-uri file://$PWD/mlruns --host 127.0.0.1 --port 5000
 - **Jupyter asks for token** → we run with no token locally; Codespaces adds its own auth.  
 - **“ERR_EMPTY_RESPONSE”** → be sure Jupyter is started with `--allow-root` and open the correct mapped port.  
 - **CI differs from local** → CI runs *inside* the same GHCR image. If it passes locally in that image, CI will pass too.
+
