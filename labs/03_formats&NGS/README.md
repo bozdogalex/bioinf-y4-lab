@@ -1,5 +1,7 @@
 # Săptămâna 3 — Formate și Next-Generation Sequencing (NGS)
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Scopuri
 - Înțelegerea formatelor utilizate în bioinformatică: **FASTA, FASTQ, SAM, VCF**.  
 - Exersarea verificării calității datelor NGS (QC: read count, lungime, N-rate, Phred).  

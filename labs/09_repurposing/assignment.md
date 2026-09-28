@@ -1,5 +1,7 @@
 # Lab 9 — Drug Repurposing Using Network-Based Approaches
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Obiective
 - Construirea unei rețele bipartite drug–gene (subset din Open Targets / DrugBank-like).  
 - Construirea unui layer de similaritate între medicamente.  
@@ -66,4 +68,5 @@ Implementați o versiune simplificată de **Random Walk with Restart (RWR)** pe 
 - `drug_priority_<handle>.csv`  
 - `network_drug_gene_<handle>.png`  
 - `report_repurposing_<handle>.pdf`
+
 

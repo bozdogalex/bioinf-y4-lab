@@ -1,5 +1,7 @@
 # Săptămâna 7 — Vizualizarea și interpretarea rețelelor de co-expresie (GCEs) + Diseasome
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Scopuri
 - Vizualizarea rețelelor de co-expresie genică și a modulelor identificate.  
 - Identificarea genelor hub (cele mai conectate noduri din module).  
@@ -20,7 +22,7 @@ Mai mult, putem valida biologic modulele prin **analiză de îmbogățire funcț
 
 ## Hands-on
 **Rulați și completați**  
-- `ex08_network_viz.py` — vizualizați rețeaua construită în Lab 6.  
+- `ex01_network_viz.py` — vizualizați rețeaua construită în Lab 6.  
   - Încărcați `modules_<handle>.csv` și matricea de adiacență.  
   - Colorați nodurile în funcție de modul.  
   - Evidențiați genele hub (cele cu cel mai mare grad).  
@@ -34,13 +36,13 @@ Mai mult, putem valida biologic modulele prin **analiză de îmbogățire funcț
 
 ## Livrabile
 În PR trebuie să apară:
-1. Fișierul `labs/07_networkviz/submission/<github_handle>_notes.md` cu:  
+1. Fișierul `labs/07_network_viz/submissions/<github_handle>_notes.md` cu:  
    - ce metodă de layout ați folosit (ex: spring, kamada-kawai),  
    - o scurtă reflecție: **Ce avantaje aduce vizualizarea față de analiza numerică din Lab 6?**  
 2. Scriptul completat `ex01_network_viz.py`.  
 3. Fișierul generat:  
    ```bash
-   labs/07_networkviz/submissions/<github_handle>/network_<handle>.png
+   labs/07_network_viz/submissions/<github_handle>/network_<handle>.png
    ```
 4. Completarea checklist-ului din șablonul PR.
 
@@ -49,7 +51,7 @@ Mai mult, putem valida biologic modulele prin **analiză de îmbogățire funcț
 ## Săptămâna următoare
 - Machine Learning în analiza datelor biomedicale.
 - Clasificarea stărilor de boală și evaluarea performanței modelelor.
-- [Vezi Săptămâna 8 — Machine Learning.](/labs/08_ML_flower)
+- [Vezi Săptămâna 8 — Machine Learning.](../08_ML_flower/README.md)
 
 ---
 

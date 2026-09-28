@@ -1,5 +1,7 @@
 # Assignment Gene Co-Expression Networks, Visualization & Diseasome
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Obiective
 - construirea rețelelor de co-expresie genică (GCEs),
 - detectarea modulelor,
@@ -48,4 +50,5 @@
 - `hubs_tp53_<handle>.csv`  
 - Codurile folosite (`.py` sau `.ipynb`)  
 - `report_<handle>.pdf` (max 2 pagini, cu interpretarea și referința la diseasome)  
+
 

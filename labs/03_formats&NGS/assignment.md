@@ -1,5 +1,7 @@
 # Săptămâna 3 — Assignment (Formate și NGS)
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Obiectiv
 Simulați un flux simplificat de analiză NGS folosind instrumente programatice (Biopython, requests sau API-uri publice) și fișiere proprii.  
 Tema are rolul de a integra cunoștințele despre baze de date, formate și QC, și de a face legătura dintre datele brute și literatura științifică.
@@ -57,3 +59,4 @@ Tema are rolul de a integra cunoștințele despre baze de date, formate și QC, 
 ### `notes.pdf` (max 1 pagină):
 - 3–5 propoziții: „De ce este important QC înainte de variant calling?”  
 - 2–3 propoziții: cum ați formulat căutările PubMed pentru variante.
+

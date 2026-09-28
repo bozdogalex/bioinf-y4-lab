@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   build-and-push:
+    if: github.repository == 'bozdogalex/bioinf-y4-lab'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -45,3 +46,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+

@@ -1,5 +1,7 @@
 # Săptămâna 6 — Gene Co-Expression Networks (GCEs) — Building Modules
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Scopuri
 - Înțelegerea conceptului de rețele de co-expresie genică (GCEs).  
 - Preprocesarea datelor RNA-Seq (normalizare, log-transformare, filtrare).  
@@ -46,7 +48,7 @@ Clustering-ul grupează probe sau gene global, în timp ce rețelele de co-expre
 - Vizualizarea și interpretarea rețelelor.
 - Identificarea hub genes și analiza funcțională (enrichment).
 - Introducerea conceptului de Diseasome.
-- [Vezi Săptămâna 7 — Visualization & Diseasome](./07_network_viz/README.md)
+- [Vezi Săptămâna 7 — Visualization & Diseasome](../07_network_viz/README.md)
 
 ---
 
@@ -65,3 +67,4 @@ Clustering-ul grupează probe sau gene global, în timp ce rețelele de co-expre
 - [GEO Accession GSE115469](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE115469)
 - [van Dam et al., Brief Bioinform 2018](https://doi.org/10.1093/bib/bbw139)
 - [Langfelder & Horvath, BMC Bioinformatics 2008](https://doi.org/10.1186/1471-2105-9-559)
+

@@ -40,15 +40,14 @@ import networkx as nx
 # --------------------------
 # Config — completați după nevoie
 # --------------------------
-INPUT_CSV =
-OUTPUT_DIR =
-OUTPUT_CSV =
-
+INPUT_CSV = None  # TODO: configurați valoarea înainte de rulare
+OUTPUT_DIR = None  # TODO: configurați valoarea înainte de rulare
+OUTPUT_CSV = None  # TODO: configurați valoarea înainte de rulare
 CORR_METHOD = "spearman"   # TODO: "pearson" sau "spearman"
-VARIANCE_THRESHOLD =   # prag pentru filtrare gene
-ADJ_THRESHOLD =     # prag pentru |cor| (ex: 0.6)
-USE_ABS_CORR =        # True => folosiți |cor| la prag
-MAKE_UNDIRECTED =      # rețelele de co-expresie sunt de obicei neorientate
+VARIANCE_THRESHOLD = None  # TODO: configurați valoarea înainte de rulare
+ADJ_THRESHOLD = None  # TODO: configurați valoarea înainte de rulare
+USE_ABS_CORR = None  # TODO: configurați valoarea înainte de rulare
+MAKE_UNDIRECTED = None  # TODO: configurați valoarea înainte de rulare
 
 
 def read_expression_matrix(path: Path) -> pd.DataFrame:
@@ -122,3 +121,4 @@ if __name__ == "__main__":
 
     save_modules_csv(gene_to_module, OUTPUT_CSV)
     print(f"Am salvat mapping-ul gene→modul în: {OUTPUT_CSV}")
+

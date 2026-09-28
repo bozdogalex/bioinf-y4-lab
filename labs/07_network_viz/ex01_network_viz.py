@@ -28,7 +28,7 @@ HANDLE = "<handle>"
 
 # Input files
 EXPR_CSV = Path(f"data/work/{HANDLE}/lab06/expression_matrix.csv")
-MODULES_CSV = Path(f"labs/06_networks/submissions/{HANDLE}/modules_{HANDLE}.csv")
+MODULES_CSV = Path(f"labs/06_wgcna/submissions/{HANDLE}/modules_{HANDLE}.csv")
 
 # Optional: if you saved adjacency in Lab 6, load it here
 PRECOMPUTED_ADJ_CSV: Optional[Path] = None
@@ -46,7 +46,7 @@ NODE_BASE_SIZE = 60
 EDGE_ALPHA = 0.15
 
 # Outputs
-OUT_DIR = Path(f"labs/07_networkviz/submissions/{HANDLE}")
+OUT_DIR = Path(f"labs/07_network_viz/submissions/{HANDLE}")
 OUT_PNG = OUT_DIR / f"network_{HANDLE}.png"
 OUT_HUBS = OUT_DIR / f"hubs_{HANDLE}.csv"
 
@@ -162,3 +162,4 @@ if __name__ == "__main__":
     # hubs_df.to_csv(OUT_HUBS, index=False)
 
     # print completion message
+

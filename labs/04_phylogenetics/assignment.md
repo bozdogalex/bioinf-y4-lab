@@ -1,5 +1,7 @@
 # Tema de laborator 4 — Filogenetică
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Taskuri
 
 1. **(3p)** Calculați o matrice de distanțe pentru ≥3 secvențe (multi-FASTA propriu) și salvați tabelul.  
@@ -22,3 +24,4 @@
    labs/04_phylogenetics/submissions/<github_handle>/ex05_phylo_tree.py
    labs/04_phylogenetics/submissions/<github_handle>/tree_<handle>.nwk
    ```
+

@@ -1,8 +1,10 @@
 # Săptămâna 1 — Databases & GitHub 
 
+> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+
 ## Scopuri:
 1) Toți studentii rulează același mediu (Codespaces sau Docker + Jupyter).
-2) Toți studentii trec o dată prin fluxul GitHub (fork → branch → PR) cu un task scurt.
+2) Toți studentii trec o dată prin fluxul GitHub (repository privat → branch → PR intern) cu un task scurt.
 
 > În săptămânile 2–12 vom **reutiliza datele** colectate devreme (GEO/TCGA/NCBI/Ensembl) pentru aliniere, NGS, filogenie, co-expresie, ML, etc. (vezi calendarul). 
 
@@ -13,7 +15,7 @@
 Alege **una**:
 
 ### A) Codespaces
-1. Deschide un Codespace pe branch `main`.
+1. Urmează [ghidul de predare](../../docs/git-workflow.md) și deschide un Codespace pe branch-ul `main` din repository-ul tău privat.
 2. Terminal:
    ```bash
    python labs/00_smoke/smoke.py
@@ -32,14 +34,14 @@ python "labs/01_intro&databases/demo_entrez_brca1.py"
 
 ## Partea 1 — Task PR 
 Citeste [git-workflow.md](../../docs/git-workflow.md)
-Adaugă handle-ul tău GitHub în labs/01_intro&databases/roster/handles.csv (format: Nume Prenume,github_handle) prin Pull Request.
+Adaugă handle-ul tău GitHub în labs/01_intro&databases/roster/handles.csv (format: Nume Prenume,github_handle) **doar în repository-ul tău privat**, printr-un PR intern. Nu trimite datele personale în repository-ul public.
 
 Pași:
 
-- fork repo → creează branch feat/roster-<handle>.
+- în repository-ul privat → creează branch feat/roster-<handle>.
 - edit labs/01_intro&databases/roster/handles.csv → adaugă o singură linie.
 - git commit -m "Add <handle> to roster" → git push .
-- Completează checklist-ul PR (șablonul week1_roster.md).
+- Completează checklist-ul PR (șablonul implicit; PR-ul vizează `main` din repository-ul tău privat).
 
 ## Partea 2 - Demo / Exercitii
 **Rulati**
@@ -75,7 +77,7 @@ labs/01_intro&databases/submissions/<github_handle>/ex01_multifasta_gc.py
 
 ## Competențe: 
 - Rularea mediului reproducibil (Codespaces/Docker).
-- Deschiderea și completarea corectă a unui PR (fork → branch → PR).
+- Deschiderea și completarea corectă a unui PR (repository privat → branch → PR intern).
 - Primele interogări și operații de bază pe secvențe biologice.
 
 
@@ -87,6 +89,7 @@ labs/01_intro&databases/submissions/<github_handle>/ex01_multifasta_gc.py
 - [TCGA (The Cancer Genome Atlas) Portal](https://portal.gdc.cancer.gov/)  
 - Carte: [Pevsner, *Bioinformatics and Functional Genomics*, 3rd ed., Wiley Blackwell, 2015](https://genetics.elte.hu/oktatasi_anyag/archivum/bioinfo/Bioinformatika_2018-2019/book.pdf)  
 - Carte: [Lesk, *Introduction to Bioinformatics*, 5th ed., Oxford University Press, 2019](https://edscl.in/pluginfile.php/3340/mod_folder/content/0/Introduction%20To%20Bioinformatics.pdf?forcedownload=1)  
+
 
 
 
