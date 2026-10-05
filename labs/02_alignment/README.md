@@ -1,6 +1,6 @@
 # Laboratorul 2 Alinierea secvențelor
 
-Prerechizite: [primerul de genetică și genomică](../../docs/genetics-genomics-primer-ro.md), formatele FASTA/GenBank și operațiile din Lab 1. Învățăm global, local, scoruri, gap-uri și programare dinamică, apoi interpretăm comparații biologice.
+Prerechizite: noțiunile introductive de genetică și genomică discutate la curs, formatele FASTA/GenBank și operațiile din Lab 1. Învățăm global, local, scoruri, gap-uri și programare dinamică, apoi interpretăm comparații biologice.
 
 ## Demonstrații
 
@@ -24,7 +24,7 @@ Copiați `ex01_global_nw.py` și `ex02_local_sw.py` în `submissions/<handle>/`.
 
 Valorile implicite diferă: demo +1/−1/−1, NW +1/−1/−2, SW +3/−3/−2. Pentru verificare față de Biopython, setați aceleași valori și documentați-le. Nu comparați direct scoruri obținute cu reguli diferite.
 
-`pairwise2` este depreciat, dar funcționează în mediul cursului. Migrarea la `PairwiseAligner`, normalizarea literelor și alte [mici provocări de depanare](../../docs/lab12-student-challenges.md) rămân pentru studenți. TODO-urile NW/SW sunt intenționate.
+`pairwise2` este depreciat, dar funcționează în mediul cursului. Pentru cod nou, alternativa recomandată este `PairwiseAligner`. TODO-urile NW/SW sunt intenționate.
 
 ## Instrumente externe
 

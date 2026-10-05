@@ -5,10 +5,7 @@ data/sample/lab12-provenance.md
 data/sample/toy_alignment.fasta
 data/sample/tp53_dr_protein.fasta
 data/sample/tp53_protein_multi.fasta
-docs/genetics-genomics-primer-ro.md
 docs/git-workflow.md
-docs/lab12-student-challenges.md
-docs/lab12-slide-notes-ro.md
 docs/update-course-materials.md
 docs/updates/lab12-2026-10-05.paths
 labs/00_smoke/smoke.py

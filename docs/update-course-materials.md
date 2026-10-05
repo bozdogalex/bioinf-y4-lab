@@ -12,13 +12,12 @@ In your private Codespace, confirm that `git remote -v` shows your private repos
 
 ## Import the Lab 1 and 2 update
 
-Set `COURSE_REF` to the instructor's commit SHA (or `main` after its release). Then paste the following Bash block into your Codespaces terminal. It stops on an error and refuses an uncommitted working tree. If the update branch already exists, resume it rather than deleting it.
+Paste the following Bash block into your Codespaces terminal. `COURSE_REF=main` selects the latest released materials from the public course repository. It stops on an error and refuses an uncommitted working tree. If the update branch already exists, resume it rather than deleting it.
 
 ```bash
-read -r -p "Course commit SHA (or main after release): " main
-export main
 (
   set -eu
+  COURSE_REF=main
   cd "$(git rev-parse --show-toplevel)"
   test -n "$COURSE_REF"
   if test -n "$(git status --porcelain)"; then

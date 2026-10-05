@@ -1,6 +1,6 @@
 # Laboratorul 1 Baze biologice și baze de date
 
-Începem cu [primerul de genetică și genomică](../../docs/genetics-genomics-primer-ro.md): celulă, ADN, cromozom, genă, genom, ARN și proteină. Exemplul unei gene reale apare după aceste noțiuni.
+Începem cu noțiunile de celulă, ADN, cromozom, genă, genom, ARN și proteină. Exemplul unei gene reale apare după aceste noțiuni.
 
 ## Mediu și repository
 
@@ -30,7 +30,7 @@ export NCBI_EMAIL
 python "labs/01_intro&databases/demo01_entrez_brca1.py" --refresh
 ```
 
-Descărcarea folosește exact aceeași accesie și salvează implicit în `data/work/demo/lab01/brca1.gb`. Dacă serviciul nu răspunde, reluați fără `--refresh` pentru copia inclusă. `demo03_dbsnp.py` este o extensie de depanare: configurați emailul din mediu înainte de rulare, conform [provocărilor pentru studenți](../../docs/lab12-student-challenges.md).
+Descărcarea folosește exact aceeași accesie și salvează implicit în `data/work/demo/lab01/brca1.gb`. Dacă serviciul nu răspunde, reluați fără `--refresh` pentru copia inclusă. `demo03_dbsnp.py` este o extensie de depanare: modificați scriptul să citească adresa voastră de email din variabila de mediu `NCBI_EMAIL` înainte de rulare.
 
 ## Exercițiul de descărcare și GC
 
