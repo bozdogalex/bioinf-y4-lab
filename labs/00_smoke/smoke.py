@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 import polars as pl
 import sklearn
+import Bio
 
 
 def main() -> None:
@@ -18,6 +19,7 @@ def main() -> None:
     _ = pl.DataFrame({"x": [1, 2]}).height
     _ = duckdb.connect(":memory:").execute("select 1").fetchone()
     _ = sklearn.__version__
+    _ = Bio.__version__
     g = nx.Graph()
     g.add_edge("a", "b")
     _ = len(g)

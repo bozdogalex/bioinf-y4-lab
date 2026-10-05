@@ -70,6 +70,8 @@ Merge into your private `main` after assessment or when the instructor allows it
 
 ## 5. Receive teaching updates
 
+For the 5 October 2026 Lab 1/2 corrections, follow the [tested selective update procedure](update-course-materials.md). It imports a named list of teaching files on a new branch while excluding submissions, roster entries and working data. Existing collaborator invitations remain valid. Use the instructor-supplied commit SHA until the update is released on public main.
+
 Check the public course repository for announcements and updated files. Download the updated materials and copy only the files the instructor identifies into your private repository, reviewing changes before committing. Preserve your submissions and personal roster row. Do not merge the public repository's historical branches into your private repository.
 
 ## Instructor assessment

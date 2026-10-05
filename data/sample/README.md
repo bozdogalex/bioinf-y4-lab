@@ -1,5 +1,5 @@
 ## Note
-Aceste fișiere contin date **reale**, dar de dimensiune redusă pentru demonstrații.
+Fișierele FASTA de referință sunt descrise în [proveniența Lab 1/2](lab12-provenance.md). `toy_alignment.fasta` este un exemplu artificial, nu o secvență biologică. Setul proteic TP53 a fost corectat la 5 octombrie 2026.
 - FASTA: secvențe TP53 (om + ortologi)
 - Proteină TP53 (UniProt)
 - Subset de expresie genică (GEO)
