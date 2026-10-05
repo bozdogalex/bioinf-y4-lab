@@ -12,7 +12,7 @@ TODO:
   - Calculul scorurilor celulelor (match, mismatch, gap).
 
 Exemplu rulare:
-  python labs/02_alignment/ex02_global_nw.py --fasta data/work/<handle>/lab01/my_tp53.fa --i1 0 --i2 1
+  python labs/02_alignment/ex01_global_nw.py --fasta data/sample/toy_alignment.fasta --i1 0 --i2 1
 """
 
 from pathlib import Path

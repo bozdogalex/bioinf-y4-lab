@@ -3,17 +3,21 @@
 Demo: aliniere globală și locală cu Biopython (pairwise).
 - Refolosim datele din data/sample/; extragem subsecvențe scurte pentru debugging.
 Rulare:
-  python labs/02_alignment/demo01_pairwise_biopython.py --fasta data/sample/tp53_dna_multi.fasta
+  python labs/02_alignment/demo01_pairwise.py --fasta data/sample/tp53_dna_multi.fasta
 """
 import argparse
 from Bio import SeqIO, pairwise2
 
 def take_two_short_subseqs(fasta_path, k=7):
+    if k < 1:
+        raise ValueError("k must be positive.")
     recs = [r for r in SeqIO.parse(fasta_path, "fasta")]
     if len(recs) < 2:
         raise ValueError("Need at least 2 sequences in the FASTA.")
     a = str(recs[0].seq)[:k]
     b = str(recs[1].seq)[:k]
+    if not a or not b:
+        raise ValueError("Sequences must not be empty.")
     return a, b
 
 def main():
@@ -36,7 +40,10 @@ def main():
     print(pairwise2.format_alignment(*global_alignments[0]))
 
     print("[LOCAL] top alignment:")
-    print(pairwise2.format_alignment(*local_alignments[0]))
+    if local_alignments:
+        print(pairwise2.format_alignment(*local_alignments[0]))
+    else:
+        print("No positive-scoring local alignment (score 0).")
 
 if __name__ == "__main__":
     main()

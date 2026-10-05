@@ -1,65 +1,39 @@
-# Săptămâna 2 — Sequence Alignment
+# Laboratorul 2 Alinierea secvențelor
 
-> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+Prerechizite: [primerul de genetică și genomică](../../docs/genetics-genomics-primer-ro.md), formatele FASTA/GenBank și operațiile din Lab 1. Învățăm global, local, scoruri, gap-uri și programare dinamică, apoi interpretăm comparații biologice.
 
-## Scopuri
-- Înțelegerea tipurilor de aliniere: global (Needleman–Wunsch), local (Smith–Waterman), semiglobal.  
-- Folosirea matricilor de substituție (PAM, BLOSUM).  
-- Exersarea cu Biopython și instrumente externe (BLAST, Clustal Omega).  
-- Construirea competențelor de implementare a algoritmilor de bază pentru aliniere.
+## Demonstrații
 
----
+Din rădăcina repository-ului, în terminalul Codespaces:
 
-## Partea 1 — Demo / Exerciții
-**Rulați**  
-- `demo01_pairwise_biopython.py` — aliniere globală și locală cu Biopython (pairwise2).  
-- `demo02_distance_matrix.py` — calcul distanțe (p-distance, Hamming) pe FASTA.  
+```bash
+python labs/02_alignment/demo01_pairwise.py --fasta data/sample/toy_alignment.fasta --k 10
+python labs/02_alignment/demo01_pairwise.py --fasta data/sample/tp53_dna_multi.fasta --k 60
+python labs/02_alignment/demo02_distance_matrix.py --fasta data/sample/tp53_dna_multi.fasta
+```
 
-**Completați și rulați**  
-- `ex01_global_nw.py` — schelet de implementare pentru aliniere globală (TODO).  
-- `ex02_local_sw.py` — schelet de implementare pentru aliniere locală (TODO).  
+Perechea artificială produce global −2 și local 4 cu scorurile demonstrației (+1, −1, gap −1). Demo-ul pairwise ia doar primele două înregistrări și primele `k` baze. Aceste prefixe nu sunt automat regiuni codante sau domenii.
 
-Notă: folosiți datele descărcate în Lab 1 (din `data/work/<handle>/lab01/`)
+Demo-ul de distanțe aliniază global fiecare pereche înainte de calcul. Exclude coloanele cu gap-uri și baze ambigue, raportează numărul pozițiilor comparate și `NA` când acesta este zero. Prin urmare, o pereche care diferă numai printr-un indel poate avea p-distance zero pe bazele comparate. Citiți alinierea și numitorul împreună cu rezultatul. Nu este o distanță evolutivă corectată și nu construim o filogenie doar din această demonstrație.
 
----
+Pentru un FASTA deja aliniat, folosiți `--aligned`. Rândurile trebuie să aibă aceeași lungime; această condiție singură nu dovedește că secvențele au fost aliniate. Politica este pairwise deletion, deci numitorul poate diferi între perechi.
 
-## Livrabile
-În PR trebuie să apară:
-1. Fișierul `labs/02_alignment/submissions/<github_handle>_notes.md` cu:  
-   - ce date ați folosit (ex. TP53 vs. BRCA1),  
-   - o scurtă reflecție: **Când este de preferat alinierea globală vs. locală?”**  
-2. Exercițiile completate, salvate în:  
-   ```bash
-   labs/02_alignment/submissions/<github_handle>/ex01_global_nw.py
-   labs/02_alignment/submissions/<github_handle>/ex02_local_sw.py
-   ```
-3. Completarea checklist-ului din șablonul PR.
+## Exerciții
 
----
+Copiați `ex01_global_nw.py` și `ex02_local_sw.py` în `submissions/<handle>/`. Completați inițializarea și recurența. Nu modificați scheletele originale. Începeți cu `data/sample/toy_alignment.fasta`, apoi cu regiuni biologice scurte și comparabile; evitați matrici Python uriașe pe cromozomi întregi.
 
-### Săptămâna următoare
-- Vom extinde analiza la citiri NGS (FASTQ → mapare → variant calling).
-- Vom folosi alinierile obținute pentru a valida maparea și analizele NGS
-- [Vezi Săptămâna 3 — NGS Analysis](../03_formats&NGS/README.md)
+Valorile implicite diferă: demo +1/−1/−1, NW +1/−1/−2, SW +3/−3/−2. Pentru verificare față de Biopython, setați aceleași valori și documentați-le. Nu comparați direct scoruri obținute cu reguli diferite.
 
----
+`pairwise2` este depreciat, dar funcționează în mediul cursului. Migrarea la `PairwiseAligner`, normalizarea literelor și alte [mici provocări de depanare](../../docs/lab12-student-challenges.md) rămân pentru studenți. TODO-urile NW/SW sunt intenționate.
 
-## Competențe
-- Înțelegerea diferenței dintre aliniere globală și locală.
-- Utilizarea Biopython pentru aliniere simplă.
-- Implementarea de bază a algoritmilor NW și SW.
-- Interpretarea rezultatelor și compararea cu BLAST/Clustal.
+## Instrumente externe
 
----
+[BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) și [Clustal Omega](https://www.ebi.ac.uk/jdispatcher/msa/clustalo) sunt folosite în browser. `blastn`, `clustalo`, `needle` și `water` nu sunt incluse ca executabile în imaginea actuală. Instalarea lor nu este necesară pentru practica Python.
 
-## Resurse 
-- [Fișa laborator](../../docs/lab_onepagers/02_alignment.md)  
-- [Aliniere globală (Needleman–Wunsch)](../../docs/presentations/02_alignment1.pdf)  
-- [Aliniere locală (Smith–Waterman)](../../docs/presentations/02_alignment2.pdf)  
-- [Applied Bioinformatics of Nucleic Acids — Cap. 1](../../docs/papers/Applied_Bioinformatics.pdf)  
-- [Scoring Matrix Development (BLOSUM62) (pdf în /papers)](../../docs/papers/Scoring_matrix_development_BLOSUM62.pdf)  
-- Substitution matrices: [BLOSUM62 (NCBI)](https://www.ncbi.nlm.nih.gov/IEB/ToolBox/C_DOC/lxr/source/data/BLOSUM62)  
-- [NCBI BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)  
-- [Clustal Omega — Multiple Sequence Alignment](https://www.ebi.ac.uk/Tools/msa/clustalo/)  
-- [Biopython pairwise2](https://biopython.org/docs/1.75/api/Bio.pairwise2.html)  
+Setul proteic corectat conține p53 de om, șoarece și pește zebră; consultați [proveniența](../../data/sample/lab12-provenance.md). Nu aplicați demo-ul de distanțe pentru nucleotide unui FASTA proteic.
 
+## Predare
+
+[assignment.md](assignment.md) este lista completă de cerințe și punctaj. Toate fișierele sunt în `labs/02_alignment/submissions/<handle>/`, inclusiv `notes.md` și instrucțiunile de reproducere. PR-ul rămâne în repository-ul privat; în LMS trimiteți linkul și SHA-ul. Nu se cere suplimentar ZIP/PDF pentru aceeași lucrare.
+
+Pentru actualizări ale materialelor, urmați [ghidul de actualizare](../../docs/update-course-materials.md); nu înlocuiți propriile submissions și nu combinați istoricul repository-ului public cu cel privat.
