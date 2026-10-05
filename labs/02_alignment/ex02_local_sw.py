@@ -12,7 +12,7 @@ TODO:
   - Scoring celulelor (match, mismatch, gap, cu max(0,...)).
 
 Exemplu Rulare:
-  python labs/02_alignment/ex03_local_sw.py --fasta data/work/<handle>/lab01/my_tp53.fa --i1 0 --i2 1
+  python labs/02_alignment/ex02_local_sw.py --fasta data/sample/toy_alignment.fasta --i1 0 --i2 1
 """
 
 from pathlib import Path

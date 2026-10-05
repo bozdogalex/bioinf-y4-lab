@@ -1,61 +1,39 @@
-# Săptămâna 2 — Assignment (Sequence Alignment)
+# Laboratorul 2 Cerințe și evaluare
 
-> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+Lucrați în propriul repository privat, partajat cu `bozdogalex`. Această pagină este lista de evaluare pentru Lab 2; [README](README.md) descrie demonstrațiile. Predați în LMS **URL-ul PR-ului privat și SHA-ul complet**. Nu se cere în paralel o arhivă ZIP sau un raport PDF.
 
-## Instrucțiuni generale
-- Folosiți **DOAR** propriile secvențe descărcate în Lab 1 din NCBI (stocate local în `data/work/<handle>/lab01/`).
-- Puteți lucra în Jupyter (notebook) sau fișiere `.py`.
-- **Predare (Moodle)**: încărcați un fișier ZIP numit `lab02_alignment_<handle>.zip` care conține:
-  - scripturile / notebook-urile voastre;
-  - un fișier `README.txt` (max 10 rânduri) cu **pașii de rulare**, versiunea de Python și dependențele;
-  - un fișier `notes.pdf` (max 1 pagină) cu răspunsurile / interpretările cerute mai jos.
+## Date și reproducere
 
----
+Folosiți cel puțin trei secvențe comparabile descărcate în Lab 1: de exemplu transcripturi ale aceleiași gene din organisme diferite. Specificați accesii cu versiuni, organisme, tipul moleculei, data și sursa descărcării. Un transcript, o secvență genomică și o proteină nu sunt interschimbabile.
 
-## Task 1 — Distanțe perechi (3p)
-- Implementați și rulați **Hamming** (numai pentru perechi de **aceeași lungime**) **sau** **p-distance** (proporția pozițiilor diferite) pentru toate perechile dintr-un subset de **≥3 secvențe** din fișierul vostru.
-- Produceți o **matrice de distanțe** (triunghiul superior este suficient).
-- În `notes.pdf` (2–3 rânduri): **care două secvențe sunt cele mai apropiate** și **de ce** (argument biologic / logic).
-*Hint:* dacă lungimile diferă, **nu** folosiți Hamming. Alegeți: (a) p-distance pe aliniamente pairwise brute (`globalxx` în Biopython) sau (b) trunchiați la lungimea minimă și **motivați alegerea**.
+Fișierele comune și perechea artificială sunt permise pentru demonstrații și depanare. Pentru evaluare folosiți și documentați datele proprii. Păstrați datele mari în `data/work/<handle>/lab01/` și includeți instrucțiuni de descărcare reproductibilă. Nu predați date personale sau sensibile.
 
----
+Puneți codul, `README.md` cu comenzile și versiunile, `notes.md` (aproximativ o pagină), matricea de distanțe și extrasul MSA în `labs/02_alignment/submissions/<handle>/`. Pentru comparații foarte mari, salvați un extras și descrieți cum se regenerează rezultatul complet.
 
-## Task 2 — Pairwise alignments (4p)
-- Alegeți două secvențe din dataset (specificați ID-urile).
-- Rulați două aliniamente pairwise cu Biopython:
-  - global (ex. `pairwise2.align.globalxx` sau variantă cu scor match/mismatch/gap),
-  - local (ex. `pairwise2.align.localxx`).
-- În `notes.pdf` (max 6–7 rânduri):
-  - Comparați **global vs. local** (regiuni aliniate, număr/poziție gap-uri, scor).
-  - Includeți un **mic fragment** din aliniere unde local găsește o potrivire pe care global o “forțează” cu gap-uri (dacă identificați un astfel de caz).
+## Task 1 Distanțe pe poziții aliniate 3 puncte
 
----
+Calculați p-distance pentru fiecare pereche din set. Aliniați secvențele înainte de numărare sau folosiți un MSA. Definiți tratamentul gap-urilor și bazelor ambigue și afișați numărul pozițiilor comparate; fără poziții comparabile, raportați `NA`, nu zero. Hamming este adecvat doar pentru șiruri de aceeași lungime pe poziții deja corespunzătoare. Trunchierea nu înlocuiește alinierea.
 
-## Task 3 — MSA online (3p)
-- Alegeți ≥3 secvențe din dataset.
-- Rulați aliniere multiplă (MSA) cu **Clustal Omega (EBI)** sau un alt instrument online echivalent.
-- Exportați rezultatul MSA (text) și includeți un **extras relevant** în `notes.pdf` (sau link permanent, dacă există).
-- În `notes.pdf` (max 6–7 rânduri):
-  - Marcați o **regiune conservată** (motif / segment identic) și explicați de ce credeți că este conservată.
-  - Comentați când **MSA ajută** interpretarea comparativ cu aliniamentele pe perechi.
+Produceți o matrice sau tabelul perechilor. În `notes.md`, identificați perechea cu distanța cea mai mică și discutați limita interpretării. O distanță observată pe un fragment nu demonstrează singură o relație filogenetică.
 
----
+## Task 2 Aliniere globală și locală 4 puncte
 
-## Bonus — Semiglobal (+1p)
-- Rulați un **aliniament semiglobal** (implementare simplificată sau setare dintr-un tool care nu penalizează gap-urile la capete).
-- În `notes.pdf` (3–4 rânduri): **când** ați prefera semiglobal vs. global/local?
+Completați TODO-urile din copiile `ex01_global_nw.py` și `ex02_local_sw.py`. Verificați întâi pe perechi artificiale scurte, apoi pe două regiuni biologice comparabile, de aproximativ 50–200 nucleotide. Înregistrați accesii, coordonate și motivul alegerii regiunii. Pentru coordonate Python specificați convenția zero-based, cu capătul drept exclus.
 
----
+Rulați și Biopython pe aceleași secvențe, cu aceleași scoruri pentru match, mismatch și gap. Comparați scorul și validitatea alinierii; pot exista trasee optime diferite. Nu folosiți `globalxx`/`localxx` cu gap-uri gratuite ca unic exemplu biologic.
 
-## Punctaj & criterii
-- Task 1: **3p** — corectitudinea calculelor + matrice clară.
-- Task 2: **4p** — rulare corectă + **interpretare** global vs. local cu fragment exemplu.
-- Task 3: **3p** — MSA corectă + **identificare motiv conservat** + comparație cu pairwise.
-- Bonus: **+1p** — scenariu semiglobal motivat.
+Explicați diferența global/local, lungimile regiunilor aliniate și efectul gap-urilor. Includeți un fragment ilustrativ. Alocare: 2p implementare și verificare, 2p comparație și interpretare.
 
----
+## Task 3 Aliniere multiplă 3 puncte
 
-## Integritate academică 
-- Toate lucrarile pot fi executate singur, sau in perechi, conform [docs/policies.md](../../docs/policies.md)  
-- Dacă lucrați în perechi, indicați ambele nume în `notes.pdf` și includeți ambii autori în arhiva `.zip`.  
-- Dacă folosiți resurse externe (inclusiv AI), notați sursa pe scurt în `README.txt`.
+Aliniați cele trei secvențe cu Clustal Omega sau un instrument echivalent. Alegeți tipul corect de moleculă. Salvați rezultatul text și includeți un extras relevant, nu doar un link temporar al serviciului.
+
+Marcați o regiune conservată, separați observația de ipoteza funcțională și explicați ce aduce a treia secvență față de comparațiile pe perechi. Dacă folosiți proteine, toate intrările trebuie să reprezinte familia de proteine aleasă, cu organismele și isoformele verificate.
+
+## Bonus Aliniere semi globală 1 punct
+
+Configurați o aliniere semi-globală, precizați care capete sunt nepenalizate și motivați un caz de utilizare. Bonusul nu înlocuiește cerințele de bază.
+
+## Integritate și colaborare
+
+Puteți lucra individual sau în perechi conform [politicii cursului](../../docs/policies.md). Identificați ambii autori în raport și PR dacă lucrați în pereche. Menționați sursele externe și asistența AI în README. Testele de mediu verzi nu reprezintă evaluarea corectitudinii științifice.

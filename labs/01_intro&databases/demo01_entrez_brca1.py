@@ -1,43 +1,62 @@
-from pathlib import Path
+"""Inspect a versioned BRCA1 transcript offline; optionally refresh from NCBI."""
+import argparse
 from io import StringIO
-from Bio import Entrez, SeqIO
 import os
+from pathlib import Path
+import socket
 
-# setează email pentru NCBI (sau: export NCBI_EMAIL="emailul_tău")
+from Bio import Entrez, SeqIO
+from Bio.SeqUtils import gc_fraction
+
+ACCESSION = "NM_007294.4"
+CACHE = Path(__file__).resolve().parent / "data" / "brca1.gb"
 
 
-DATA_DIR = Path("data")
-DATA_DIR.mkdir(exist_ok=True)
+def validate_record(record):
+    """Reject chromosome/contig records and incomplete sequence data."""
+    if (record.id != ACCESSION or not record.seq.defined
+            or not len(record) or "BRCA1" not in record.description
+            or record.annotations.get("organism") != "Homo sapiens"
+            or record.annotations.get("molecule_type") != "mRNA"):
+        raise ValueError(f"Expected a complete human BRCA1 transcript {ACCESSION}")
+    return record
 
-QUERY = 'BRCA1[Gene] AND "Homo sapiens"[Organism]'
-OUT_GB = DATA_DIR / "brca1.gb"
 
-def gc_content(seq: str) -> float:
-    s = seq.upper().replace("N", "")
-    return 0.0 if not s else (s.count("G") + s.count("C")) / len(s)
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--refresh", action="store_true", help="Download the fixed accession")
+    parser.add_argument("--email", default=os.environ.get("NCBI_EMAIL"))
+    parser.add_argument("--out", type=Path, default=Path("data/work/demo/lab01/brca1.gb"))
+    args = parser.parse_args()
+    if args.refresh:
+        if not args.email:
+            parser.error("Set NCBI_EMAIL or --email to your real email; omit --refresh for offline use.")
+        Entrez.email = args.email
+        Entrez.tool = "bioinf_y4_lab"
+        Entrez.api_key = os.environ.get("NCBI_API_KEY")
+        Entrez.max_tries = 2
+        Entrez.sleep_between_tries = 1
+        socket.setdefaulttimeout(20)
+        try:
+            with Entrez.efetch(db="nuccore", id=ACCESSION, rettype="gb", retmode="text") as handle:
+                text = handle.read()
+            record = validate_record(SeqIO.read(StringIO(text), "genbank"))
+        except (OSError, ValueError) as exc:
+            raise SystemExit(f"NCBI retrieval failed: {exc}. Retry without --refresh for cached data.")
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        args.out.write_text(text, encoding="utf-8")
+        source = str(args.out)
+    else:
+        record = validate_record(SeqIO.read(CACHE, "genbank"))
+        source = f"bundled offline cache: {CACHE.name}"
+    print("Source:", source)
+    print("ID:", record.id)
+    print("Title:", record.description)
+    print("Length:", len(record), "nt")
+    print("GC fraction:", round(gc_fraction(record.seq), 3))
+    print("First 50 nt:", record.seq[:50])
+    print("This is an mRNA transcript represented using T, not the complete genomic locus.")
 
-# search
-with Entrez.esearch(db="nucleotide", term=QUERY, retmax=1) as h:
-    ids = Entrez.read(h)["IdList"]
-print(f"Găsite {len(ids)} rezultate.")
-if not ids:
-    raise SystemExit("Niciun rezultat pentru BRCA1.")
 
-acc = ids[0]
-
-# GenBank
-with Entrez.efetch(db="nucleotide", id=acc, rettype="gb", retmode="text") as h:
-    OUT_GB.write_text(h.read(), encoding="utf-8")
-gb_record = SeqIO.read(OUT_GB, "genbank")
-
-# FASTA & GC
-with Entrez.efetch(db="nucleotide", id=acc, rettype="fasta", retmode="text") as hf:
-    fasta_rec = SeqIO.read(StringIO(hf.read()), "fasta")
-seq = str(fasta_rec.seq)
-
-gc = gc_content(seq)
-print("ID:", acc)
-print("Titlu:", gb_record.description)
-print("Length:", len(seq), "bp")
-print("GC fraction:", round(gc, 3))
-print("First 50 nt:", seq[:50])
+if __name__ == "__main__":
+    main()

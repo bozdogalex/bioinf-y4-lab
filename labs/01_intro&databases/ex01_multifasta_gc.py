@@ -4,7 +4,7 @@
 Exercițiu (Lab 1): Descărcare FASTA + calcul GC
 
 Scop:
-  1) Descărcați un fișier FASTA de la NCBI (nucleotide sau proteină).
+  1) Descărcați un fișier FASTA de nucleotide de la NCBI; GC nu se aplică proteinelor.
   2) Salvați fișierul local în data/work/<handle>/lab01/ (NU îl urcați pe git).
   3) Calculați fracția GC pentru fiecare înregistrare din fișier.
 
@@ -68,13 +68,16 @@ def main():
     ap.add_argument("--api_key", help="NCBI API key (opțional)")
     ap.add_argument("--query", help="Ex: 'TP53[Gene] AND Homo sapiens[Organism]'")
     ap.add_argument("--accession", help="Ex: NM_000546")
-    ap.add_argument("--db", default="nuccore", choices=["nuccore", "protein"])
+    ap.add_argument("--db", default="nuccore", choices=["nuccore"], help="GC is defined for nucleotides, not proteins")
     ap.add_argument("--retmax", type=int, default=3)
     ap.add_argument("--out", required=True, help="Fișier FASTA de ieșire")
     args = ap.parse_args()
 
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # TODO: remove this stop after implementing the download/read/GC steps below.
+    raise NotImplementedError("Exercise incomplete: implement download, FASTA reading and GC output.")
 
     # TODO: Apelați funcția download_fasta(...) și salvați rezultatele
     # n = download_fasta(args.email, out_path, query=args.query,

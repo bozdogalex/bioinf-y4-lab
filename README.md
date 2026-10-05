@@ -16,6 +16,8 @@ Start with the **[private repository and submission guide](docs/git-workflow.md)
 
 ## Labs (index)
 
+Start with the [Romanian genetics and genomics primer](docs/genetics-genomics-primer-ro.md) and [expanded slide speaking notes](docs/lab12-slide-notes-ro.md). Students with an existing private repository should use the [selective teaching-material update guide](docs/update-course-materials.md); collaborator access does not automatically synchronize files.
+
 - 01 — Databases & GitHub: [labs/01_intro&databases](labs/01_intro&databases)
 - 02 — Sequence Alignment: [labs/02_alignment](labs/02_alignment)
 - 03 — NGS: [labs/03_formats&NGS](labs/03_formats&NGS)
