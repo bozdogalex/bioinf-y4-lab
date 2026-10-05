@@ -1,6 +1,6 @@
 # Updating an existing private coursework repository
 
-Adding the instructor as a collaborator grants access; it does not synchronize repositories. Keep your existing private repository and invitation. Do not create another repository or make it public to receive updates.
+To add updated course materials to your own repo, keep your existing private repository and invitation. Do not create another repository or make it public to receive updates.
 
 The private repositories were created from snapshots, so their histories may be unrelated to the public course history. We import an explicit list of teaching files on a new private branch. We do not merge public history or restore whole lab directories.
 
@@ -8,15 +8,15 @@ The private repositories were created from snapshots, so their histories may be 
 
 Save and commit your current work **on its current branch**, reviewing `git status` first. Keep working datasets in the ignored data directory. If you edited an original teaching script, preserve that work in your personal submission directory before updating: listed teaching files will be replaced, while personal submissions and roster entries are excluded.
 
-In your private Codespace, confirm that `git remote -v` shows your private repository as `origin`. The instructor supplies a tested course commit SHA. After the update has been merged into the public repository, `main` can also be used. Until then, use the instructor-supplied SHA; the old public `main` does not contain this update.
+In your private Codespace, confirm that `git remote -v` shows your private repository as `origin`. After the update has been merged into the public repository, `main` should be used. 
 
 ## Import the Lab 1 and 2 update
 
 Set `COURSE_REF` to the instructor's commit SHA (or `main` after its release). Then paste the following Bash block into your Codespaces terminal. It stops on an error and refuses an uncommitted working tree. If the update branch already exists, resume it rather than deleting it.
 
 ```bash
-read -r -p "Course commit SHA (or main after release): " COURSE_REF
-export COURSE_REF
+read -r -p "Course commit SHA (or main after release): " main
+export main
 (
   set -eu
   cd "$(git rev-parse --show-toplevel)"
