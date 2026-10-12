@@ -37,6 +37,8 @@ jobs:
         run: python labs/00_smoke/smoke.py
       - name: Lab 1 and 2 teaching regressions
         run: python -m unittest discover -s tests -p 'test_lab12*.py' -v
+      - name: Lab 3 FASTQ sample and QC demo
+        run: python "labs/03_formats&NGS/demo01_fastq_qc.py"
 
   mlflow:
     name: mlflow
