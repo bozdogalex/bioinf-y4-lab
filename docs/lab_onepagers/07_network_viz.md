@@ -1,35 +1,26 @@
-# Lab 7 — Vizualizarea și interpretarea rețelelor + Diseasome
+# Lab 7 — Vizualizarea și interpretarea aceleiași rețele
 
-## Obiective
-- Vizualizarea rețelelor de co-expresie și a modulelor.  
-- Identificarea genelor hub.  
-- Validarea biologică a modulelor prin analiză de îmbogățire.  
-- Legătura dintre co-expresie și **diseasome**.  
+Încărcăm `adjacency.csv`, `modules.csv` și `parameters.json` din `data/work/student/lab06/`, fără reconstruirea adiacenței. Astfel, o schimbare de layout nu modifică rețeaua analizată.
 
----
+```bash
+python labs/07_network_viz/ex01_network_viz.py --handle student
+```
 
-## Competențe
-- Folosirea NetworkX pentru layout și colorarea nodurilor.  
-- Exportul vizualizărilor.  
-- Interpretarea vizuală a modulelor și identificarea hub genes.  
-- Conectarea modulelor la boli prin conceptul de diseasome.  
+## Ce urmărim
 
----
+- Poziția în layout este o alegere de afișare. Culorile indică modulele; izolatele sunt păstrate și desenate gri.
+- Gradul numără muchii, strength însumează ponderi, iar conectivitatea intramodulară însumează ponderile spre genele din același modul.
+- Eigengene-ul rezumă modulul prin prima componentă principală; poate fi pus în relație cu caracteristici ale probelor.
+- Stabilitatea la reeșantionare și verificarea în date independente completează interpretarea.
+- Genele sintetice nu au adnotări biologice. Enrichment GO/KEGG se demonstrează separat pe gene reale, cu background și corecție pentru testări multiple.
+- Diseasome folosește alte noduri și alte relații: de exemplu, boli legate prin gene asociate comune. Nu este o conversie automată a corelațiilor în comorbidități.
 
-## Pași principali
-1. Încărcați mapping-ul modulelor (din Lab 6).  
-2. Vizualizați rețeaua (spring layout, colorare după modul).  
-3. Evidențiați genele hub.  
-4. Exportați figura în `.png`.  
-5. Opțional: validați modulele prin GO/KEGG enrichment.  
+Scriptul exportă `network.png`, `hubs.csv` și `visualization_parameters.json` în `data/work/student/lab07/`, ignorat de Git. Aceste rezultate rămân local.
 
----
+În PR-ul privat includeți codul și `labs/07_network_viz/submissions/student/notes.md`, cu comenzile de reproducere, parametrii, hash-ul intrării și un rezumat al rezultatelor. Opțional, includeți cel mult 10 linii de metadate; nu adăugați matrici, liste complete sau PNG-uri generate. [Politica de date](../GDPR_and_DataPolicy.md).
 
-## Resurse
-
-- [Fișa laborator](../../docs/lab_onepagers/07_network_viz.md)
+- [Instrucțiuni complete](../../labs/07_network_viz/README.md)
 - [NetworkX Drawing](https://networkx.org/documentation/stable/reference/drawing.html)
-- [Cytoscape — vizualizare rețele biologice](https://cytoscape.org/)
-- [Gephi — vizualizare rețele generale](https://gephi.org/)
-- [g:Profiler — analiză de îmbogățire GO/KEGG](https://biit.cs.ut.ee/gprofiler/)
-- [Barabási et al., Nature Genetics 2007 — The Human Diseasome](https://www.nature.com/articles/nrg2918)
+- [Goh et al., The human disease network (2007)](https://doi.org/10.1073/pnas.0701361104)
+
+Material actualizat cu asistență AI, sub îndrumarea cadrului didactic.

@@ -1,34 +1,33 @@
+"""Print the six-gene slide example using all 48 synthetic samples.
+
+The submatrix is an excerpt from the full correlation network. Restricting
+this printout does not change how correlations are estimated across samples.
 """
-Demo — Calculul corelației și pragului pe date toy
+import argparse
 
-Acest demo arată cum se calculează o matrice de corelație între gene
-și cum se aplică un prag pentru a obține o matrice de adiacență simplă.
-"""
+from ex01_gce_networks import (
+    DEFAULT_INPUT, read_expression_matrix, correlation_matrix,
+    adjacency_from_correlation,
+)
 
-import pandas as pd
-import numpy as np
+GENES = ["G001", "G002", "G032", "G033", "G061", "G062"]
 
-# Toy expression matrix (3 gene x 5 samples)
-data = {
-    "Sample1": [5, 3, 8],
-    "Sample2": [4, 3, 9],
-    "Sample3": [6, 2, 7],
-    "Sample4": [5, 4, 10],
-    "Sample5": [4, 3, 8],
-}
-df = pd.DataFrame(data, index=["GeneA", "GeneB", "GeneC"])
-print("Matrice expresie (toy):")
-print(df)
 
-# Corelație Spearman între gene
-corr = df.T.corr(method="spearman")
-print("\nMatrice corelație (Spearman):")
-print(corr)
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--threshold", type=float, default=0.7)
+    parser.add_argument("--network", choices=["positive", "unsigned"], default="positive")
+    args = parser.parse_args()
+    expression = read_expression_matrix(DEFAULT_INPUT)
+    corr = correlation_matrix(expression, method="spearman").loc[GENES, GENES]
+    adjacency = adjacency_from_correlation(corr, args.threshold, weighted=True,
+                                           use_abs=args.network == "unsigned")
+    print("Corelații Spearman între șase gene; fiecare profil are 48 de probe:")
+    print(corr.round(3).to_string())
+    print(f"\nAdiacență ponderată, {args.network}, prag {args.threshold}:")
+    print(adjacency.round(3).to_string())
+    print("\nExemplu sintetic: o muchie exprimă asocierea profilurilor, nu reglare directă.")
 
-# Prag pe corelație (ex: 0.7)
-threshold = 0.7
-adjacency = (corr >= threshold).astype(int)
-np.fill_diagonal(adjacency.values, 0)  # fără self-loops
 
-print(f"\nMatrice adiacență cu prag {threshold}:")
-print(adjacency)
+if __name__ == "__main__":
+    main()
