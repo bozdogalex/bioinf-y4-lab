@@ -1,74 +1,61 @@
-# Săptămâna 7 — Vizualizarea și interpretarea rețelelor de co-expresie (GCEs) + Diseasome
+# Lab 7 — Interpretarea rețelei construite în Lab 6
 
-> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+> Soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
 
-## Scopuri
-- Vizualizarea rețelelor de co-expresie genică și a modulelor identificate.  
-- Identificarea genelor hub (cele mai conectate noduri din module).  
-- Validarea modulelor prin analiză de îmbogățire funcțională (GO, KEGG).  
-- Înțelegerea conceptului de **Diseasome** și legătura cu rețelele de co-expresie.  
-- Interpretarea rezultatelor în context biomedical (cancer, comorbidități, drug repurposing).  
+Continuăm analiza din [Lab 6](../06_wgcna/README.md) folosind **același graf și aceleași module**. Vizualizarea schimbă pozițiile nodurilor în pagină, fără să recalculeze corelațiile sau muchiile.
 
----
+## Rulare în Codespaces
 
-## Context
-În săptămâna 6 am construit o rețea de co-expresie și am detectat module.  
-Acum mergem mai departe: **vizualizare și interpretare**.  
+După rularea variantei de bază din Lab 6, din rădăcina repository-ului privat:
 
-Rețelele sunt greu de înțeles doar ca matrici — o vizualizare bună scoate la suprafață structura, modulele și genele hub.  
-Mai mult, putem valida biologic modulele prin **analiză de îmbogățire funcțională** și putem conecta aceste rezultate la **diseasome** — harta bolilor umane legate prin gene și module comune.  
+```bash
+python labs/07_network_viz/ex01_network_viz.py --handle student
+```
 
----
+Implicit, scriptul citește `adjacency.csv`, `modules.csv` și `parameters.json` din `data/work/student/lab06/`, unde au rămas salvate local. Dacă ați salvat într-un alt folder, specificați-l:
 
-## Hands-on
-**Rulați și completați**  
-- `ex01_network_viz.py` — vizualizați rețeaua construită în Lab 6.  
-  - Încărcați `modules_<handle>.csv` și matricea de adiacență.  
-  - Colorați nodurile în funcție de modul.  
-  - Evidențiați genele hub (cele cu cel mai mare grad).  
-  - Exportați figura în `network_<handle>.png`.  
+```bash
+python labs/07_network_viz/ex01_network_viz.py --handle student --lab06-dir data/work/student/lab06/t05
+```
 
-**La alegere (bonus)**  
-- Încercați vizualizarea într-un tool extern (Cytoscape sau Gephi).  
-- Comparați aspectul și ușurința interpretării față de NetworkX.  
+Loaderul verifică simetria, diagonala zero, concordanța genelor și numerele de noduri/muchii/izolate/module față de `parameters.json`. Astfel poate detecta fișiere amestecate din rulări diferite. Genele izolate rămân în graf, au `Module = -1` și sunt desenate gri într-un inel exterior. Acest inel este o convenție de afișare, fără semnificație biologică.
 
----
+## Ce analizăm
 
-## Livrabile
-În PR trebuie să apară:
-1. Fișierul `labs/07_network_viz/submissions/<github_handle>_notes.md` cu:  
-   - ce metodă de layout ați folosit (ex: spring, kamada-kawai),  
-   - o scurtă reflecție: **Ce avantaje aduce vizualizarea față de analiza numerică din Lab 6?**  
-2. Scriptul completat `ex01_network_viz.py`.  
-3. Fișierul generat:  
-   ```bash
-   labs/07_network_viz/submissions/<github_handle>/network_<handle>.png
-   ```
-4. Completarea checklist-ului din șablonul PR.
+- Comparăm aspectul rețelei când schimbăm seed-ul layout-ului, păstrând graful fix. Distanța din desen nu este o măsurare a distanței dintre profilurile de expresie.
+- Nodurile sunt colorate după modul și dimensionate după grad. Hub-urile exportate sunt ordonate după **conectivitatea ponderată în interiorul modulului**; gradul și suma ponderilor globale sunt raportate separat.
+- Investigăm o genă bine conectată și vecinii ei. Conectivitatea măsoară poziția în rețeaua de co-expresie aleasă, nu dovedește reglare directă sau cauzalitate.
+- Discutăm eigengene-ul unui modul ca prima componentă principală a profilurilor genelor sale și folosirea lui în comparații cu metadatele probelor.
+- Discutăm validarea prin reeșantionarea probelor și prin date independente. O împărțire stabilă și o interpretare biologică plauzibilă răspund la întrebări diferite.
 
----
+Acesta este un baseline executabil pentru explorare. Parametrii de vizualizare sunt disponibili prin `--help`; puteți modifica implementarea pentru o comparație cerută la curs.
 
-## Săptămâna următoare
-- Machine Learning în analiza datelor biomedicale.
-- Clasificarea stărilor de boală și evaluarea performanței modelelor.
-- [Vezi Săptămâna 8 — Machine Learning.](../08_ML_flower/README.md)
+## Interpretarea funcțională și Diseasome
 
----
+Setul implicit folosește **identificatori de gene inventați**. Nu îi trimiteți la GO/KEGG, g:Profiler sau baze de boli. Pentru simulare putem compara modulele inferate cu mecanismul generatorului, nu putem face enrichment biologic. O demonstrație de enrichment folosește separat o listă de gene reale, o specie și un background eligibil explicit; când testăm mai mulți termeni raportăm corecția pentru testări multiple. Rezultatele unei astfel de demonstrații nu se atribuie simulării.
 
-## Competențe
-- Vizualizarea rețelelor și interpretarea modulelor.
-- Identificarea și analiza genelor hub.
-- Aplicarea analizelor de îmbogățire funcțională pe module.
-- Înțelegerea și explicarea conceptului de Diseasome.
-- Conectarea rezultatelor la context biomedical (cancer, comorbidități, drug repurposing).
+Diseasome este o schimbare a reprezentării: de exemplu, bolile devin noduri și sunt conectate prin gene asociate comune. Muchiile sale au altă definiție decât corelațiile dintre expresiile genelor. Rețeaua bolilor nu rezultă automat din modulele de co-expresie; asocierea la boli cere surse externe și o regulă explicită de conectare. Nici o legătură prin gene comune nu stabilește singură o comorbiditate observată clinic.
 
----
+Prezentarea mai veche din `docs/presentations/07_network_viz.pdf` rămâne material pentru explicația din clasă; pentru numele fișierelor, rulare și semantica datelor urmați această fișă și [one-pager-ul actualizat](../../docs/lab_onepagers/07_network_viz.md).
+
+## Export și predare
+
+Rezultatele se salvează în `data/work/student/lab07/`, folder local ignorat de Git:
+
+- `network.png` — graful cu modulele, hub-urile etichetate și izolatele vizibile;
+- `hubs.csv` — `Gene`, `Module`, `Degree`, `Strength`, `IntramodularStrength`;
+- `visualization_parameters.json` — seed și convenții de desen, împreună cu parametrii Lab 6;
+
+În PR-ul privat includeți codul modificat și `labs/07_network_viz/submissions/student/notes.md`, cu comenzile de reproducere, parametrii rețelei și layout-ului, hash-ul intrării, un rezumat al dimensiunilor rețelei și explicația unui exemplu de hub. Opțional, includeți un eșantion de metadate de cel mult 10 linii. Matricile, listele complete, PNG-ul și celelalte rezultate generate rămân local; nu le adăugați în PR. Urmați [politica de date](../../docs/GDPR_and_DataPolicy.md).
+
+Un export suplimentar în Cytoscape sau Gephi poate folosi `edges.csv` și `modules.csv` din Lab 6; în import se păstrează separat și genele izolate. Aceste fișiere rămân tot în zona locală de lucru.
 
 ## Resurse
 
-- [Fișa laborator](../../docs/lab_onepagers/07_network_viz.md)
-- [NetworkX Drawing](https://networkx.org/documentation/stable/reference/drawing.html)
-- [Cytoscape — vizualizare rețele biologice](https://cytoscape.org/)
-- [Gephi — vizualizare rețele generale](https://gephi.org/)
-- [g:Profiler — analiză de îmbogățire GO/KEGG](https://biit.cs.ut.ee/gprofiler/)
-- [Barabási et al., Nature Genetics 2007 — The Human Diseasome](https://www.nature.com/articles/nrg2918)
+- [NetworkX — desenarea grafurilor](https://networkx.org/documentation/stable/reference/drawing.html)
+- [Cytoscape](https://cytoscape.org/)
+- [g:Profiler](https://biit.cs.ut.ee/gprofiler/)
+- [Goh et al., The human disease network, PNAS (2007)](https://doi.org/10.1073/pnas.0701361104)
+- [Următorul laborator — Machine Learning](../08_ML_flower/README.md)
+
+Corecturile handoff-ului și materialele de bază au fost pregătite cu asistență AI, sub îndrumarea cadrului didactic.
