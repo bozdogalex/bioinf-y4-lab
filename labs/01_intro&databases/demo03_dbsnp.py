@@ -1,6 +1,6 @@
 from Bio import Entrez
 
-Entrez.email = "student@example.com"
+Entrez.email = "octaviancili@gmail.com"
 
 res = Entrez.esearch(
     db="snp",
