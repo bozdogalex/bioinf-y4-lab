@@ -17,9 +17,23 @@ python labs/07_network_viz/ex01_network_viz.py --handle student
 
 Scriptul exportă `network.png`, `hubs.csv` și `visualization_parameters.json` în `data/work/student/lab07/`, ignorat de Git. Aceste rezultate rămân local.
 
-În PR-ul privat includeți codul și `labs/07_network_viz/submissions/student/notes.md`, cu comenzile de reproducere, parametrii, hash-ul intrării și un rezumat al rezultatelor. Opțional, includeți cel mult 10 linii de metadate; nu adăugați matrici, liste complete sau PNG-uri generate. [Politica de date](../GDPR_and_DataPolicy.md).
+## Exercițiul obligatoriu
+
+Rulați același graf cu `--seed 42` și `--seed 7`, folosind `--output-dir` separat pentru fiecare rezultat. Comparați figurile și tabelele de hub-uri. În programul propriu `submissions/<handle>/analyze_hub.py`, calculați scorurile unei gene pe graful complet, apoi extrageți gena și vecinii direcți pentru afișare. Explicați ce susține simularea și ce date ar fi necesare pentru interpretarea biologică.
+
+## Extensie opțională
+
+```bash
+python labs/07_network_viz/ex02_module_profiles.py --handle student
+```
+
+Calculează profilurile PC1 din expresia standardizată, proporția variației explicate și corelația descriptivă cu `control`/`tratament`. Folosește expresia și metadatele salvate în Lab 6, aliniate după probe. Rezultatele rămân în `data/work/student/lab07/profiles/`.
+
+În PR-ul privat includeți programul propriu și `labs/07_network_viz/submissions/student/notes.md`, cu comenzile de reproducere, parametrii, hash-ul intrării și un rezumat al rezultatelor. Păstrați scripturile didactice nemodificate. Trimiteți linkul PR și commit SHA în LMS. Opțional, includeți cel mult 10 linii de metadate; nu adăugați matrici, liste complete sau PNG-uri generate. [Politica de date](../GDPR_and_DataPolicy.md).
 
 - [Instrucțiuni complete](../../labs/07_network_viz/README.md)
+- [Enunț și punctaj](../../labs/07_network_viz/assignment.md)
+- [Prezentare în română](../presentations/07_network_viz.pdf)
 - [NetworkX Drawing](https://networkx.org/documentation/stable/reference/drawing.html)
 - [Goh et al., The human disease network (2007)](https://doi.org/10.1073/pnas.0701361104)
 
