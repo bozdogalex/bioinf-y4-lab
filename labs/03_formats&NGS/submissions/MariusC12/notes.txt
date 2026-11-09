@@ -1,0 +1,9 @@
+# Lab 3 - Notes
+
+## Why is quality control important before variant calling?
+
+Quality control (QC) is an important step before variant calling because sequencing data may contain errors, low-quality bases, or ambiguous nucleotides. These problems can lead to false-positive or false-negative variant results. By checking read count, read length, the proportion of N bases, and average Phred quality, we can evaluate the reliability of the sequencing data. Removing or filtering low-quality reads helps improve the accuracy of downstream analysis.
+
+## PubMed searches for genetic variants
+
+PubMed searches can be formulated using the rs identifier of a genetic variant, together with the gene name TP53, to find related scientific publications. If a variant does not have an rs identifier, its chromosome and genomic position can be used together with the gene name. These searches help connect genetic variants with published research.
