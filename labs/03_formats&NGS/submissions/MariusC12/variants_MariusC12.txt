@@ -1,0 +1,16 @@
+VARIANTA 1
+Cromozom: 17
+Pozitie: 7667874
+REF: G
+ALT: C
+ID: rs1049800949
+Nu au fost gasite articole PubMed.
+------------------------------------------------------------
+VARIANTA 2
+Cromozom: 17
+Pozitie: 7667880
+REF: G
+ALT: A
+ID: rs2072740569
+Nu au fost gasite articole PubMed.
+------------------------------------------------------------
