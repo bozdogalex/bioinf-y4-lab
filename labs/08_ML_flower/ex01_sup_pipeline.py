@@ -1,230 +1,50 @@
-"""
-Exercise 8 — Supervised ML pipeline pentru expresie genică (Random Forest)
+"""Student implementation: training-only pipeline and shared-fold comparison.
 
-TODO-uri principale:
-- Încărcați matricea de expresie (ex. subset TP53 / GTEx) pentru HANDLE-ul vostru
-- Separați features (gene) și label (ultima coloană)
-- Encodați etichetele
-- Împărțiți în train/test
-- Antrenați un RandomForestClassifier (model de bază)
-- Evaluați: classification_report + matrice de confuzie (salvate)
-- Calculați importanța trăsăturilor și salvați în CSV
-- (Opțional) Aplicați KMeans pe X și comparați clustere vs etichete reale
+Copy into submissions/<handle>/ and preserve the original teaching skeleton.
+--check-input validates the infrastructure before completing the assessed TODOs.
 """
-
-from __future__ import annotations
 from pathlib import Path
-from typing import Tuple
+import argparse
+import sys
 
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import seaborn as sns
-from sklearn.cluster import KMeans
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
-
-# --------------------------
-# Config — completați cu valorile voastre
-# --------------------------
-HANDLE = "<handle>"
-
-DATA_CSV = Path(f"data/work/{HANDLE}/lab08/expression_matrix_{HANDLE}.csv")
-
-TEST_SIZE = 0.2
-RANDOM_STATE = 42
-N_ESTIMATORS = 200
-TOPK_FEATURES = 20  # opțional, pentru extensie
-
-OUT_DIR = Path(f"labs/08_ml/submissions/{HANDLE}")
-OUT_DIR.mkdir(parents=True, exist_ok=True)
-
-OUT_CONFUSION = OUT_DIR / f"confusion_rf_{HANDLE}.png"
-OUT_REPORT = OUT_DIR / f"classification_report_{HANDLE}.txt"
-OUT_FEATIMP = OUT_DIR / f"feature_importance_{HANDLE}.csv"
-OUT_CLUSTER_CROSSTAB = OUT_DIR / f"cluster_crosstab_{HANDLE}.csv"
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / "labs/08_ML_flower/ml_lab.py").is_file())
+sys.path.insert(0, str(ROOT / "labs/08_ML_flower"))
+sys.path.insert(0, str(ROOT))
+from ml_lab import prepare, development_folds, configure_tracking, EXPERIMENT  # noqa: E402, F401
+from mlops.mlflow_utils import start_run, log_params, log_metrics  # noqa: E402, F401
 
 
-# --------------------------
-# Utils
-# --------------------------
-def ensure_exists(path: Path) -> None:
+def compare_candidates(X_train, y_train, folds):
+    """Return (candidates, cv_scores, selected_name).
+
+    TODO: create Dummy, a scaled Logistic Pipeline, and Forest using the
+    assignment settings. Reuse folds, compare balanced accuracy and choose
+    between Logistic and Forest before opening the final test scores.
     """
-    TODO:
-    - verificați că fișierul de input există
-    - dacă nu, ridicați FileNotFoundError cu un mesaj clar
+    raise NotImplementedError("Implement the shared-fold comparison in your copy.")
+
+
+def evaluate_frozen_models(candidates, cv_scores, selected, X_train, y_train, X_test, y_test, out):
+    """TODO: fit on development, save test metrics and confusion matrices.
+
+    Preserve sample IDs in local predictions. All generated outputs go in out.
+    Use one MLflow run per candidate under EXPERIMENT. Log model parameters,
+    development CV scores, separately named test metrics and the saved confusion
+    matrix. cv_scores supplies the development fold results and selected is
+    the pre-test choice. Attach the split manifest and report the run IDs.
     """
-    # if not path.is_file():
-    #     raise FileNotFoundError(f"Nu am găsit fișierul: {path}")
-    pass
+    raise NotImplementedError("Implement evaluation after freezing the model choice.")
 
 
-def load_dataset(path: Path) -> Tuple[pd.DataFrame, pd.Series]:
-    """
-    TODO:
-    - citiți CSV-ul cu pandas
-    - presupunem că ultima coloană este label-ul (ex. 'Label')
-    - X = toate coloanele mai puțin ultima
-    - y = ultima coloană
-    """
-    # df = pd.read_csv(path)
-    # X = df.iloc[:, :-1]
-    # y = df.iloc[:, -1]
-    # return X, y
-    return pd.DataFrame(), pd.Series(dtype="object")  # placeholder
-
-
-def encode_labels(y: pd.Series) -> Tuple[np.ndarray, LabelEncoder]:
-    """
-    TODO:
-    - folosiți LabelEncoder pentru a converti etichetele string în valori numerice
-    - returnați y_encoded și encoder-ul
-    """
-    # le = LabelEncoder()
-    # y_enc = le.fit_transform(y)
-    # return y_enc, le
-    return np.array([]), LabelEncoder()
-
-
-def train_random_forest(
-    X_train: pd.DataFrame,
-    y_train: np.ndarray,
-    n_estimators: int,
-    random_state: int,
-) -> RandomForestClassifier:
-    """
-    TODO:
-    - inițializați RandomForestClassifier
-    - antrenați modelul pe X_train, y_train
-    - returnați modelul
-    """
-    # rf = RandomForestClassifier(
-    #     n_estimators=n_estimators,
-    #     random_state=random_state,
-    #     n_jobs=-1
-    # )
-    # rf.fit(X_train, y_train)
-    # return rf
-    return RandomForestClassifier()  # placeholder
-
-
-def evaluate_model(
-    model: RandomForestClassifier,
-    X_test: pd.DataFrame,
-    y_test: np.ndarray,
-    label_encoder: LabelEncoder,
-    out_png: Path,
-    out_txt: Path,
-) -> None:
-    """
-    TODO:
-    - calculați predicțiile pe X_test
-    - generați classification_report (print + save)
-    - calculați matricea de confuzie și salvați imaginea .png
-    """
-    # y_pred = model.predict(X_test)
-    #
-    # target_names = label_encoder.classes_
-    # report = classification_report(y_test, y_pred, target_names=target_names)
-    # print(report)
-    # out_txt.write_text(report)
-    #
-    # cm = confusion_matrix(y_test, y_pred)
-    # plt.figure(figsize=(5, 4))
-    # sns.heatmap(
-    #     cm,
-    #     annot=True,
-    #     fmt="d",
-    #     cmap="Blues",
-    #     xticklabels=target_names,
-    #     yticklabels=target_names,
-    # )
-    # plt.xlabel("Predicted")
-    # plt.ylabel("Actual")
-    # plt.title("Random Forest — confusion matrix")
-    # plt.tight_layout()
-    # plt.savefig(out_png, dpi=200)
-    # plt.close()
-    pass
-
-
-def compute_feature_importance(
-    model: RandomForestClassifier,
-    feature_names: pd.Index,
-    out_csv: Path,
-) -> pd.DataFrame:
-    """
-    TODO:
-    - extrageți feature_importances_ din model
-    - construiți un DataFrame cu coloane: 'Feature', 'Importance'
-    - sortați descrescător
-    - salvați în CSV și returnați DataFrame-ul
-    """
-    # importances = model.feature_importances_
-    # df_imp = pd.DataFrame(
-    #     {"Feature": feature_names, "Importance": importances}
-    # ).sort_values("Importance", ascending=False)
-    # df_imp.to_csv(out_csv, index=False)
-    # return df_imp
-    return pd.DataFrame()  # placeholder
-
-
-def run_kmeans_and_crosstab(
-    X: pd.DataFrame,
-    y: np.ndarray,
-    label_encoder: LabelEncoder,
-    n_clusters: int,
-    out_csv: Path,
-) -> None:
-    """
-    (Opțional) TODO:
-    - rulați KMeans cu n_clusters egal cu numărul de clase
-    - construiți un crosstab între eticheta reală și cluster
-    - salvați crosstab-ul în CSV
-    """
-    # kmeans = KMeans(n_clusters=n_clusters, random_state=RANDOM_STATE, n_init="auto")
-    # clusters = kmeans.fit_predict(X.values)
-    #
-    # df = pd.DataFrame(
-    #     {"Label": label_encoder.inverse_transform(y), "Cluster": clusters}
-    # )
-    # ctab = pd.crosstab(df["Label"], df["Cluster"])
-    # ctab.to_csv(out_csv)
-    # print("Crosstab Label vs Cluster:")
-    # print(ctab)
-    pass
-
-
-# --------------------------
-# Main
-# --------------------------
 if __name__ == "__main__":
-    # TODO 1: verificați fișierul de input
-    # ensure_exists(DATA_CSV)
-
-    # TODO 2: încărcați datele (X, y)
-    # X, y = load_dataset(DATA_CSV)
-
-    # TODO 3: encodați etichetele și împărțiți în train/test
-    # y_enc, le = encode_labels(y)
-    # X_train, X_test, y_train, y_test = train_test_split(
-    #     X, y_enc,
-    #     test_size=TEST_SIZE,
-    #     random_state=RANDOM_STATE,
-    #     stratify=y_enc,
-    # )
-
-    # TODO 4: antrenați modelul RF și evaluați
-    # rf = train_random_forest(X_train, y_train, N_ESTIMATORS, RANDOM_STATE)
-    # evaluate_model(rf, X_test, y_test, le, OUT_CONFUSION, OUT_REPORT)
-
-    # TODO 5: calculați importanța trăsăturilor
-    # feat_imp_df = compute_feature_importance(rf, X.columns, OUT_FEATIMP)
-
-    # TODO 6 (opțional): rulați KMeans și salvați crosstab-ul
-    # n_classes = len(le.classes_)
-    # run_kmeans_and_crosstab(X, y_enc, le, n_clusters=n_classes, out_csv=OUT_CLUSTER_CROSSTAB)
-
-    print("[INFO] Skeleton Exercise 8 — completați TODO-urile și rulați scriptul.")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--handle", required=True)
+    parser.add_argument("--check-input", action="store_true")
+    args = parser.parse_args()
+    X, y, train, test, out = prepare(args.handle)
+    print(f"{X.shape[0]} samples, {X.shape[1]} genes; development={len(train)}, test={len(test)}")
+    if not args.check_input:
+        configure_tracking()
+        candidates, cv_scores, selected = compare_candidates(X.loc[train], y.loc[train], development_folds(X.loc[train], y.loc[train]))
+        print(f"Chosen using development CV: {selected}")
+        evaluate_frozen_models(candidates, cv_scores, selected, X.loc[train], y.loc[train], X.loc[test], y.loc[test], out)
