@@ -1,93 +1,41 @@
-# Lab 8 — Machine Learning aplicat pe date omice (Supervised, Unsupervised, Semi-Supervised)
+# Lab 8 assignment: a defensible expression classifier
 
-> **Predare 2026–2027:** toate soluțiile și PR-urile de evaluare rămân în repository-ul vostru **privat**, partajat cu `bozdogalex`. Trimiteți linkul PR și commit SHA în LMS. [Ghid de predare](../../docs/git-workflow.md).
+Work in your private course repository shared with `bozdogalex`. Submit the assessment PR URL and deadline commit SHA via the LMS. Preserve the teaching skeletons and put completed copies in `labs/08_ML_flower/submissions/<handle>/`.
 
-## Obiective
-- Construirea unui pipeline complet de clasificare.  
-- Analiza performanței unui model ML pe date biologice.  
-- Explorarea clusterelor nesupravegheate.  
-- Simularea unui scenariu semi-supervised.  
-- Interpretarea biologică a rezultatelor.
+## 1. Establish the input and split (2 points)
 
----
+Use `ml_lab.prepare(handle)` to obtain X, y, development IDs, test IDs and the local output folder. Explain the 48 × 120 data layout, sample-ID alignment and synthetic provenance. Verify the 36/12 split is disjoint, contains both classes, and has 18/18 development and 6/6 test labels. Save the manifest locally. A handle selects an output folder, never a predictor.
 
-## Task 1 — Pregătirea datelor (1p)
-- Folosiți `expression_matrix_<handle>.csv`.  
-- Separați **X (gene)** și **y (Label)**.  
-- Encodați etichetele cu `LabelEncoder`.  
-- Împărțiți în train/test stratificat.
+## 2. Compare three prespecified candidates (3 points)
 
----
+Implement `compare_candidates` in your copy of `ex01_sup_pipeline.py`:
 
-## Task 2 — Supervised ML: Random Forest (3p)
-Implementați un pipeline complet:
-1. antrenarea modelului,  
-2. generarea `classification_report`,  
-3. calculul matricei de confuzie + salvare `.png`,  
-4. extragerea `feature_importances_` + salvare `.csv`.
+- `DummyClassifier(strategy="most_frequent")`.
+- `Pipeline(StandardScaler(), LogisticRegression(C=1.0, max_iter=2000, random_state=42))`. Use `make_pipeline` or an equivalent named Pipeline.
+- `RandomForestClassifier(n_estimators=200, min_samples_leaf=2, max_features="sqrt", random_state=42, n_jobs=1)`.
 
-**Întrebări pentru raport**:
-- Ce gene sunt cele mai importante?  
-- Modelul greșește mai des între anumite clase? De ce?  
+Use `development_folds` to reuse the same three stratified folds. Compare balanced accuracy, retaining the three fold values and their mean. Choose between logistic regression and Forest by mean CV balanced accuracy, with logistic regression winning a tie. Dummy is a reference. Return the candidates, scores and chosen name. Explain why a small difference across these folds would be weak evidence for choosing a more complex model. Additional tuning is outside the required comparison.
 
----
+## 3. Freeze and evaluate (2 points)
 
-## Task 3 — Logistic Regression (opțional +1p)
-- antrenați Logistic Regression cu scaling,  
-- comparați performanța cu RF,  
-- discutați diferențele dintre modele liniare vs non-liniare.
+Record the chosen classifier before evaluating the final test set. Implement `evaluate_frozen_models`: fit all three prespecified candidates on the 36 development samples, obtain test predictions on the same 12 IDs, save confusion matrices and report accuracy, balanced accuracy and macro-F1. Give class-specific recall and the number of errors. Explain what one extra mistake does to accuracy with n=12. Do not revise the pipeline using the test results.
 
----
+## 4. Diagnose the result (3 points)
 
-## Task 4 — Unsupervised ML: PCA + KMeans (2p)
-1. rulați PCA pentru vizualizare,  
-2. aplicați KMeans cu 2–4 clustere,  
-3. salvați scatter PCA colorat după cluster,  
-4. generați crosstab: Label × Cluster.
+Implement `diagnose` in your copy of `ex02_logreg_vs_ref.py`, using development data only:
 
-**Întrebări pentru raport**:
-- Clusterizarea recuperează parțial structura de clase?  
-- Există probe care sar în clusterul „greșit”? De ce?
+1. Permute training labels once with `np.random.default_rng(42).permutation(...)`. Rerun logistic CV with scaling inside its Pipeline and three-fold stratification of the permuted labels. Report the three scores. This is a negative control, not a permutation p-value and not a reason to select a favorable random seed.
+2. Standardize development expression, fit PCA with two components for a plot, and fit `KMeans(n_clusters=2, n_init=10, random_state=42)` on all 120 scaled genes. Compare clusters with measured labels using a cross-tab. Explain why a cluster number cannot be read directly as a condition and why visible separation does not replace predictive evaluation.
+3. Fit the prespecified Forest on development data and rank `feature_importances_`. Discuss two top-ranked synthetic features and the implications of correlated genes. Explain what additional evidence a real causal or biomarker claim would require. Feature rankings from test-driven selection receive no credit.
 
----
+Full credit depends on a correct protocol and a supported interpretation, including ties or surprising results. A higher test score does not earn extra points. Required total: **10 points**.
 
-## Task 5 — Semi-Supervised (mini-experiment) (2p)
-Simulați lipsa etichetelor:
-- marcați 30–50% dintre etichete drept „unknown”,  
-- antrenați RF doar pe datele etichetate,  
-- generați pseudo-etichete pentru cele lipsă,  
-- reantrenați modelul pe setul complet.
+## Optional extension (+1, subject to the course grade cap)
 
-**Întrebări**:
-- Performanța crește sau scade?  
-- De ce ajută pseudo-labeling în bioinformatică?
+Mask 50% of development labels with a stratified seed-42 split. Train the initial Forest on the 18 observed labels. Apply self-training to the development pool only using threshold 0.9 and at most ten iterations. Keep the same 12 test IDs outside both fits. Record the labeled/masked IDs, number of accepted pseudo-labels and both test scores. Discuss how an incorrect confident prediction could be reinforced. An improvement is not required. The supplied `selftrain` command demonstrates the protocol.
 
----
+## Deliverables
 
-## Livrabile
-Livrați în `labs/08_ml/submissions/<handle>/`:
+Commit completed Python copies, a Markdown report of about two pages, and a small summary table (at most ten rows). The report should identify the data, split, fold scores, frozen model choice, final errors, diagnostic results and limitations. Include commands, source hashes/library versions from the local manifest, and AI-assistance attribution when applicable.
 
-1. `classification_report_<handle>.txt`  
-2. `confusion_rf_<handle>.png`  
-3. `feature_importance_<handle>.csv`  
-4. `cluster_crosstab_<handle>.csv` *(opțional)*  
-5. `sup_vs_unsup_scatter_<handle>.png`  
-6. `report_lab08_<handle>.pdf` (max 3 pagini)  
-
----
-
-## Structura raportului (max 3 pagini)
-1. **Introducere** — tipul datelor, obiectivele analizei.  
-2. **Supervised ML** — RF (și LogReg dacă ați făcut opționalul).  
-3. **Unsupervised ML** — PCA + KMeans, crosstab.  
-4. **Semi-Supervised** — pseudo-labels + discuție.  
-5. **Interpretare biologică** — ce gene sunt informative și de ce.  
-6. **Limitări** — bias, small sample size, variabilitate biologică.  
-
----
-
-## Bonus (+1p)
-Comparați vizual PCA înainte și după eliminarea a 10 gene cu varianță mică.  
-Discută dacă vizibilitatea clusterelor devine mai bună.
-
-
+Keep all generated PNGs, matrices, full prediction and importance tables, and manifests under ignored `data/work/<handle>/lab08/`. Refer to their reproduction commands and filenames in the report. Submit no clinical/personal data. Follow the [submission guide](../../docs/git-workflow.md) and [data policy](../../docs/GDPR_and_DataPolicy.md).
