@@ -53,3 +53,7 @@ The simulation has a strong designed response. Perfect test performance is possi
 ## Submission
 
 Use your private repository shared with `bozdogalex`. Submit your PR URL and deadline commit SHA through the LMS, following the [course guide](../../docs/git-workflow.md). Commit completed code, a concise Markdown report and at most ten rows of summary metadata. Keep generated matrices, full result CSVs and PNGs in ignored `data/work/yourhandle/lab08/`. Include exact reproduction commands and AI-assistance attribution.
+
+## Teaching-material provenance
+
+The 2026 Lab 8 redesign, reference workflow and assignment were prepared with OpenAI Codex assistance. Protocols and calculations were checked against the course simulation and scikit-learn 1.5 documentation, and the runnable workflow was tested locally. Instructor review precedes publication.
