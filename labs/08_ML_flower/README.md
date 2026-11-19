@@ -2,6 +2,8 @@
 
 Build and diagnose a supervised classifier using the same documented simulation as Labs 6–7. Compare regularized logistic regression, Random Forest and a dummy baseline. The lecture develops the biological question and evaluation logic. The assignment asks you to implement and explain the workflow.
 
+[Lecture presentation](../../docs/presentations/08_ML_flower.pptx) · [Assignment and rubric](assignment.md)
+
 ## Data and preparation
 
 `data/sample/lab06/expression_matrix.csv` contains 120 synthetic genes × 48 independent samples. `sample_metadata.csv` contains 24 controls and 24 treated samples (`tratament` in the source). [Generation and provenance](../../data/sample/lab06/README.md). These are simulated continuous expression values, already on an analysis-ready scale. G001–G120 are synthetic identifiers. No GTEx, TP53 or clinical biomarker claims are attached to them. The old six-row tissue demo is not used for this lab.
@@ -60,6 +62,8 @@ python labs/08_ML_flower/submissions/yourhandle/ex01_sup_pipeline.py --handle yo
 
 A normal skeleton run raises `NotImplementedError` until you complete the modeling functions. That is intentional. Read [assignment.md](assignment.md) for the required analyses and rubric.
 
+The runnable demos provide a baseline, as in Labs 6–7. They are distinct from the assessed skeletons. Exercise 1 leaves model comparison, final evaluation and candidate-run logging to you. Exercise 2 leaves a training-only 20-gene signature comparison, label-permutation control, expression exploration, condition-specific gene profiles and diagnostic MLflow logging to you. The supplied setup handles paths, validated input, deterministic splits and the diagnostic run context. Complete the functions in your own copies and explain the biological meaning and limits of the outputs.
+
 ## Evaluation contract
 
 Scale inside the logistic Pipeline, so CV learns the scaler using only its fit fold. Fit any learned feature selection, PCA or module representation inside CV if used predictively. The exploratory PCA/KMeans demo uses development samples only and is not fed into the benchmark. Choose the classifier using development CV, then evaluate the frozen comparison once on the held-out test. Repeated test-driven changes turn that set into development data.
@@ -72,4 +76,4 @@ Use your private repository shared with `bozdogalex`. Submit your PR URL and dea
 
 ## Teaching-material provenance
 
-The 2026 Lab 8 redesign, reference workflow and assignment were prepared with OpenAI Codex assistance. Protocols and calculations were checked against the course simulation and scikit-learn 1.5 documentation, and the runnable workflow was tested locally. Instructor review precedes publication.
+The 2026 Lab 8 redesign, reference workflow and assignment were prepared with OpenAI Codex assistance. Protocols and calculations were checked against the course simulation and scikit-learn 1.5 documentation, and the runnable workflow was tested locally.
