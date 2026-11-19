@@ -48,7 +48,7 @@ Start the UI:
 mlflow ui --backend-store-uri file://$PWD/mlruns --host 0.0.0.0 --port 5000
 ```
 
-In Ports panel, set port 5000 → Public → Open in Browser.
+In the Ports panel, open forwarded port 5000 in the browser and keep its visibility Private.
 
 Local (Docker) mirror of CI
 ```bash
@@ -74,4 +74,4 @@ It does not start a server; it just verifies import + logging to ./mlruns.
 ```
 - Rerun the smoke to create a run.
 2. Port 5000 not reachable (Codespaces)
-    - Mark port 5000 as Public in the Ports panel.
+    - Ensure port 5000 is forwarded, then open its forwarded URL while signed in to your GitHub account.

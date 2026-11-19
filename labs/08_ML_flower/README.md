@@ -24,6 +24,22 @@ Preparation writes `features.csv`, `labels.csv` and `split_manifest.json` under 
 
 The benchmark saves `metrics.csv`, `benchmark.json`, three confusion-matrix PNGs and development-only feature ranks. The exploratory demo saves a development-only PCA plot and cluster cross-tab. `demo03_logreg.py` is a compatibility entry point to the same model comparison. It intentionally reuses the same split rather than creating a second evaluation protocol.
 
+## Track and inspect the comparison
+
+The benchmark uses the existing course MLflow helpers and the local file-backed setup also documented in the master's BDHB lab. Default store: repository-root `mlruns/`, independent of the directory from which the Python script is launched. `MLFLOW_TRACKING_URI` takes precedence when explicitly configured. Otherwise `MLFLOW_TRACKING_DIR` selects a local directory, with relative paths resolved from the repository root.
+
+Each benchmark execution creates a comparison run and three nested candidate runs in experiment **BIOINF-Y4 Lab08**. Parameters record the model settings and split design. Metrics distinguish development CV from final test evaluation, with fold histories retained. Artifacts include the split manifest, data hashes and versions, confusion matrices, predictions, feature ranks and the selected fitted model. `benchmark.json` includes the comparison and candidate run IDs. Rerunning creates new runs rather than replacing old tracking records.
+
+After running the benchmark, open a second repository-root Codespaces terminal:
+
+```bash
+mlflow ui --backend-store-uri ./mlruns --host 0.0.0.0 --port 5000
+```
+
+Open port 5000 from the Ports panel and keep its visibility private. In **BIOINF-Y4 Lab08**, expand the comparison's candidate runs, compare `cv_balanced_accuracy` with the separately named `test_*` metrics, then inspect `data/split_manifest.json` on the parent and an `evaluation` artifact on a candidate. The UI reads previously logged records; it can be started after training. If using a configured store, point the UI at that same store. See the [existing MLflow guide](../../docs/mlflow.md) for background.
+
+The winning model is stored as an MLflow model artifact. The fitted logistic candidate, if selected, includes its scaler. Run IDs identify records, while data hashes identify the exact source files. Keep `mlruns/` and generated artifacts outside your assessment commit.
+
 Optional self-training reference, after completing the core comparison:
 
 ```bash

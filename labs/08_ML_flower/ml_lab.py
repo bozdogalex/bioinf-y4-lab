@@ -4,8 +4,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import platform
 import re
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -30,6 +32,98 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data/sample/lab06"
 SEED = 42
 LABELS = ["Control", "Treated"]
+EXPERIMENT = "BIOINF-Y4 Lab08"
+
+
+def configure_tracking():
+    """Use the course's local mlruns store, or an explicitly configured store.
+
+    Resolve MLFLOW_TRACKING_DIR against the repository, not the terminal cwd.
+    The UI reads this store separately; logging does not require a UI process.
+    """
+    import mlflow
+
+    # This expression model has no dependencies on ambient API credentials.
+    os.environ.setdefault("MLFLOW_RECORD_ENV_VARS_IN_MODEL_LOGGING", "false")
+    uri = os.environ.get("MLFLOW_TRACKING_URI")
+    if not uri:
+        directory = Path(os.environ.get("MLFLOW_TRACKING_DIR", ROOT / "mlruns"))
+        if not directory.is_absolute():
+            directory = ROOT / directory
+        uri = directory.resolve().as_uri()
+        # Also prevents the shared helper from resetting a relative directory.
+        os.environ["MLFLOW_TRACKING_URI"] = uri
+    mlflow.set_tracking_uri(uri)
+    return uri
+
+
+def record_comparison(handle, result, fitted, X_train, out):
+    """Record the completed fixed comparison using the existing course helpers."""
+    import mlflow
+    import mlflow.sklearn
+    from mlflow.models import infer_signature
+
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    from mlops.mlflow_utils import start_run, log_params, log_metrics
+
+    uri = configure_tracking()
+    manifest = json.loads((out / "split_manifest.json").read_text(encoding="utf-8"))
+    with start_run(EXPERIMENT, run_name=f"comparison-{handle}", tags={
+        "lab": "08", "dataset": "lab06-simulation", "handle": handle,
+        "selected_on_cv": result["selected_on_cv"],
+    }):
+        comparison_id = mlflow.active_run().info.run_id
+        log_params({
+            "seed": SEED, "n_development": len(X_train), "n_test": len(result["test_ids"]),
+            "n_features": X_train.shape[1], "cv_folds": 3,
+            "selection_metric": "cv_balanced_accuracy", "test_fraction": 0.25,
+        })
+        mlflow.log_artifact(str(out / "split_manifest.json"), "data")
+        mlflow.log_dict(manifest["versions"] | {"mlflow": mlflow.__version__}, "environment.json")
+        mlflow.log_dict({
+            "ml_lab_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            "source_sha256": manifest["source_sha256"],
+        }, "provenance.json")
+        model_run_ids = {}
+        for row in result["metrics"]:
+            name = row["model"]
+            with start_run(EXPERIMENT, run_name=name, nested=True, tags={"model": name, "handle": handle}):
+                model_run_ids[name] = mlflow.active_run().info.run_id
+                params = {
+                    k: v for k, v in fitted[name].get_params(deep=True).items()
+                    if v is None or isinstance(v, (str, int, float, bool))
+                }
+                log_params(params | {"seed": SEED, "model": name})
+                log_metrics({"cv_balanced_accuracy": row["cv_balanced_accuracy"], "cv_sd": row["cv_sd"]})
+                for fold, value in enumerate(result["cv_folds"][name], 1):
+                    log_metrics({"cv_fold_balanced_accuracy": value}, step=fold)
+                log_metrics({f"test_{key}": row[key] for key in ["accuracy", "balanced_accuracy", "macro_f1"]})
+                mlflow.log_artifact(str(out / f"confusion_{name.lower()}.png"), "evaluation")
+                mlflow.log_dict(result["classification_reports"][name], "evaluation/classification_report.json")
+                mlflow.log_dict({
+                    "sample_ids": result["test_ids"], "actual": result["test_target"],
+                    "predicted": result["test_predictions"][name],
+                }, "evaluation/predictions.json")
+                if name == "Forest":
+                    mlflow.log_artifact(str(out / "development_forest_importance.csv"), "interpretation")
+                elif name == "Logistic":
+                    mlflow.log_artifact(str(out / "development_logistic_coefficients.csv"), "interpretation")
+                if name == result["selected_on_cv"]:
+                    mlflow.sklearn.log_model(
+                        fitted[name], artifact_path="model",
+                        signature=infer_signature(X_train, fitted[name].predict(X_train)),
+                        input_example=X_train.head(2),
+                        pip_requirements=[f"scikit-learn=={sklearn.__version__}", f"pandas=={pd.__version__}", f"numpy=={np.__version__}"],
+                    )
+        result["tracking"] = {
+            "uri": uri, "experiment": EXPERIMENT,
+            "comparison_run_id": comparison_id, "model_run_ids": model_run_ids,
+        }
+        write_json(out / "benchmark.json", result)
+        mlflow.log_artifact(str(out / "benchmark.json"), "reports")
+        mlflow.log_artifact(str(out / "metrics.csv"), "reports")
+    return result["tracking"]
 
 
 def load_dataset(source: Path = SOURCE):
@@ -144,8 +238,10 @@ def benchmark(handle):
     }
     write_json(out / "benchmark.json", result)
     pd.DataFrame(rows).to_csv(out / "metrics.csv", index=False)
+    tracking = record_comparison(handle, result, fitted, Xt, out)
     print(pd.DataFrame(rows).to_string(index=False))
     print(f"Selected before test: {chosen}. Artifacts: {out}")
+    print(f"MLflow: {tracking['experiment']}, comparison {tracking['comparison_run_id']}, store {tracking['uri']}")
     return result
 
 
