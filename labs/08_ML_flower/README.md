@@ -2,7 +2,7 @@
 
 Build and diagnose a supervised classifier using the same documented simulation as Labs 6–7. Compare regularized logistic regression, Random Forest and a dummy baseline. The lecture develops the biological question and evaluation logic. The assignment asks you to implement and explain the workflow.
 
-[Lecture presentation](../../docs/presentations/08_ML_flower.pptx) · [Assignment and rubric](assignment.md)
+[Lecture presentation (Romanian)](../../docs/presentations/08_ML_flower.pdf) · [Assignment and rubric](assignment.md)
 
 ## Data and preparation
 
