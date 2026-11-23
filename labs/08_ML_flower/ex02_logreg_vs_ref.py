@@ -1,186 +1,89 @@
+"""Student skeleton: expression signatures, negative controls and interpretation.
+
+The CLI, validated input and development/test boundary are supplied. Complete
+the expression-analysis functions and MLflow logging in your copied skeleton.
 """
-Exercise 8b — Logistic Regression vs Random Forest pe expresie genică
-
-Scop:
-- să antrenăm și să comparăm două modele:
-  - Logistic Regression (multiclass, liniar)
-  - Random Forest (non-liniar, bazat pe arbori)
-- să vedem dacă performanța și erorile sunt similare sau diferite
-
-TODO:
-- Încărcați expresia pentru HANDLE
-- Împărțiți în X (gene) și y (Label)
-- Encodați etichetele
-- Împărțiți în train/test
-- Scalați features pentru logistic regression
-- Antrenați RF și Logistic Regression
-- Comparați classification_report pentru ambele modele
-"""
-
-from __future__ import annotations
 from pathlib import Path
-from typing import Tuple
+import argparse
+import sys
 
-import numpy as np
-import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-
-# --------------------------
-# Config
-# --------------------------
-HANDLE = "<handle>"
-
-DATA_CSV = Path(f"data/work/{HANDLE}/lab08/expression_matrix_{HANDLE}.csv")
-
-TEST_SIZE = 0.2
-RANDOM_STATE = 42
-N_ESTIMATORS = 200
-MAX_ITER_LOGREG = 1000
-
-OUT_DIR = Path(f"labs/08_ml/submissions/{HANDLE}")
-OUT_DIR.mkdir(parents=True, exist_ok=True)
-
-OUT_REPORT_TXT = OUT_DIR / f"rf_vs_logreg_report_{HANDLE}.txt"
+ROOT = next(p for p in Path(__file__).resolve().parents if (p / "labs/08_ML_flower/ml_lab.py").is_file())
+sys.path.insert(0, str(ROOT / "labs/08_ML_flower"))
+sys.path.insert(0, str(ROOT))
+import mlflow  # noqa: E402, F401
+from ml_lab import prepare, development_folds, configure_tracking, EXPERIMENT, SEED  # noqa: E402
+from mlops.mlflow_utils import start_run, log_params, log_metrics  # noqa: E402, F401
 
 
-# --------------------------
-# Utils
-# --------------------------
-def ensure_exists(path: Path) -> None:
+def compare_gene_panels(X_train, y_train, folds):
+    """TODO: compare all genes with a 20-gene expression signature using CV.
+
+    Return a table with columns panel, fold, balanced_accuracy (six rows).
+    Reuse the same three development folds for both logistic pipelines.
+    The 20-gene pipeline must fit SelectKBest(f_classif, k=20) and scaling
+    INSIDE each fit fold. The full-gene pipeline uses scaling and logistic
+    regression with the same settings as Exercise 1. The driver saves the table.
     """
-    TODO:
-    - verificați că fișierul există
-    - dacă nu, ridicați excepție
+    raise NotImplementedError("Compare expression signatures using development folds.")
+
+
+def negative_control(X_train, y_train):
+    """TODO: permute labels with seed 42; return three logistic CV scores.
+
+    Recreate stratified folds for the permuted labels. Scaling belongs inside
+    the pipeline. Use all genes and preserve the untouched test samples.
     """
-    # if not path.is_file():
-    #     raise FileNotFoundError(f"Nu am găsit fișierul: {path}")
-    pass
+    raise NotImplementedError("Implement the training-label negative control.")
 
 
-def load_dataset(path: Path) -> Tuple[pd.DataFrame, pd.Series]:
+def explore_expression(X_train, y_train, out):
+    """TODO: scale expression, fit PCA/KMeans and return a label/cluster table.
+
+    Use two PCs for the plot and all scaled genes for KMeans. Save the plot
+    and cross-tab under out. Labels are used after fitting for interpretation.
     """
-    TODO:
-    - citiți CSV cu pandas
-    - X = toate coloanele mai puțin ultima
-    - y = ultima coloană (Label)
+    raise NotImplementedError("Investigate expression structure in development samples.")
+
+
+def profile_predictive_genes(X_train, y_train, out):
+    """TODO: return (top_two_gene_table, pearson_correlation_between_them).
+
+    Fit the prescribed Forest on development samples. For its top two genes,
+    calculate mean expression in each condition and Treated minus Control.
+    Table columns: Gene, ImpurityImportance, MeanControl, MeanTreated,
+    MeanDifference. Compute their Pearson correlation on development samples.
+    Save the table locally. These prepared simulation values do not establish
+    a log2 fold change, real gene function or a causal treatment mechanism.
     """
-    # df = pd.read_csv(path)
-    # X = df.iloc[:, :-1]
-    # y = df.iloc[:, -1]
-    # return X, y
-    return pd.DataFrame(), pd.Series(dtype="object")
+    raise NotImplementedError("Connect predictive gene ranks to expression profiles.")
 
 
-def encode_labels(y: pd.Series) -> Tuple[np.ndarray, LabelEncoder]:
+def log_diagnostics(panel_scores, null_scores, clusters, gene_profiles, correlation, out):
+    """TODO: log summaries and saved analysis files to the active MLflow run.
+
+    Log each panel's mean CV balanced accuracy, the negative-control mean,
+    and top-pair correlation. Log the panel table, PCA plot, cluster cross-tab
+    and gene-profile table as artifacts. Avoid final-test metrics in this run:
+    every input to these diagnostics comes from development data only.
     """
-    TODO:
-    - folosiți LabelEncoder pentru a obține y_enc
-    """
-    # le = LabelEncoder()
-    # y_enc = le.fit_transform(y)
-    # return y_enc, le
-    return np.array([]), LabelEncoder()
+    raise NotImplementedError("Record the bioinformatics diagnostics with MLflow.")
 
 
-def train_models(
-    X_train: pd.DataFrame,
-    y_train: np.ndarray,
-) -> Tuple[RandomForestClassifier, LogisticRegression, StandardScaler]:
-    """
-    TODO:
-    - antrenați două modele:
-      - RandomForestClassifier
-      - LogisticRegression (cu scaling înainte)
-    - întoarceți (rf, logreg, scaler)
-    """
-    # scaler = StandardScaler()
-    # X_train_scaled = scaler.fit_transform(X_train)
-    #
-    # rf = RandomForestClassifier(
-    #     n_estimators=N_ESTIMATORS,
-    #     random_state=RANDOM_STATE,
-    #     n_jobs=-1
-    # )
-    # rf.fit(X_train, y_train)
-    #
-    # logreg = LogisticRegression(
-    #     multi_class="multinomial",
-    #     max_iter=MAX_ITER_LOGREG,
-    #     n_jobs=-1
-    # )
-    # logreg.fit(X_train_scaled, y_train)
-    #
-    # return rf, logreg, scaler
-    return RandomForestClassifier(), LogisticRegression(), StandardScaler()
-
-
-def compare_models(
-    rf: RandomForestClassifier,
-    logreg: LogisticRegression,
-    scaler: StandardScaler,
-    X_test: pd.DataFrame,
-    y_test: np.ndarray,
-    label_encoder: LabelEncoder,
-    out_txt: Path,
-) -> None:
-    """
-    TODO:
-    - calculați predicții pentru ambele modele
-    - generați classification_report pentru RF și pentru Logistic Regression
-    - scrieți într-un singur fișier .txt, cu secțiuni separate
-    """
-    # X_test_scaled = scaler.transform(X_test)
-    #
-    # y_pred_rf = rf.predict(X_test)
-    # y_pred_logreg = logreg.predict(X_test_scaled)
-    #
-    # target_names = label_encoder.classes_
-    #
-    # report_rf = classification_report(y_test, y_pred_rf, target_names=target_names)
-    # report_logreg = classification_report(y_test, y_pred_logreg, target_names=target_names)
-    #
-    # print("=== Random Forest ===")
-    # print(report_rf)
-    # print("\n=== Logistic Regression ===")
-    # print(report_logreg)
-    #
-    # combined = (
-    #     "=== Random Forest ===\n"
-    #     + report_rf
-    #     + "\n\n=== Logistic Regression ===\n"
-    #     + report_logreg
-    # )
-    # out_txt.write_text(combined)
-    pass
-
-
-# --------------------------
-# Main
-# --------------------------
 if __name__ == "__main__":
-    # TODO 1: verificați fișierul
-    # ensure_exists(DATA_CSV)
-
-    # TODO 2: încărcați X, y
-    # X, y = load_dataset(DATA_CSV)
-
-    # TODO 3: encodați etichetele și împărțiți în train/test
-    # y_enc, le = encode_labels(y)
-    # X_train, X_test, y_train, y_test = train_test_split(
-    #     X, y_enc,
-    #     test_size=TEST_SIZE,
-    #     random_state=RANDOM_STATE,
-    #     stratify=y_enc,
-    # )
-
-    # TODO 4: antrenați ambele modele
-    # rf, logreg, scaler = train_models(X_train, y_train)
-
-    # TODO 5: comparați modelele și salvați raportul
-    # compare_models(rf, logreg, scaler, X_test, y_test, le, OUT_REPORT_TXT)
-
-    print("[INFO] Exercise 8b — completați TODO-urile pentru RF vs Logistic Regression.")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--handle", required=True)
+    args = parser.parse_args()
+    X, y, train, _, out = prepare(args.handle)
+    configure_tracking()
+    Xt, yt = X.loc[train], y.loc[train]
+    with start_run(EXPERIMENT, run_name=f"expression-diagnostics-{args.handle}",
+                   tags={"analysis": "development-only", "handle": args.handle}):
+        log_params({"seed": SEED, "n_development": len(train),
+                    "n_genes": Xt.shape[1], "signature_size": 20})
+        panel_scores = compare_gene_panels(Xt, yt, development_folds(Xt, yt))
+        panel_scores.to_csv(out / "development_gene_panels.csv", index=False)
+        null_scores = negative_control(Xt, yt)
+        clusters = explore_expression(Xt, yt, out)
+        gene_profiles, correlation = profile_predictive_genes(Xt, yt, out)
+        log_diagnostics(panel_scores, null_scores, clusters, gene_profiles, correlation, out)
+        mlflow.log_artifact(str(out / "split_manifest.json"), "data")
